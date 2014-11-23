@@ -3,12 +3,19 @@
 
 \newpage
 
+\begin{center}
+REFERENCES\\
+~\\
+\end{center}
+
 %% more info/resources:
 % http://www.math.uiuc.edu/~hildebr/tex/bibliographies.html
 % http://www.andy-roberts.net/misc/latex/latextutorial3.html
 
-\bibliographystyle{ieeetr}
-\bibliography{references}
-\addcontentsline{toc}{section}{References}
+{\def\section*#1{}
+    \bibliographystyle{ieeetr}
+    \bibliography{references}
+    \addcontentsline{toc}{section}{REFERENCES}
+}
 
 \end{document}
