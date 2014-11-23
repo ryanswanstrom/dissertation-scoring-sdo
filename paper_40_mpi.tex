@@ -1,0 +1,299 @@
+\documentclass[SDSUThesis.tex]{subfiles} 
+\begin{document}
+
+\section{MPI}
+
+Software development organizations struggle to measure overall performance.  The Master Performance Indicator (MPI) is an algorithm to provide a single number score for the performance of a software development organization. It works by statistically analyzing the past performance of the organization and using that information to score an organization on current and future performance.  MPI focuses on the following elements of a software development organization: \textit{requirements},  \textit{quality},  \textit{on-schedule},  \textit{availability}, and  \textit{satisfaction}. MPI is not meant to be comparative between organizations, but to measure the amount of increase or decrease a single organization exhibits.
+It is possible the concept could be expanded beyond just software development organizations or the previously stated elements. 
+
+Here are the attributes of the MPI scoring.
+            \begin{itemize}
+                \item The range of scores must have equal values above and below 0
+                \item The minimum score must equate to the worst possible performance, however that is defined
+                \item Similarily, the maximum score must equate to the best possible performance.  
+                \item A score of 0 must be average (or expected) performance
+                \item All individual elements must have the same scoring range
+            \end{itemize}
+            
+            As long as those 5 features are met, the range can be anything.  The range of $[-1,1]$ was chosen because it is easy to scale to a different range such as $[-10,10]$ or $[-100,100]$.  It maybe makes sense to use variables for the range.  The formulas are designed to fall in the range $[-1,1]$.  Thus scaling can be applied to obtain values in any appropriate range. 
+
+
+\subsection{Quality}
+Quality is arguably the most important part of software development.  Poor quality means time, money, and resources are spent 
+fixing the quality.  One of the key indicators of software quality is defects.  Thus, it is important
+to measure the number of defects associated with a software release.  The following is an algorithm to calculate
+the quality score of software being released. 
+
+
+\begin{displaymath}
+   S_{1_i} = \left\{
+     \begin{array}{lr}
+       \text{where } f \geq d_i & : \left[ \frac{f - d_i}{f} \right] \\
+       \text{where } d_i > f  & : \left[ \frac{f-d_i }{6\sigma} \right]
+     \end{array}
+   \right]
+\end{displaymath} 
+
+\[
+    S_{1} = \frac{\sum^n_{i=1} S_{1_i}}{n}
+\]
+\begin{itemize}
+\item $n$ is the number of apps
+\item $d_i$ is the actual defects
+\item $f(h_i)$ is the function to predict defects based upon hours and other aspects of software development
+\item $6\sigma$ 6 times an estimate of the standard deviation of the population using function $f$ above
+\end{itemize}
+
+Here are the columns of the data.
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String (factor) & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Development Hours & Integer & Required \\
+\myrowcolour%
+Testing Hours & Integer & Optional \\ 
+Defects in SIT & Integer & Optional \\ 
+\myrowcolour%
+Defects in UAT & Integer  & Optional \\ 
+Defects in PROD & Integer  & Required \\
+
+\bottomrule
+
+\caption{Quality - Inputs}
+\label{tab:quality}
+\end{longtable}
+
+
+There are 2 parts here.  First the system needs to be loaded with this data.  Hopefully,
+a file with this data will exist going back a few months or years.  It is also important
+to note that the data load must be optional if an organization does not have existing
+data.  Second, every release (month/year) a new file will be upload with new information
+about the most recent release.
+
+Here is the problem for loading the data:
+Given a data file with the above columns, can a regression model be automatically found
+that fits the data?  The regression model will serve as the "target" for future 
+releases.  Here is a list of possible things to automate to get a good model.
+\begin{itemize}
+\item Linear Regression
+\item Stepwise Regression
+\item Ridge Regression for suspected multicolinearity
+\item Removal of outliers
+\end{itemize}
+
+
+\subsection{Satisfaction}
+The satisfaction of the customer is also very important.  The following is an algorithm to calculate the satisfaction of software.
+\[
+    S_2 = \frac{\sum^n_{i=1}\left( \frac{\sum^m_{j=1}a_{ij}- \frac{min + max}{2}}{m}  \right)}{n}
+\]
+
+\begin{itemize}
+\item $a_{i j}$ answer to question $j$ for app $i$
+\item $m$ number of questions
+\item $n$ number of apps
+\item $min$ minimum score for a question
+\item $max$ maximum score for a question
+\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Question ID & String  & Required \\
+\myrowcolour%
+Question Text & String  & Optional \\
+Application ID & String & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Response & Integer between min and max  & Required \\
+\myrowcolour%
+Response Date & Date & Optional \\
+
+\bottomrule
+
+\caption{Satisfaction - Inputs}
+\label{tab:satisfaction}
+\end{longtable}
+
+\subsection{Availability}
+All the new requirements and great quality do not matter if the software is not available.  
+The following algorithm will calculate the score of software availability.
+\begin{displaymath}
+   S_{3_i} = \left\{
+     \begin{array}{lr}
+       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
+       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
+     \end{array}
+   \right.
+\end{displaymath} 
+\[
+    S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
+\]
+
+\begin{itemize}
+\item $A_{a_i}$ actual availability for app i
+\item $A_{e_i}$ expected availability for app i
+\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String  & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Uptime & Float & Optional \\
+\myrowcolour%
+Scheduled Downtime & Float & Optional \\
+Unscheduled Downtime & Float  & Optional \\
+\myrowcolour%
+Percent Uptime & Float & Required \\
+Expected Percent Uptime & Float & Required \\
+
+\bottomrule
+
+\caption{Availability - Inputs}
+\label{tab:avail}
+\end{longtable}
+
+\subsection{On-Schedule}
+Delivery of software in a timely manner is important.  Therefore, it is critical to know whether software was released early, late, or on-time.  
+The best possible score should be achieved
+            when meeting the estimated date exactly.  The maximum score
+            should come from the best estimate.  Then given historical
+            release data, it is easy to determine an 
+            average $\Delta$ between the actual and the estimated.  
+            Finishing a project within that $\Delta$ should result 
+            in a positive score.  Outside the $\Delta$ results in
+            negative scores.  For example, a project releasing
+            one day early or one day late would receive the same score
+            because in both cases the estimate was missed by one day.
+
+
+The exact algorithm here is yet to be determined.
+
+%The score can be accomplished with the following 
+%algorithm.
+%\[
+%    S_4 = \frac{\sum^n_{i=1} \left( C_{a_i} - C_{e_i} \right)}{n}
+%\]
+%\begin{itemize}
+%\item $C_a$ actual number of days for application $i$
+%\item $C_e$ estimated number of days for application $i$
+%\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String  & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Scheduled Finish Date & Date & Required \\
+\myrowcolour%
+Actual Start Date & Date  & Required \\
+Actual Finish Date & Date  & Required \\
+
+\bottomrule
+
+\caption{On-Schedule - Inputs}
+\label{tab:sched}
+\end{longtable}
+
+\subsection{Requirements}
+Requirements are desired new features or enhancements to a software product.  It is important to know how many requirements
+were scheduled to be completed versus how many actually got completed.  
+\[
+    S_5 = \frac{\sum^n_{i=1}\left( R_{a_i} - R_{e_i} \right)}{n}
+\]
+\begin{itemize}
+\item $R_a$ actual requirements completed for application $i$
+\item $R_e$ expected requirements completed for application $i$
+\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String  & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Requirements Scheduled & Integer & Required \\
+\myrowcolour%
+Actual Requirements Released & Integer  & Required \\
+
+\bottomrule
+
+\caption{Requirements - Inputs}
+\label{tab:req}
+\end{longtable}
+
+\subsection{Final MPI Score}
+One complete overall score cannot be successful without including information from various aspects of the software development organization.  Therefore, the previous results
+are combined to provide one overall score.
+
+\[
+    MPI =\sum\limits^n_{i=1} w_i S_i \text{ where } \sum\limits^n_{i=1} w_i = 1
+\]
+
+\end{document}

@@ -1,0 +1,68 @@
+\documentclass[SDSUThesis.tex]{subfiles} 
+\begin{document}
+
+\newpage
+\pagenumbering{arabic}
+\setcounter{tocdepth}{2}
+
+% see this for  guidance https://www.cs.purdue.edu/homes/dec/essay.dissertation.html
+\section{Introduction}
+
+Software is becoming a vital part of companies. In 2011 Marc Andreessen, co-founder of the venture capital firm Andreessen-Horowitz,
+famously claimed, ``Software is Eating The World'' \cite{Andreessen2001}. His argument was for the ever increasing importance of software
+in all organizations big and small regardless of the industry.  With this important declaration, the production of new software is
+going to be critical.  Just as important will be the effective measurement of how this software is produced.  
+
+The goal of this work is to provide a basis of what data should be collected by a software development organization, and how that data
+should be used to formulate a single number representing the software development score of an organization. A framework to 
+achieve the score will be presented.  The  score
+is not to be comparative between organizations, but to rather form a historical baseline for a specific organization.  Also, a software
+system to collect, calculate, and report the score will be presented.
+
+\subsection{Background}
+
+Throughout the history of software development, many values have been collected and used to measure the effectiveness of software development. 
+Many metrics have been used in the past and are still being used.  A metric can be defined as the science of indirect measurement.
+The following are some examples of metrics that can be collected about source code:
+\begin{itemize}
+\item SLOC - The number of Source Lines of Code 
+\item NOM - The Number of Methods per class
+\item Complexity - A numerical measure of the code complexity, some common examples are McCabe \cite{McCabe1976} and Halstead \cite{Halstead1977}
+\item Design - The amount of coupling and cohesion present in the software code
+\item Source Code Analysis - Tools that determine whether code adheres to specified set of rules. Common examples are PMD and findbugs.
+\end{itemize}
+
+However, the metrics on source code only explain part of the software development lifecycle.  
+Most of the effort has been placed on measuring just the computer code and not the entire organization.  Software
+development involves more than just source code.
+
+
+\subsection{Previous Software Engineering Scoring Attempts}
+
+Sextant is a visualization tool for Java source code \cite{Winter2013}.  Sextant provides a graphical representation of the information related 
+to a software system.  The tool provides the capability to provide custom rules which are specific to the domain or application.  However,
+Sextant only provides metrics and analysis of the software code.  It provides no information regarding the rest of the 
+software development lifecycle.  Also, the primary output of Sextant is visual graphs.  While these graphs do provide
+useful information, they do not provide a single number to determine the performance of the software.
+
+\textit{Software process mining} \cite{Rubin2007} provides
+an algorithm and information for measuring a software engineering process from
+the Software Configuration Management (SCM). Software process mining does provide a method for tracking all 
+documentation that can be placed in SCM, not just source code.  The technique creates process models 
+to understand the process of developing software and code. It is less focused on the output and results,
+but it is more focused on conformance to a process or understanding the process. Once again, a single number is not produced.
+
+One example of scoring software development is presented by Jones \cite{Jones2012}. The methodology looks
+for the presence of various techniques used in software engineering.  The methodology provides a score based upon the 
+productivity and quality increase of the technique being evaluated.  A couple example techniques are: 
+automated source code analysis and continuous integration.  The end result is a score in range $[-10,10]$. 
+While the single number score is nice, it does not account for the entirety of the software development lifecycle.
+
+Much work has been done to determine metrics for source code, in fact 
+entire books have been written on the topic of software metrics \cite{Jones1996, Putnam2013}. Yet, 
+organizations still struggle to measure the production of software.
+Little work exists
+for scoring the entire software development organization. 
+
+
+\end{document}
