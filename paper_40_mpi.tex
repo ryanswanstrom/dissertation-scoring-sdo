@@ -1,7 +1,7 @@
 \documentclass[SDSUThesis.tex]{subfiles} 
 \begin{document}
 
-\section{MPI}
+\section{ELEMENTS OF MPI}
 
 Software development organizations struggle to measure overall performance.  The Master Performance Indicator (MPI) is an algorithm to provide a single number score for the performance of a software development organization. It works by statistically analyzing the past performance of the organization and using that information to score an organization on current and future performance.  MPI focuses on the following elements of a software development organization: \textit{requirements},  \textit{quality},  \textit{on-schedule},  \textit{availability}, and  \textit{satisfaction}. MPI is not meant to be comparative between organizations, but to measure the amount of increase or decrease a single organization exhibits.
 It is possible the concept could be expanded beyond just software development organizations or the previously stated elements. 
@@ -16,9 +16,61 @@ Here are the attributes of the MPI scoring.
             \end{itemize}
             
             As long as those 5 features are met, the range can be anything.  The range of $[-1,1]$ was chosen because it is easy to scale to a different range such as $[-10,10]$ or $[-100,100]$.  It maybe makes sense to use variables for the range.  The formulas are designed to fall in the range $[-1,1]$.  Thus scaling can be applied to obtain values in any appropriate range. 
+            
+\subsection{AVAILABILITY}
+All the new requirements and great quality do not matter if the software is not available.  
+The following algorithm will calculate the score of software availability.
+\begin{displaymath}
+   S_{3_i} = \left\{
+     \begin{array}{lr}
+       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
+       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
+     \end{array}
+   \right.
+\end{displaymath} 
+\[
+    S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
+\]
+
+\begin{itemize}
+\item $A_{a_i}$ actual availability for app i
+\item $A_{e_i}$ expected availability for app i
+\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String  & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Uptime & Float & Optional \\
+\myrowcolour%
+Scheduled Downtime & Float & Optional \\
+Unscheduled Downtime & Float  & Optional \\
+\myrowcolour%
+Percent Uptime & Float & Required \\
+Expected Percent Uptime & Float & Required \\
+
+\bottomrule
+
+\caption{Availability - Inputs}
+\label{tab:avail}
+\end{longtable}
 
 
-\subsection{Quality}
+\subsection{QUALITY}
 Quality is arguably the most important part of software development.  Poor quality means time, money, and resources are spent 
 fixing the quality.  One of the key indicators of software quality is defects.  Thus, it is important
 to measure the number of defects associated with a software release.  The following is an algorithm to calculate
@@ -97,7 +149,7 @@ releases.  Here is a list of possible things to automate to get a good model.
 \end{itemize}
 
 
-\subsection{Satisfaction}
+\subsection{SATISFACTION}
 The satisfaction of the customer is also very important.  The following is an algorithm to calculate the satisfaction of software.
 \[
     S_2 = \frac{\sum^n_{i=1}\left( \frac{\sum^m_{j=1}a_{ij}- \frac{min + max}{2}}{m}  \right)}{n}
@@ -105,7 +157,7 @@ The satisfaction of the customer is also very important.  The following is an al
 
 \begin{itemize}
 \item $a_{i j}$ answer to question $j$ for app $i$
-\item $m$ number of questions
+\item $m$ number of questions with equal weights
 \item $n$ number of apps
 \item $min$ minimum score for a question
 \item $max$ maximum score for a question
@@ -142,59 +194,8 @@ Response Date & Date & Optional \\
 \label{tab:satisfaction}
 \end{longtable}
 
-\subsection{Availability}
-All the new requirements and great quality do not matter if the software is not available.  
-The following algorithm will calculate the score of software availability.
-\begin{displaymath}
-   S_{3_i} = \left\{
-     \begin{array}{lr}
-       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
-       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
-     \end{array}
-   \right.
-\end{displaymath} 
-\[
-    S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
-\]
 
-\begin{itemize}
-\item $A_{a_i}$ actual availability for app i
-\item $A_{e_i}$ expected availability for app i
-\end{itemize}
-
-\begin{longtable}{@{}l rr rr}
-% pairs: absolute number (percentage)
-
-\toprule%
- \centering%
- {\bfseries Column Name}
- & {\bfseries Data Type}
- &  \\
-
-\cmidrule[0.4pt](r{0.125em}){1-1}%
-\cmidrule[0.4pt](lr{0.125em}){2-2}%
-\cmidrule[0.4pt](l{0.125em}){3-3}%
-% \midrule
-\endhead
-
-Application ID & String  & Required \\
-\myrowcolour%
-Frequency Date & Date & Required \\
-Uptime & Float & Optional \\
-\myrowcolour%
-Scheduled Downtime & Float & Optional \\
-Unscheduled Downtime & Float  & Optional \\
-\myrowcolour%
-Percent Uptime & Float & Required \\
-Expected Percent Uptime & Float & Required \\
-
-\bottomrule
-
-\caption{Availability - Inputs}
-\label{tab:avail}
-\end{longtable}
-
-\subsection{On-Schedule}
+\subsection{SCHEDULE}
 Delivery of software in a timely manner is important.  Therefore, it is critical to know whether software was released early, late, or on-time.  
 The best possible score should be achieved
             when meeting the estimated date exactly.  The maximum score
@@ -238,18 +239,20 @@ The exact algorithm here is yet to be determined.
 Application ID & String  & Required \\
 \myrowcolour%
 Frequency Date & Date & Required \\
-Scheduled Finish Date & Date & Required \\
+Scheduled Start Date & Date & Required \\
 \myrowcolour%
+Scheduled Finish Date & Date & Required \\
 Actual Start Date & Date  & Required \\
+\myrowcolour%
 Actual Finish Date & Date  & Required \\
 
 \bottomrule
 
-\caption{On-Schedule - Inputs}
+\caption{Schedule - Inputs}
 \label{tab:sched}
 \end{longtable}
 
-\subsection{Requirements}
+\subsection{REQUIREMENTS}
 Requirements are desired new features or enhancements to a software product.  It is important to know how many requirements
 were scheduled to be completed versus how many actually got completed.  
 \[
@@ -288,7 +291,7 @@ Actual Requirements Released & Integer  & Required \\
 \label{tab:req}
 \end{longtable}
 
-\subsection{Final MPI Score}
+\subsection{FINAL MPI SCORE}
 One complete overall score cannot be successful without including information from various aspects of the software development organization.  Therefore, the previous results
 are combined to provide one overall score.
 
