@@ -209,7 +209,90 @@ The best possible score should be achieved
             because in both cases the estimate was missed by one day.
 
 
-The exact algorithm here is yet to be determined.
+\section{Schedule Adherence}
+    \subsection{Overview}
+        Delivery of software in a timely manner is an essential part of being a 
+        successful SDO.  Being able to meet scheduled deadlines is a sign of accurate
+        estimation and planning.  Drastically missing deadlines is a sign of an SDO
+        with a process that needs refinement.  Studies have shown that 
+        software projects exceed the estimates by an average of
+        30\% \cite{Jorgensen2014}.  Thus it is important to score SDOs on accurate
+        schedule adherence. Without tracking and measuring schedule adherence, it will
+        not improve.  
+        
+        The score is based upon the historical deviance of estimates for
+        projects.  The top score of
+        100 will be obtained when the schedule is met exactly.  A historical average 
+        of deviance of schedule will be used to determine an appropriate range
+        of schedule adherence.  A schedule that occurs within that range will be awarded
+        a score of 0 or above, with less deviance being awarded more points.  Schedules
+        that do not fall within the range of deviance will be awarded negative scores, 
+        with a greater deviance resulting in a lower score all the way to -100 which means
+        the package took twice as long as expected or more.
+        For example, a package that takes more than twice as long to deliver than
+        estimated will receive a score of -100.
+    
+    \newpage
+    \subsection{Formula}
+    
+    The formula for schedule is based upon past performance.  Of the 422 projects
+    scheduled since June 2013, only 45 projects had an estimated start date, estimated
+    finish date and an actual finish date.  Of those 45 projects; 20 finished exactly on time,
+    9 finished early and 16 finished late.  
+    
+    The first step of the formula is finding the percentage the schedules were missed for 
+    historical projects.  The calculation treats over- and under-estimating the schedule
+    the same.  The same penalty is applied in both cases.  For example, being 15\% late
+    will result in the same score as being 15\% early. Perform this calculation
+    only for projects that did not exactly meet the estimated finish date.
+    
+        \begin{displaymath}
+            \Delta_i = \left| \frac{F_{a_i} - F_{s_i}}{ F_{s_i} - B_{s_i} + 1} \right|
+        \end{displaymath}
+        
+        Find the average of the $\Delta_i$'s.  This is the average percent of a missed
+        schedule.  
+        \begin{displaymath}
+           \bar{\Delta}  = \frac{\sum^n_{i=1}\Delta_i}{n}
+        \end{displaymath}
+        
+        \textit{The formula for schedule is then a percentage above or below the $\Delta$.  
+        The number is calculated for each project, and then averaged to form the schedule score.}
+        
+        After the $\bar{\Delta}$ is calculated, the following formulas are used to create the schedule scores
+        for each project and then the averaged schedule score.
+    
+        \begin{displaymath}
+           S_{4_i} = \left\{
+             \begin{array}{lr}
+                \text{where } \Delta_i \geq 1 & : -1 \times 100 \\
+               \text{where }  \Delta_i \leq \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{\bar{\Delta}}   \times 100  \\
+               \text{where } \Delta_i > \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{1 - \bar{\Delta}} \times 100
+             \end{array}
+           \right] \text{   , calculate schedule score for each project $i$}
+        \end{displaymath} 
+
+        \[
+            S_{4} = \frac{\sum^n_{i=1} S_{4_i}}{n} \text{   , average the schedule scores}
+        \]
+        \begin{itemize}
+            \item $n$ is the number of projects
+            \item $F_{a_i}$ the actual finish date of project i
+            \item $F_{s_i}$ the scheduled finish date of project i
+            \item $B_{s_i}$ the scheduled beginning date of project i
+            \item $\Delta_i$ the percent the schedule was missed
+            \item $\bar{\Delta}$ is the average percent RT misses schedules, $\approx 26$
+            \item $S_{4_i}$ is the schedule score for project $i$
+        \end{itemize}
+    
+    
+        
+    \subsection{Example Calculation}
+    \subsection{Data and Calculations}
+    \subsubsection{Obtain the Data}
+    \subsubsection{Run the Calculations}
+    \subsection{Past Performance}
+    \subsection{Process for the Future}
 
 %The score can be accomplished with the following 
 %algorithm.
