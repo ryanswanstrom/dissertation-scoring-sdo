@@ -1,7 +1,7 @@
 \documentclass[SDSUThesis.tex]{subfiles} 
 \begin{document}
 
-\section{ELEMENTS OF MPI}
+\section{MASTER PERFORMANCE INDICATOR (MPI)}
 
 Software development organizations struggle to measure overall performance.  The Master Performance Indicator (MPI) is an algorithm to provide a single number score for the performance of a software development organization. It works by statistically analyzing the past performance of the organization and using that information to score an organization on current and future performance.  MPI focuses on the following elements of a software development organization: \textit{requirements},  \textit{quality},  \textit{on-schedule},  \textit{availability}, and  \textit{satisfaction}. MPI is not meant to be comparative between organizations, but to measure the amount of increase or decrease a single organization exhibits.
 It is possible the concept could be expanded beyond just software development organizations or the previously stated elements. 
@@ -379,7 +379,76 @@ are combined to provide one overall score.
 
 
 \subsection{SENSITIVITY OF MPI}
+\label{sub:sensitivity}
 
 For more on sensitivity analysis in statistical modeling, see \cite{Saltelli2000}.
+
+\subsection{IMPORTANCE OF MPI}
+
+Earlier, in the introduction section \ref{subsub:softwareanalytics}, 3 main focus areas and 3 important questions for software
+analytics were presented.  Table \ref{tab:focusareas} provides a explanation of how MPI addresses
+each focus area.  
+As can be seen, MPI clearly addresses the 3 main focus areas of software analytics.  MPI does provide
+any mechanisms for improving the focus areas, but it provides a consistent mechanism to measure
+the focus areas. 
+
+\begin{longtable}{p{3cm}p{11cm}}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Focus Area}
+ & {\bfseries Why MPI?} \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+% \midrule
+\endhead
+
+User Experience & One of the 5 elements of MPI is satisfaction.  While not all of the questions focus solely on the user experience, the entire purpose of the survey is to determine if the user is satisfied
+with the software product. Does it have the correct features? Are new features added in a timely manner? Of course, specific survey questions can be created to focus solely on a certain user experience. \\
+\myrowcolour%
+Quality & Again, one of the 5 elements specifically focuses on quality.  MPI provides a single number
+to measure quality.  Therefore, it is easy to track changes in quality over time.  MPI does not address
+how to improve the quality, but without a consistent measurement, it would be impossible to determine the change in quality. \\
+Development Productivity & The combination of MPI elements, schedule and requirements, provide an 
+indication of development productivity. The schedule element measures the productivity
+related to estimated schedule. Similarly, the requirement element measures the amount of
+work actually being completed.  \\
+
+\bottomrule
+
+\caption{SOFTWARE ANALYTICS FOCUS AREAS AND MPI}
+\label{tab:focusareas}
+\end{longtable}
+
+
+\begin{longtable}{p{4cm}p{10cm}}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Question}
+ & {\bfseries Why MPI?} \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+% \midrule
+\endhead
+
+How much better is my model performing than a naive strategy, such as guessing? & MPI 
+provides consistency which may not exist without it.  Therefore, MPI removes the 
+guesswork of measuring a software development organization. \\
+\myrowcolour%
+How practically significant are the results? &  \\
+How sensitive are the results to small changes in one or more of the inputs? & 
+The question was extensively addressed in section \ref{sub:sensitivity}.  It appears MPI is
+not overly sensitive to small changes in the inputs.\\
+
+\bottomrule
+
+\caption{3 IMPORTANT QUESTIONS FOR SOFTWARE ANALYTICS AND MPI}
+\label{tab:questions}
+\end{longtable}
 
 \end{document}
