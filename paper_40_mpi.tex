@@ -3,8 +3,30 @@
 
 \section{MASTER PERFORMANCE INDICATOR (MPI)}
 
-Software development organizations struggle to measure overall performance.  The Master Performance Indicator (MPI) is an algorithm to provide a single number score for the performance of a software development organization. It works by statistically analyzing the past performance of the organization and using that information to score an organization on current and future performance.  MPI focuses on the following elements of a software development organization: \textit{requirements},  \textit{quality},  \textit{on-schedule},  \textit{availability}, and  \textit{satisfaction}. MPI is not meant to be comparative between organizations, but to measure the amount of increase or decrease a single organization exhibits.
-It is possible the concept could be expanded beyond just software development organizations or the previously stated elements. 
+Software development organizations struggle to measure overall performance.  
+        The Master Performance Indicator (MPI) is an algorithm to provide a single 
+        number score to measure the performance of a software development organization. 
+        It works by statistically analyzing the past performance of the 
+        organization and using that information to score an organization 
+        on current performance.  MPI focuses on the following 
+        elements of a software development organization: \textit{quality}, 
+        \textit{availability}, \textit{satisfaction}, \textit{schedule},
+        and \textit{requirements}. A separate MPI
+        score is calculated for each element and 
+        then aggregated together to form an overall 
+        MPI score.   \textbf{MPI is not meant to be comparative between
+        organizations, but to measure the amount of increase or decrease
+        a single organization exhibits across elements}.  MPI is made to be easily 
+        expandable to other elements if desired.
+        
+        The scores for MPI will range from -100, indicating the worst 
+        performance, all the way to +100, indicating perfection.
+        A score of 0 is an indication of meeting the basic expectations. 
+        A negative score indicates under-performance and a 
+        positive score indicates over-performance.   Here are some 
+        examples. An MPI score of 35 means the organization is 
+        performing 35\% better than expected.  Conversely, a score 
+        of -15 means an organization is performing 15\% worse than expected.  
 
 Here are the attributes of the MPI scoring.
             \begin{itemize}
@@ -15,7 +37,7 @@ Here are the attributes of the MPI scoring.
                 \item All individual elements must have the same scoring range
             \end{itemize}
             
-            As long as those 5 features are met, the range can be anything.  The range of $[-1,1]$ was chosen because it is easy to scale to a different range such as $[-10,10]$ or $[-100,100]$.  It maybe makes sense to use variables for the range.  The formulas are designed to fall in the range $[-1,1]$.  Thus scaling can be applied to obtain values in any appropriate range. 
+            As long as those 5 features are met, the range can be anything.  The range of $[-100,100]$ was chosen because it is easy to scale to a different range such as $[-10,10]$ or $[-1,1]$.  It maybe makes sense to use variables for the range.  The formulas are designed to fall in the range $[-100,100]$.  Thus scaling can be applied to obtain values in any appropriate range. 
             
 \subsection{AVAILABILITY}
 All the new requirements and great quality do not matter if the software is not available.  
