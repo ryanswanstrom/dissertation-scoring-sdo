@@ -3,95 +3,50 @@
 
 \section{MASTER PERFORMANCE INDICATOR (MPI)}
 
-Software development organizations struggle to measure overall performance.  
-        The Master Performance Indicator (MPI) is an algorithm to provide a single 
-        number score to measure the performance of a software development organization. 
-        It works by statistically analyzing the past performance of the 
-        organization and using that information to score an organization 
-        on current performance.  MPI focuses on the following 
-        elements of a software development organization: \textit{quality}, 
-        \textit{availability}, \textit{satisfaction}, \textit{schedule},
-        and \textit{requirements}. A separate MPI
-        score is calculated for each element and 
-        then aggregated together to form an overall 
-        MPI score.   \textbf{MPI is not meant to be comparative between
-        organizations, but to measure the amount of increase or decrease
-        a single organization exhibits across elements}.  MPI is made to be easily 
-        expandable to other elements if desired.
-        
-        The scores for MPI will range from -100, indicating the worst 
-        performance, all the way to +100, indicating perfection.
-        A score of 0 is an indication of meeting the basic expectations. 
-        A negative score indicates under-performance and a 
-        positive score indicates over-performance.   Here are some 
-        examples. An MPI score of 35 means the organization is 
-        performing 35\% better than expected.  Conversely, a score 
-        of -15 means an organization is performing 15\% worse than expected.  
+    Software development organizations struggle to measure overall performance.  
+    The Master Performance Indicator (MPI) is an algorithm to provide a single 
+    number score to measure the performance of a software development organization. 
+    It works by statistically analyzing the past performance of the 
+    organization and using that information to score an organization 
+    on current performance.  MPI focuses on the following 
+    elements of a software development organization: \textit{quality}, 
+    \textit{availability}, \textit{satisfaction}, \textit{schedule},
+    and \textit{requirements}. A separate MPI
+    score is calculated for each element and 
+    then aggregated together to form an overall 
+    MPI score.   \textbf{MPI is not meant to be comparative between
+    organizations, but to measure the amount of increase or decrease
+    a single organization exhibits across elements}.  MPI is made to be easily 
+    expandable to other elements if desired.
+    
+    The scores for MPI will range from -100, indicating the worst 
+    performance, all the way to +100, indicating perfection.
+    A score of 0 is an indication of meeting the basic expectations. 
+    A negative score indicates under-performance and a 
+    positive score indicates over-performance.   Here are some 
+    examples. An MPI score of 35 means the organization is 
+    performing 35\% better than expected.  Conversely, a score 
+    of -15 means an organization is performing 15\% worse than expected.  
 
 Here are the attributes of the MPI scoring.
-            \begin{itemize}
-                \item The range of scores must have equal values above and below 0
-                \item The minimum score must equate to the worst possible performance, however that is defined
-                \item Similarily, the maximum score must equate to the best possible performance.  
-                \item A score of 0 must be average (or expected) performance
-                \item All individual elements must have the same scoring range
-            \end{itemize}
+    \begin{itemize}
+        \item The range of scores must have equal values above and below 0
+        \item The minimum score must equate to the worst possible 
+            performance, however that is defined
+        \item Similarily, the maximum score must equate to the best possible performance.  
+        \item A score of 0 must be average (or expected) performance
+        \item All individual elements must have the same scoring range
+    \end{itemize}
             
-            As long as those 5 features are met, the range can be anything.  The range of $[-100,100]$ was chosen because it is easy to scale to a different range such as $[-10,10]$ or $[-1,1]$.  It maybe makes sense to use variables for the range.  The formulas are designed to fall in the range $[-100,100]$.  Thus scaling can be applied to obtain values in any appropriate range. 
-            
-\subsection{AVAILABILITY}
-All the new requirements and great quality do not matter if the software is not available.  
-The following algorithm will calculate the score of software availability.
-\begin{displaymath}
-   S_{3_i} = \left\{
-     \begin{array}{lr}
-       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
-       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
-     \end{array}
-   \right.
-\end{displaymath} 
-\[
-    S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
-\]
-
-\begin{itemize}
-\item $A_{a_i}$ actual availability for app i
-\item $A_{e_i}$ expected availability for app i
-\end{itemize}
-
-\begin{longtable}{@{}l rr rr}
-% pairs: absolute number (percentage)
-
-\toprule%
- \centering%
- {\bfseries Column Name}
- & {\bfseries Data Type}
- &  \\
-
-\cmidrule[0.4pt](r{0.125em}){1-1}%
-\cmidrule[0.4pt](lr{0.125em}){2-2}%
-\cmidrule[0.4pt](l{0.125em}){3-3}%
-% \midrule
-\endhead
-
-Application ID & String  & Required \\
-\myrowcolour%
-Frequency Date & Date & Required \\
-Uptime & Float & Optional \\
-\myrowcolour%
-Scheduled Downtime & Float & Optional \\
-Unscheduled Downtime & Float  & Optional \\
-\myrowcolour%
-Percent Uptime & Float & Required \\
-Expected Percent Uptime & Float & Required \\
-
-\bottomrule
-
-\caption{AVAILABILITY - INPUTS}
-\label{tab:avail}
-\end{longtable}
-
-
+    As long as those 5 features are met, the range can be anything.  
+    The range of $[-1,1]$ was chosen because it is easy to scale 
+    to a different range such as $[-10,10]$ or $[-100,100]$.  
+    It maybe makes sense to use variables for the range.  
+    The formulas are designed to fall in the range $[-100,100]$.  
+    Thus scaling can be applied to obtain values in any appropriate range. 
+    The scaling is denoted with the variable $k$.  The scale will be the same
+    for all 5 elements.
+        
 \subsection{QUALITY}
 Quality is arguably the most important part of software development.  Poor quality means time, money, and resources are spent 
 fixing the quality.  One of the key indicators of software quality is defects.  Thus, it is important
@@ -170,6 +125,58 @@ releases.  Here is a list of possible things to automate to get a good model.
 \item Removal of outliers
 \end{itemize}
 
+
+\subsection{AVAILABILITY}
+All the new requirements and great quality do not matter if the software is not available.  
+The following algorithm will calculate the score of software availability.
+\begin{displaymath}
+   S_{3_i} = \left\{
+     \begin{array}{lr}
+       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
+       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
+     \end{array}
+   \right.
+\end{displaymath} 
+\[
+    S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
+\]
+
+\begin{itemize}
+\item $A_{a_i}$ actual availability for app i
+\item $A_{e_i}$ expected availability for app i
+\end{itemize}
+
+\begin{longtable}{@{}l rr rr}
+% pairs: absolute number (percentage)
+
+\toprule%
+ \centering%
+ {\bfseries Column Name}
+ & {\bfseries Data Type}
+ &  \\
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-2}%
+\cmidrule[0.4pt](l{0.125em}){3-3}%
+% \midrule
+\endhead
+
+Application ID & String  & Required \\
+\myrowcolour%
+Frequency Date & Date & Required \\
+Uptime & Float & Optional \\
+\myrowcolour%
+Scheduled Downtime & Float & Optional \\
+Unscheduled Downtime & Float  & Optional \\
+\myrowcolour%
+Percent Uptime & Float & Required \\
+Expected Percent Uptime & Float & Required \\
+
+\bottomrule
+
+\caption{AVAILABILITY - INPUTS}
+\label{tab:avail}
+\end{longtable}
 
 \subsection{SATISFACTION}
 The satisfaction of the customer is also very important.  The following is an algorithm to calculate the satisfaction of software.
