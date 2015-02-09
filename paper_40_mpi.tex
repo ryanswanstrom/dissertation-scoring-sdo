@@ -48,11 +48,107 @@ Here are the attributes of the MPI scoring.
     for all 5 elements.
         
 \subsection{QUALITY}
-Quality is arguably the most important part of software development.  Poor quality means time, money, and resources are spent 
-fixing the quality.  One of the key indicators of software quality is defects.  Thus, it is important
-to measure the number of defects associated with a software release.  The following is an algorithm to calculate
-the quality score of software being released. 
-
+    Measuring quality is a crucial part of accessing 
+    software development results.  
+    Poor quality means time, money, and resources are spent 
+    fixing the problems. As a result, new features are not being
+    created. One of the key indicators of software quality 
+    is defects.  Thus, it is important
+    to measure the number of defects associated with a software 
+    release.  The following is an algorithm to calculate
+    the quality score of software being released. 
+    
+    \subsubsection{QUALITY DATA}
+        In order to properly score the quality of an SDO,
+        certain data needs to be obtained in order to measure
+        performance. Table \ref{tab:qualitydata} identifies
+        the columns of data that will be used to create
+        a score for the quality element of MPI.  
+        Each column is classified as \textit{required} or
+        \textit{optional}.  That is to allow some flexibility
+        in the model for organizations that collect
+        varying amounts of data.
+        
+        \begin{longtable}{@{}l rr rr}
+            % pairs: absolute number (percentage)
+            
+            \toprule%
+             \centering%
+             {\bfseries Column Name}
+             & {\bfseries Data Type}
+             &  \\
+            
+            \cmidrule[0.4pt](r{0.125em}){1-1}%
+            \cmidrule[0.4pt](lr{0.125em}){2-2}%
+            \cmidrule[0.4pt](l{0.125em}){3-3}%
+            % \midrule
+            \endhead
+            
+            Application ID & String (factor) & Required \\
+            \myrowcolour%
+            Frequency Date & Date & Required \\
+            Development Effort & Integer & Required \\
+            \myrowcolour%
+            Testing Effort & Integer & Optional \\ 
+            Defects in SIT & Integer & Optional \\ 
+            \myrowcolour%
+            Defects in UAT & Integer  & Optional \\ 
+            Defects in PROD & Integer  & Required \\
+            
+            \bottomrule
+            
+            \caption{QUALITY DATA NEEDED FOR MPI}
+            \label{tab:qualitydata}
+        \end{longtable}
+        
+        The development and testing effort can come from any of 
+        the following choices for effort. 
+        \begin{description}
+            \item[Actual Time] This number is a representation of the 
+                total amount of time spent on a project.  This number
+                can be measured in any unit of time: hours, days, weeks,
+                etc.  Actual time can be applied to development or testing
+                effort.
+            \item[Estimated Time] This number is a representation of the 
+                initial estimated amount of time spent on a project.  This number
+                can be measured in any unit of time: hours, days, weeks,
+                etc.  Estimated time can be applied to development or testing
+                effort.  It is common for the estimated and actual times
+                to be diffent.
+            \item[Source Lines Of Code (SLOC)]  This number is the count of 
+                the total number of lines of source code for a project. 
+                Obviously, 
+                this item only counts as a level of
+                effort for development unless coding in used to generate
+                automated test cases. \footnote{Automated testing is the
+                process of creating software to automatically run tests
+                against other software.  The adoption of automated testing
+                is varied and it is not a solution in all cases 
+                \cite{Ramler2006}. }
+            \item[Modified Lines Of Code] This number is a count of the number 
+                of modified lines of source code. Modified lines is 
+                defined as the number of deleted, added, and modified 
+                lines of source code.  This number is different from above
+                since it does not include all the lines of source code.  Similar
+                to above, this number makes more sense for development effort.
+            \item[Test Cases] A test case is a step or series of steps followed
+                to validate some expected outcome of software.  Organizations
+                will create a number of test cases to be validated for a
+                software system.  The number of such test cases could
+                be used as a level of testing effort.
+        \end{description}
+    
+    \subsubsection{QUALITY FORMULA}
+        The first step in creating a score for the quality
+        element is analysis of the historical data.  The historical
+        data is all quality data collected before  a given point
+        in time.  Some common historical cutoffs are the current date
+        or the end of the previous fiscal year.  Then a mathematical
+        model to predict Defects in PROD will be produced.  In statistical
+        terms, the response is \textit{Defects in PROD} and the predictors
+        are: \textit{Defects in UAT}, \textit{Defects in SIT}, 
+        \textit{Testing Effort}, and \textit{Development Effort}.  
+    
 
 \begin{displaymath}
    S_{1_i} = \left\{
@@ -72,41 +168,6 @@ the quality score of software being released.
 \item $f(h_i)$ is the function to predict defects based upon hours and other aspects of software development
 \item $6\sigma$ 6 times an estimate of the standard deviation of the population using function $f$ above
 \end{itemize}
-
-Here are the columns of the data.
-
-\begin{longtable}{@{}l rr rr}
-% pairs: absolute number (percentage)
-
-\toprule%
- \centering%
- {\bfseries Column Name}
- & {\bfseries Data Type}
- &  \\
-
-\cmidrule[0.4pt](r{0.125em}){1-1}%
-\cmidrule[0.4pt](lr{0.125em}){2-2}%
-\cmidrule[0.4pt](l{0.125em}){3-3}%
-% \midrule
-\endhead
-
-Application ID & String (factor) & Required \\
-\myrowcolour%
-Frequency Date & Date & Required \\
-Development Hours & Integer & Required \\
-\myrowcolour%
-Testing Hours & Integer & Optional \\ 
-Defects in SIT & Integer & Optional \\ 
-\myrowcolour%
-Defects in UAT & Integer  & Optional \\ 
-Defects in PROD & Integer  & Required \\
-
-\bottomrule
-
-\caption{QUALITY - INPUTS}
-\label{tab:quality}
-\end{longtable}
-
 
 There are 2 parts here.  First the system needs to be loaded with this data.  Hopefully,
 a file with this data will exist going back a few months or years.  It is also important
