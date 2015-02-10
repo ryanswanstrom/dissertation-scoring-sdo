@@ -55,7 +55,8 @@ Here are the attributes of the MPI scoring.
     created. One of the key indicators of software quality 
     is defects.  Thus, it is important
     to measure the number of defects associated with a software 
-    release.  The following is an algorithm to calculate
+    release.  The following is the necessary data to collect
+    and an algorithm to calculate
     the quality score of software being released. 
     
     \subsubsection{QUALITY DATA}
@@ -102,7 +103,8 @@ Here are the attributes of the MPI scoring.
         \end{longtable}
         
         The development and testing effort can come from any of 
-        the following choices for effort. 
+        the following choices for effort. It is possible
+        that other measures will work for effort.
         \begin{description}
             \item[Actual Time] This number is a representation of the 
                 total amount of time spent on a project.  This number
@@ -148,6 +150,24 @@ Here are the attributes of the MPI scoring.
         terms, the response is \textit{Defects in PROD} and the predictors
         are: \textit{Defects in UAT}, \textit{Defects in SIT}, 
         \textit{Testing Effort}, and \textit{Development Effort}.  
+        Some of the following strategies will be employed to find 
+        a reasonable model.
+        \begin{itemize}
+            \item Removal of outliers and/or influential points
+            \item Linear Regression
+            \item Stepwise Regression
+            \item Ridge Regression for suspected multicolinearity
+        \end{itemize}
+        
+        Once a model has been found, it will be labeled as $f$ and it
+        will not change.  It serves as the quality baseline for MPI. 
+        All future quality scores will be dependent upon the original
+        $f$.  
+        
+        After the model $f$ has been determined, 
+        
+        
+        
     
 
 \begin{displaymath}
@@ -175,16 +195,6 @@ to note that the data load must be optional if an organization does not have exi
 data.  Second, every release (month/year) a new file will be upload with new information
 about the most recent release.
 
-Here is the problem for loading the data:
-Given a data file with the above columns, can a regression model be automatically found
-that fits the data?  The regression model will serve as the "target" for future 
-releases.  Here is a list of possible things to automate to get a good model.
-\begin{itemize}
-\item Linear Regression
-\item Stepwise Regression
-\item Ridge Regression for suspected multicolinearity
-\item Removal of outliers
-\end{itemize}
 
 
 \subsection{AVAILABILITY}
