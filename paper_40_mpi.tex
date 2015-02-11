@@ -220,8 +220,73 @@
 
 
         \subsubsection{AVAILABILITY}
-            All the new requirements and great quality do not matter if the software is not available.  
-            The following algorithm will calculate the score of software availability.
+            All the new requirements and great quality do not matter if the software is not available.
+            All the new features and great quality do not matter if the software is not available.  Thus it
+            is essential to set an expected Service Level Agreement (SLA)\footnote{For an SDO, an SLA is a 
+            contract specifying the amount of time software will be available during a
+            given time period. } and measure 
+            performance against that SLA.  The following section will outline to data needed to properly
+            calculate an SLA and the data needed to calculate the MPI score for availability.
+            
+            Special Note: The System ID for availability does not have to be the same
+            as the Application ID for quality or any of the other elements.  Some 
+            organizations have a one-to-one mapping between Applications being developed
+            and systems being deployed.  Others have more complex sceranios that require
+            multiple applications to be combined to form a system.  Then the availability
+            of the system is tracked.
+            
+            \paragraph{AVAILABILITY DATA}
+                Table \ref{tab:availdata} identifies the necessary data to calculate
+                the MPI element score for availability.  Notice the three optional 
+                fields: \textit{Uptime}, \textit{Scheduled Downtime}, and 
+                \textit{Unscheduled Downtime}; they are optional because they can be
+                used to calculated the \textit{Percent Uptime}.  The \textit{Percent Uptime}
+                is the important value for the MPI schedule score.  Here are the two common
+                approaches for calculating percent uptime:
+                
+                \[
+                    \text{Percent Uptime} = \frac{\text{Uptime}}{\text{Uptime + Scheduled Downtime + Unscheduled Downtime}}
+                \]
+                and the alternative method
+                \[
+                    \text{Percent Uptime} = \frac{\text{Uptime}}{\text{Uptime + Unscheduled Downtime}}
+                \]
+                The only difference is the removal of scheduled downtime from 
+                the calculation.  The calculation approach is typically specified in
+                the contract associated with the SLA. 
+            
+            
+                \begin{longtable}{@{}l rr rr}
+                    \toprule%
+                     \centering%
+                     {\bfseries Column Name}
+                     & {\bfseries Data Type}
+                     &  \\
+                    
+                    \cmidrule[0.4pt](r{0.125em}){1-1}%
+                    \cmidrule[0.4pt](lr{0.125em}){2-2}%
+                    \cmidrule[0.4pt](l{0.125em}){3-3}%
+                    % \midrule
+                    \endhead
+                    
+                    System ID & String  & Required \\
+                    \myrowcolour%
+                    Frequency Date & Date & Required \\
+                    Uptime & Float & Optional \\
+                    \myrowcolour%
+                    Scheduled Downtime & Float & Optional \\
+                    Unscheduled Downtime & Float  & Optional \\
+                    \myrowcolour%
+                    Percent Uptime & Float & Required \\
+                    Expected Percent Uptime & Float & Required \\
+                    
+                    \bottomrule
+                    
+                    \caption{AVAILABILITY DATA NEEDED FOR MPI}
+                    \label{tab:availdata}
+                \end{longtable}
+            
+            \paragraph{AVAILABILITY FORMULA}
             \begin{displaymath}
                S_{3_i} = \left\{
                  \begin{array}{lr}
@@ -239,37 +304,6 @@
             \item $A_{e_i}$ expected availability for app i
             \end{itemize}
             
-            \begin{longtable}{@{}l rr rr}
-            % pairs: absolute number (percentage)
-            
-            \toprule%
-             \centering%
-             {\bfseries Column Name}
-             & {\bfseries Data Type}
-             &  \\
-            
-            \cmidrule[0.4pt](r{0.125em}){1-1}%
-            \cmidrule[0.4pt](lr{0.125em}){2-2}%
-            \cmidrule[0.4pt](l{0.125em}){3-3}%
-            % \midrule
-            \endhead
-            
-            Application ID & String  & Required \\
-            \myrowcolour%
-            Frequency Date & Date & Required \\
-            Uptime & Float & Optional \\
-            \myrowcolour%
-            Scheduled Downtime & Float & Optional \\
-            Unscheduled Downtime & Float  & Optional \\
-            \myrowcolour%
-            Percent Uptime & Float & Required \\
-            Expected Percent Uptime & Float & Required \\
-            
-            \bottomrule
-            
-            \caption{AVAILABILITY DATA NEEDED FOR MPI}
-            \label{tab:avail}
-            \end{longtable}
 
         \subsubsection{SATISFACTION}
             The satisfaction of the customer is also very important.  
