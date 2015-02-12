@@ -206,6 +206,8 @@
                         population using function $f_i$ above
                 \end{itemize}
                 
+                Then the overall quality score is calculated as below.
+                
                 \[
                     S_{1} = \sum\limits^n_{i=1} w'_i S_{1_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
                 \]
@@ -244,6 +246,7 @@
                 is the important value for the MPI schedule score.  Here are the two common
                 approaches for calculating percent uptime:
                 
+                The preferred method
                 \[
                     \text{Percent Uptime} = \frac{\text{Uptime}}{\text{Uptime + Scheduled Downtime + Unscheduled Downtime}}
                 \]
@@ -253,7 +256,9 @@
                 \]
                 The only difference is the removal of scheduled downtime from 
                 the calculation.  The calculation approach is typically specified in
-                the contract associated with the SLA. 
+                the contract associated with the SLA.  Thus, the Percent Uptime is important
+                and it can either be supplied in the data or calculated from the 
+                optional fields.
             
             
                 \begin{longtable}{@{}l rr rr}
@@ -287,24 +292,34 @@
                 \end{longtable}
             
             \paragraph{AVAILABILITY FORMULA}
-            \begin{displaymath}
-               S_{3_i} = \left\{
-                 \begin{array}{lr}
-                   \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}} \right] \\
-                   \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}} \right]
-                 \end{array}
-               \right.
-            \end{displaymath} 
-            \[
-                S_3 = \frac{\sum^n_{i=1}S_{3_i}}{n}
-            \]
-            
-            \begin{itemize}
-            \item $A_{a_i}$ actual availability for app i
-            \item $A_{e_i}$ expected availability for app i
-            \end{itemize}
-            
-
+                The formula for availability is more straightforward than the quality formula.
+                It does not include any analysis of the historic data.  That lack of historical
+                analysis is avoided since the SLA provides an existing baseline to measure 
+                against.  The following formula is simply a percentage the SLA was exceeded
+                or missed. 
+                
+                \begin{displaymath}
+                   S_{2_i} = \left\{
+                     \begin{array}{lr}
+                       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}}\times k \right] \\
+                       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}}\times k \right]
+                     \end{array}
+                   \right. \text{   , calculate availability score for each app $i$}
+                \end{displaymath}
+                
+                where
+                
+                \begin{itemize}
+                    \item $A_{a_i}$ actual availability for System ID $i$
+                    \item $A_{e_i}$ expected availability for System ID $i$
+                \end{itemize}
+                
+                Then the overall availability score is calculated as below.
+                
+                \[
+                    S_{2} = \sum\limits^n_{i=1} w'_i S_{2_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                \]
+                
         \subsubsection{SATISFACTION}
             The satisfaction of the customer is also very important.  
             The following is an algorithm to calculate the satisfaction of software.
