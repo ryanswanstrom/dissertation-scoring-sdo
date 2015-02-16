@@ -324,19 +324,70 @@
             The satisfaction of users, customers, and/or business partners is 
             the third element to be measured.  This element is important because 
             in an established business, retaining customers is less expensive
-            than actracting new customers \cite{Aulet2013}.  
+            than attracting new customers \cite{Aulet2013}.  
             Depending upon the type of SDO,
-            the customers may be internal or external to the organization.
-            If one element of MPI was to be rated as the most important, satisfaction
-            would be it.  Without satisfied customers, the rest of the measures do not matter.
+            the customers may be internal or external to the organization.  For
+            the remainder of this section, the term customer will be used
+            to represent any person who is responsible for guidance, decision-making
+            or use of the software.  The term customer can refer to a: user, paying or nonpaying
+            customer, internal or external business partner, or any other person deemed influential
+            to the development of the software.
+            
+            \textit{If one element of MPI was to be rated as the most important, satisfaction
+            would be it.}  
+            Without satisfied customers, the rest of the measures do not matter.
             For example, having a quality
-            application that is always available does not matter if it is not what the customer
-            wants.  Surveys are used to measure satisfaction for MPI.
+            application that is always available does not matter if the
+            application is not what the customer wants.  
+            
+            Surveys are used to measure satisfaction for MPI.  A series of questions will
+            be presented to all or a subset of the customers.  Any customer that chooses
+            to respond to the survey is considered a respondent.  A respondent can rate
+            questions with a numerical response where the minimum value indicates maximum
+            disagreement and the maximum value indicates
+            the maximum agreement. Common rating scales would be
+            from 1 to 5 or from 1 to 3.  An example survey can be seen in Table 
+            \ref{tab:samplesurvey}.
             
             
-            \paragraph{SURVEYS}
-                Write possible survey questions here.
-                and explain the issues with surveys, see qualifier
+            \begin{longtable}{@{}l rr rr}
+                \toprule%
+                 \centering%
+                 {\bfseries ID}
+                 & {\bfseries Question}
+                 & {\bfseries Disagree}
+                 & {\bfseries Neutral}
+                 & {\bfseries Agree}  \\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                \cmidrule[0.4pt](lr{0.125em}){2-2}%
+                \cmidrule[0.4pt](l{0.125em}){3-3}%
+                \cmidrule[0.4pt](l{0.125em}){4-4}%
+                \cmidrule[0.4pt](l{0.125em}){5-5}%
+                % \midrule
+                \endhead
+                
+                1 & I find the software easy to use.  & & & \\
+                \myrowcolour%
+                2 & I would recommend this software to others. & & & \\
+                3 & The software makes me more productive. & & & \\
+                \myrowcolour%
+                4 & I am happy with this software. & & & \\
+                
+                \bottomrule
+                
+                \caption{SAMPLE SURVEY FOR SATISFACTION}
+                \label{tab:samplesurvey}
+            \end{longtable}
+            
+            
+            
+            \paragraph{ISSUES WITH SURVEYS}
+                
+                There are 2 cases of surveys that could be used for satisfaction.  First is when an SDO is part of a larger organization.  Typically there are a small number of business partners that help to guide and direct the work performed by the SDO.  In this case, the business partners are the ones offering survey responses and they should all be willing to respond.  Thus, those business partners represent the entire population, and the surveys should result in a 100\% response rate which is technically a census.  
+         The only bias that will be present here is the bias of the business partners and sampling cannot control for that.
+       
+       In the other case, end-users will be surveyed for satisfaction. Obviously, the entire population cannot be surveyed, so a probability sample should be randomly created. Even then, bias will be present.  First, not all users will respond.  This is because survey respondents tend to sit at the extremes of either satisfied or dissatisfied.  Thus the results will tend to indicate that separation. Second, even with probability  sampling it is possible to miss entire groups of population members. For example consider a banking application such as a savings account, a survey would most likely be presented online and it would have a coverage bias due the exclusion of savings account holders that do not bank online.  Third, a selection bias can occur when some members of the population have a higher probability of inclusion in the sampling frame than others.  One example could be a user with multiple savings accounts.  The selection bias is typically easy to avoid if the bias is identified.  Weighting is a common solution here. 
                 
            
             The questions  are answered on a scale of 1 to 5 with 1 being 
