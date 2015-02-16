@@ -340,10 +340,13 @@
             application that is always available does not matter if the
             application is not what the customer wants.  
             
-            Surveys are used to measure satisfaction for MPI.  A series of questions will
+            Surveys are used to measure satisfaction for MPI.  A series of statements will
             be presented to all or a subset of the customers.  Any customer that chooses
             to respond to the survey is considered a respondent.  A respondent can rate
-            questions with a numerical response where the minimum value indicates maximum
+            statements based upon a Likert Scale\footnote{"The Likert Scale presents 
+            respondents with a series of (attitude) dimensions, which fall along a
+            continuum." \cite{Cowles2015}} with a numerical response where the 
+            minimum value indicates maximum
             disagreement and the maximum value indicates
             the maximum agreement. Common rating scales would be
             from 1 to 5 or from 1 to 3.  An example survey can be seen in Table 
@@ -354,7 +357,7 @@
                 \toprule%
                  \centering%
                  {\bfseries ID}
-                 & {\bfseries Question}
+                 & {\bfseries Statement}
                  & {\bfseries Disagree}
                  & {\bfseries Neutral}
                  & {\bfseries Agree}  \\
@@ -380,21 +383,88 @@
                 \label{tab:samplesurvey}
             \end{longtable}
             
-            
-            
             \paragraph{ISSUES WITH SURVEYS}
+                Surveys present a number of challenges that need to be presented and briefly
+                discussed.  Here are some of the issues that need to be addressed when
+                using surveys. 
                 
-                There are 2 cases of surveys that could be used for satisfaction.  First is when an SDO is part of a larger organization.  Typically there are a small number of business partners that help to guide and direct the work performed by the SDO.  In this case, the business partners are the ones offering survey responses and they should all be willing to respond.  Thus, those business partners represent the entire population, and the surveys should result in a 100\% response rate which is technically a census.  
-         The only bias that will be present here is the bias of the business partners and sampling cannot control for that.
-       
-       In the other case, end-users will be surveyed for satisfaction. Obviously, the entire population cannot be surveyed, so a probability sample should be randomly created. Even then, bias will be present.  First, not all users will respond.  This is because survey respondents tend to sit at the extremes of either satisfied or dissatisfied.  Thus the results will tend to indicate that separation. Second, even with probability  sampling it is possible to miss entire groups of population members. For example consider a banking application such as a savings account, a survey would most likely be presented online and it would have a coverage bias due the exclusion of savings account holders that do not bank online.  Third, a selection bias can occur when some members of the population have a higher probability of inclusion in the sampling frame than others.  One example could be a user with multiple savings accounts.  The selection bias is typically easy to avoid if the bias is identified.  Weighting is a common solution here. 
+                \begin{description}
+                \item[Text] \hfill \\
+                    The specific text used in the questions or statments
+                    is very important.  The text cannot be too vague.  Also, the text
+                    must be clear enough to eliminate misinterpretation. Survey
+                    questions must be complete and not include gaps.  For example, if
+                    an age range is presented, it must include all possible ages.  These
+                    are just some of the difficulties with getting the text correct
+                    in surveys. 
+                \item[Number and Ordering] \hfill \\
+                    The number of questions is important.  Too many questions and the 
+                    respondents will lose interest and begin responding without the
+                    adequate attention needed.  Plus, if the survey is too long there
+                    is the risk of quitting before completion.  A short survey might
+                    not cover the adequate amount of material.  Both short and long
+                    surveys run the risk of providing inaccurate responses.  After
+                    determining the best number of questions, the ordering of the questions
+                    is important.  Previous survey questions can have an unintended 
+                    impact on responses.  Thus, the ordering of questions needs to be
+                    addressed. 
+                \item[Sampling] \hfill \\
+                    Next is the issue of sampling.  Not every customer can be surveyed, so 
+                    sample sets os customers need to be presented with a survery.  
+                    In the case of MPI, there are 2 possible scenarios for sampling.  
+                    \begin{description}
+                    \item[First]
+                    When an SDO is part of a larger organization, there typically is
+                    a small number of business partners that help to guide and 
+                    direct the work performed by the SDO.  In this case, the business 
+                    partners might be the the ones offering survey responses and they 
+                    should all be willing to respond.  Thus, those business partners 
+                    represent the entire population, and the surveys should result in 
+                    a 100\% response rate which is technically a census.  
+                    The only bias that will be present here is the bias of the business 
+                    partners and sampling cannot control for that.
+           
+                    \item[Second] End-users will be surveyed for satisfaction. Obviously, the 
+                    entire population cannot be surveyed, so a probability sample should 
+                    be randomly created. Even then, bias will be present.  
+                        \begin{itemize}
+                            \item Not all users will respond.  This is because survey 
+                                respondents tend to sit at the extremes of either 
+                                satisfied or dissatisfied.  Thus the results will tend 
+                                to indicate that separation. 
+                            \item  Even with probability sampling it is possible to miss 
+                                entire groups of population members. For example consider a 
+                                banking application such as a savings account, a survey would 
+                                most likely be presented online and it would have a coverage 
+                                bias due the exclusion of savings account holders that 
+                                do not bank online.
+                            \item A selection bias can occur when some members of the 
+                                population have a higher probability of inclusion in 
+                                the sampling frame than others.  One example could be 
+                                a user with multiple savings accounts.  The selection 
+                                bias is typically easy to avoid if the bias is 
+                                identified.  Weighting is a common solution for selection bias. 
+                        \end{itemize}
+                       
+                    \end{description}
+                
+                \end{description}
+                
                 
            
-            The questions  are answered on a scale of 1 to 5 with 1 being 
-            \textbf{Strongly Misses Expectations} and 5 being \textbf{Strongly Exceeds
-            Expectations}.  
+            For more on creating appropriate surveys, see \cite{Snijkers2013} by Snijkers,
+            Haraldsen, Jones, and Willimack. In the book, Snijkers et al. present a framework
+            named generic statistical business process model (GSBPM) for conducting surveys
+            in a business or organizational setting.  GSBPM covers the issues above as well
+            as a few more issues such as response storage and risks.  Also, Cowles and Nelson
+            provide another good resource for preparing and conducting surveys 
+            \cite{Cowles2015}.  They even include an entire chapters on both writing 
+            survey questions and survey errors. 
             
             \paragraph{SATISFACTION DATA}
+                Once the surveys have been distributed and the results collected, Table
+                \ref{tab:satisfactiondata} displays the data that needs to be collected 
+                in order to calculate the satisfaction element score for MPI.
                 \begin{longtable}{@{}l rr rr}
                     \toprule%
                      \centering%
@@ -422,24 +492,31 @@
                     \bottomrule
                     
                     \caption{SATISFACTION DATA NEEDED FOR MPI}
-                    \label{tab:satisfaction}
+                    \label{tab:satisfactiondata}
                 \end{longtable}
             
             \paragraph{SATISFACTION FORMULA}
+                After collecting the necessary survey data from Table \ref{tab:satisfactiondata},
+                calculating the score is rather straight forward.
+                The scores for each question are averaged and then those
+                values are averaged together.  If some survey questions
+                are more important than others, the formula could be
+                easily modified to include weighting.  
             
-            
-            The following is an algorithm to calculate the satisfaction of software.
-            \[
-                S_2 = \frac{\sum^n_{i=1}\left( \frac{\sum^m_{j=1}a_{ij}- \frac{min + max}{2}}{m}  \right)}{n}
-            \]
-            
-            \begin{itemize}
-            \item $a_{i j}$ answer to question $j$ for app $i$
-            \item $m$ number of questions with equal weights
-            \item $n$ number of apps
-            \item $min$ minimum score for a question
-            \item $max$ maximum score for a question
-            \end{itemize}
+                Mathematically, the following is an algorithm to calculate the 
+                satisfaction element score
+                of MPI.
+                \[
+                    S_2 = \frac{\sum^n_{i=1}\left( \frac{\sum^m_{j=1}a_{ij}- \frac{min + max}{2}}{m}  \right)}{n}
+                \]
+                
+                \begin{itemize}
+                    \item $a_{i j}$ answer to question $j$ for app $i$
+                    \item $m$ number of questions with equal weights
+                    \item $n$ number of apps
+                    \item $min$ minimum score for a question
+                    \item $max$ maximum score for a question
+                \end{itemize}
             
             
 
