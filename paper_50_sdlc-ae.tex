@@ -22,8 +22,49 @@ will be much easier to create and gamification will be much more easily attainab
 \subsection{DATABASE STRUCTURE}
    All the data necessary to compute MPI needs to be stored in a database.  This section will 
    lay out the structure of tables and relationships necessary to the store all the data
-   within a relational database such as MySQL or PostgreSQL.  Eventually,
-   database diagrams and SQL scripts will be provided in the section.
+   within a relational database.  
+   
+   \subsubsection{TABLES FOR RAW MPI DATA}
+   
+        The first set of tables that need to be created are tables
+        to store the raw data that is collected.  These tables
+        will line up with the necessary data for each of the 5 elements
+        of MPI.  Figure \ref{fig:raw} provides a visual description
+        of the tables that are needed.  The tables have no relationship
+        with each other since they are raw data.  The primary goal of
+        these tables is to store the raw data in a single database. The
+        5 table names are:
+        \begin{enumerate}
+            \item QUALITY\_RAW
+            \item AVAILABILITY\_RAW
+            \item SATISFACTION\_RAW
+            \item SCHEDULE\_RAW
+            \item REQUIREMENTS\_RAW
+        \end{enumerate}
+        Notice these table names match with the 5 elements of MPI.
+   
+       \begin{figure}[ht]
+            \centering
+            \includegraphics[scale=.55]{images/raw_tables.png}
+            \caption{TABLES FOR RAW MPI DATA}
+            \label{fig:raw}
+        \end{figure}%
+        
+        Appendix \ref{src:rawSQL} provides the necessary SQL statements to create the 
+        database tables for storing the raw MPI data.  The SQL is written for an Oracle
+        database, but the scripts can be modified to work with another database
+        such as: PostgreSQL, SQL Server, or MySQL.  
+        
+    \subsubsection{INTERMEDIATE SCORE TABLES FOR MPI}
+    
+        Appendix \ref{src:scoreSQL} provides the necessary SQL statements to create the 
+        database tables for storing the intermediate MPI scores.
+    
+    \subsubsection{FINAL SCORE TABLES FOR MPI}
+    
+        Appendix \ref{src:overallscoreSQL} provides the necessary SQL statements to create the 
+        database tables for storing the final scores for each element and the final 
+        overall MPI scores for each time frequency.
 
 \subsection{QUERIES}
     The section will provide the necessary SQL queries to obtain the correct data
