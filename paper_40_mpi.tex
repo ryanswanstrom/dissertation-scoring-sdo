@@ -534,7 +534,24 @@
             schedule adherence. Without tracking and measuring schedule adherence, it will
             not improve.  
             
+            The MPI schedule score provides a numeric value to indicate the amount 
+            schedules are missed or exceeded.  The score provides a cumulative measure
+            of the performance as compared to other months.
+            The score is based upon the historical deviance of estimates for
+            projects.  Projects completing on time will be given a score of 0.
+            Projects finishing early will be rewarded with positive scores increasing toward
+            $k$. Alternatively, 
+            late projects will be given negative scores that approach $-k$ as the projects
+            become more late. 
+            
             \paragraph{SCHEDULE DATA}
+            
+                In order to calculate the schedule score, certain dates
+                need to be present. Table \ref{tab:scheduledata} outlines
+                the necessary data for schedules.  One date is considered
+                optional as it is not used in the MPI calculation, but it
+                is an important date that could be useful for future
+                enhancements.
             
                 \begin{longtable}{@{}l rr rr}
                     \toprule%
@@ -562,16 +579,11 @@
                     \bottomrule
                     
                     \caption{SCHEDULE DATA NEEDED FOR MPI}
-                    \label{tab:sched}
+                    \label{tab:scheduledata}
                 \end{longtable}
                     
             \paragraph{SCHEDULE FORMULA}
     
-                The formula for schedule is based upon past performance.  Of the 422 projects
-                scheduled since June 2013, only 45 projects had an estimated start date, estimated
-                finish date and an actual finish date.  Of those 45 projects; 20 finished exactly on time,
-                9 finished early and 16 finished late.  
-                
                 The first step of the formula is finding the percentage the schedules were missed for 
                 historical projects.  The calculation treats over- and under-estimating the schedule
                 the same.  The same penalty is applied in both cases.  For example, being 15\% late
