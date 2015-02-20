@@ -551,7 +551,7 @@
                 the necessary data for schedules.  One date is considered
                 optional as it is not used in the MPI calculation, but it
                 is an important date that could be useful for future
-                enhancements.
+                enhancements to MPI.
             
                 \begin{longtable}{@{}l rr rr}
                     \toprule%
@@ -583,7 +583,32 @@
                 \end{longtable}
                     
             \paragraph{SCHEDULE FORMULA}
+                Schedule has a clear date for finishing on-time, however
+                there are not clear bounds as to how early or late a project
+                can be delivered.  Thus, the formula for schedule is more involved
+                than availability or satisfaction.  It requires some analysis
+                of the historical data.  The first step of the formula is
+                determining how often projects are early or late, and by how
+                much a project is early or late.  This can be accomplished
+                by looking at the distribution of the data.  Specifically,
+                look at what percentage of the entire project duration the
+                schedule was missed.  
     
+                
+    
+    
+            \paragraph{ALTERNATE APPROACH}
+                The best possible score should be achieved
+                when meeting the estimated date exactly.  The maximum score
+                should come from the best estimate.  Then given historical
+                release data, it is easy to determine an 
+                average $\Delta$ between the actual and the estimated.  
+                Finishing a project within that $\Delta$ should result 
+                in a positive score.  Outside the $\Delta$ results in
+                negative scores.  For example, a project releasing
+                one day early or one day late would receive the same score
+                because in both cases the estimate was missed by one day.
+                
                 The first step of the formula is finding the percentage the schedules were missed for 
                 historical projects.  The calculation treats over- and under-estimating the schedule
                 the same.  The same penalty is applied in both cases.  For example, being 15\% late
@@ -628,19 +653,6 @@
                     \item $\bar{\Delta}$ is the average percent RT misses schedules, $\approx 26$
                     \item $S_{4_i}$ is the schedule score for project $i$
                 \end{itemize}
-    
-    
-            \paragraph{ALTERNATE APPROACH}
-                The best possible score should be achieved
-                when meeting the estimated date exactly.  The maximum score
-                should come from the best estimate.  Then given historical
-                release data, it is easy to determine an 
-                average $\Delta$ between the actual and the estimated.  
-                Finishing a project within that $\Delta$ should result 
-                in a positive score.  Outside the $\Delta$ results in
-                negative scores.  For example, a project releasing
-                one day early or one day late would receive the same score
-                because in both cases the estimate was missed by one day.
 
 %The score can be accomplished with the following 
 %algorithm.
