@@ -141,12 +141,12 @@ This is the definition used for the remainder of this work.
         
     \subsubsection{SDLC COMMONALITIES}
         Even with the large number of SDLC models currently being used by different SDOs,
-        many ommonalities exist among the models.  The 
+        many commonalities exist among the models.  The 
         commonalities can be tied back to the steps of waterfall.  All of the models
         exhibit, to some degree, the following phases. The only major difference is 
         the scope, size, and duration of each phase.  For example, the spiral
         model spends less time in each phase.  The agile models produce less
-        documentation and focus more on the Implemenation phase. Here are
+        documentation and focus more on the implementation phase. Here are
         the common phases in nearly all SDLC models:
         \begin{description}
             \item[1. Requirements] \hfill \\ The first phase is involved 
@@ -166,41 +166,14 @@ This is the definition used for the remainder of this work.
             \item[5. Deployment and Maintenance] \hfill \\ All software must 
                 be correctly deployed and maintained.  This phase is the 
                 most expensive and lengthy phase of the software
-                development lifecycle.
+                development life cycle.
         \end{description}
         
-        
-The WHAT of SDLC - These are the steps of SDLC that need to be completed for each project.
-
-\begin{easylist}[itemize]
-    & Identify the Work/Task/Project
-    && Get Initial Idea 
-    && Obtain Details
-    & Estimate
-    && Create an Estimate (What is included? What is the output? days/dollars/hours/reqs)
-    &&Obtain Approval 
-    && Quit or Go Forward
-    & Document Requirements
-    && Identify the Requirements
-    && Detail the Requirements
-    & Design The Software
-    && Find System Integrations
-    && Identify Functional Specs
-    && Detail the Functional Specs
-    & Development of all the tasks in Design and Requirements
-    && Identify the Coding Tasks
-    && Write the Code/Develop the solution
-    && Write the Unit Tests
-    & Test
-    && Create Test Plans and Cases
-    && Run Test Plans and Cases
-    & Deployment
-    && Create Deployment Steps
-    && Run Deployment Steps
-    & Maintenance
-    && Capture Bugs
-    && Survey Users
-\end{easylist}
+        These 5 steps cannot cover everything that needs to be accomplished
+        during a project.  They just provide of rough guideline of what needs
+        to be completed in order to ensure a more successful software release.
+        Appendix \ref{app:detailedSDLC} contains a more detailed list of the
+        tasks necessary to complete the software life cycle.
         
 \subsection{WHAT IS SOFTWARE ENGINEERING?}
     \textit{Software Engineering} as a term dates back to the 
@@ -222,33 +195,5 @@ The WHAT of SDLC - These are the steps of SDLC that need to be completed for eac
     technique to understand the past performance so they can better 
     predict the future performance.  Proper measurement will be essential
     to solidifying software engineering as certified profession.  
-
-\subsection{TERMINOLOGY}
-
-\begin{description}
-
-    \item[App] (Application) - a software system or a collection of other applications 
-    \item[Project] - A body of work involving zero or more apps in preparation for a release, infrastructure upgrades can be a project but no specific app is involved
-    \item[Release] - A collection of projects being put in production on a specified date
-    \item[SIT]   (Systems Integration Testing) - The initial step of testing
-        after the development phase of the SDLC.  This is typically 
-        performed by members of the SDO.  It is validation that all the
-        software components function together as expected.
-    \item[UAT]   (User Acceptance Testing) - The final step of testing
-        when a select few members of the user group are invited to
-        validate the software system. Once validation has occured for
-        UAT, the software system is ready to proceed to production
-    \item[PROD]  (Production) - The software has been released to the final audience.
-    \item[defect] ``A software defect is a bug or error that causes
-                software to either stop operating or to produce
-                invalid or unacceptable results'' as quoted from
-            \cite{Jones2009}.  It is important to mention that even though defects are typically 
-            found in the computer code, a defect should not be isolated to just code.   A poorly written requirement or missed test cases can 
-            both be considered a defect.  Other common names for a defect are: bug, error, fault, or ticket.
-            
-              Also in here is the 4 severity levels.  Also, current defect removal is only about 85\% and this value should be increased to about 95\%. 
-\end{description}
-
-Check these book \cite{Jones2009, Jones1996, Lee2003}. 
 
 \end{document}

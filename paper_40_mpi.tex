@@ -606,12 +606,25 @@
                 \end{itemize}
                 
                 Once all the $\Delta_i$'s have been determined, a distribution must
-                be fit to the data.  
-    
+                be fit to the data.  The exact distribution is needed for the Cumulative
+                Distribution Function (C.D.F.).  The C.D.F. will be transformed to create
+                the schedule score for MPI. Since all C.D.F. functions fall within the
+                range $[0,1]$, the function needs to be shifted to center around 0, and then
+                doubled to fill the desired range of $[-1,1]$. Thus the MPI schedule score
+                for each project becomes the following.
                 
-    
+                \[
+                    S_{4_i} = 2k \cdot (C.D.F.(\Delta_i) - \frac{1}{2})
+                \]
+                
+                Then the overall schedule score is calculated as below.
+                
+                \[
+                    S_{4} = \sum\limits^n_{i=1} w'_i S_{4_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                \]
     
             \paragraph{ALTERNATE APPROACH}
+                An alternative approach for scoring schedule goes as follows.
                 The best possible score should be achieved
                 when meeting the estimated date exactly.  The maximum score
                 should come from the best estimate.  Then given historical
@@ -648,38 +661,33 @@
                 \begin{displaymath}
                    S_{4_i} = \left\{
                      \begin{array}{lr}
-                        \text{where } \Delta_i \geq 1 & : -1 \times 100 \\
-                       \text{where }  \Delta_i \leq \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{\bar{\Delta}}   \times 100  \\
-                       \text{where } \Delta_i > \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{1 - \bar{\Delta}} \times 100
+                        \text{where } \Delta_i \geq 1 & : -1 \times k \\
+                       \text{where }  \Delta_i \leq \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{\bar{\Delta}}   \times k  \\
+                       \text{where } \Delta_i > \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{1 - \bar{\Delta}} \times k
                      \end{array}
                    \right] \text{   , calculate schedule score for each project $i$}
                 \end{displaymath} 
         
                 \[
-                    S_{4} = \frac{\sum^n_{i=1} S_{4_i}}{n} \text{   , average the schedule scores}
+                    S_{4} = \sum\limits^n_{i=1} w'_i S_{4_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1 \text{   , average the schedule scores}
                 \]
+                where
                 \begin{itemize}
                     \item $n$ is the number of projects
-                    \item $F_{a_i}$ the actual finish date of project i
-                    \item $F_{s_i}$ the scheduled finish date of project i
-                    \item $B_{s_i}$ the scheduled beginning date of project i
+                    \item $F_{a_i}$ the actual finish date of project $i$
+                    \item $F_{s_i}$ the scheduled finish date of project $i$
+                    \item $B_{s_i}$ the scheduled beginning date of project $i$
                     \item $\Delta_i$ the percent the schedule was missed
-                    \item $\bar{\Delta}$ is the average percent RT misses schedules, $\approx 26$
+                    \item $\bar{\Delta}$ is the average percent schedules are missed
                     \item $S_{4_i}$ is the schedule score for project $i$
                 \end{itemize}
-
-%The score can be accomplished with the following 
-%algorithm.
-%\[
-%    S_4 = \frac{\sum^n_{i=1} \left( C_{a_i} - C_{e_i} \right)}{n}
-%\]
-%\begin{itemize}
-%\item $C_a$ actual number of days for application $i$
-%\item $C_e$ estimated number of days for application $i$
-%\end{itemize}
-
+                Again, this was just an alternate approach to scoring schedule.  It will not be used
+                in the case studies.
 
         \subsubsection{REQUIREMENTS}
+            The requirements of a software development organization are important.
+            
+            
             
             \paragraph{REQUIREMENTS DATA}
             
@@ -696,7 +704,7 @@
                     % \midrule
                     \endhead
                     
-                    Application ID & String  & Required \\
+                    Project ID & String  & Required \\
                     \myrowcolour%
                     Frequency Date & Date & Required \\
                     Requirements Scheduled & Integer & Required \\
