@@ -566,7 +566,7 @@
                     % \midrule
                     \endhead
                     
-                    Application ID & String  & Required \\
+                    Project ID & String  & Required \\
                     \myrowcolour%
                     Frequency Date & Date & Required \\
                     Scheduled Start Date & Date & Required \\
@@ -593,6 +593,20 @@
                 by looking at the distribution of the data.  Specifically,
                 look at what percentage of the entire project duration the
                 schedule was missed.  
+                
+                \begin{displaymath}
+                    \Delta_i = \frac{F_{a_i} - F_{s_i}}{ F_{s_i} - B_{s_i} + 1}
+                \end{displaymath}
+                where
+                \begin{itemize}
+                    \item $F_{a_i}$ the actual finish date of project $i$
+                    \item $F_{s_i}$ the scheduled finish date of project $i$
+                    \item $B_{s_i}$ the scheduled beginning date of project $i$
+                    \item $\Delta_i$ the percent the schedule was missed for project $i$
+                \end{itemize}
+                
+                Once all the $\Delta_i$'s have been determined, a distribution must
+                be fit to the data.  
     
                 
     
