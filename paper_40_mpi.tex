@@ -606,8 +606,13 @@
                 \end{itemize}
                 
                 Once all the $\Delta_i$'s have been determined, a distribution must
-                be fit to the data.  The exact distribution is needed for the Cumulative
-                Distribution Function (C.D.F.).  The C.D.F. will be transformed to create
+                be fit to the data. There are several techniques for testing the fit
+                of a distribution: histograms, chi-square, Kolmogorov-Smirnov, Shapiro-Wilk,
+                or Anderson-Darling \cite{Damodaran2015,Kutner2003}.
+                The distribution is needed for the Cumulative
+                Distribution Function (C.D.F.). The C.D.F. maps the values
+                to a percentile rank within the distribution \cite{Downey2011}.
+                The C.D.F. will be transformed to create
                 the schedule score for MPI. Since all C.D.F. functions fall within the
                 range $[0,1]$, the function needs to be shifted to center around 0, and then
                 doubled to fill the desired range of $[-1,1]$. Thus the MPI schedule score

@@ -161,6 +161,125 @@ aggregate(SCORE ~ MONTH_DT, new_quality_data, mean)
 # dist of variables(hist used for guidance), associations among variables
 \end{lstlisting}}
 
-\subsection{}
+
+\section{ADDITIONAL SDLC DATA NEEDS}
+
+    \subsection{ESTIMATION}
+    
+    \begin{itemize}
+    \item Change to Database Structure  
+    \item Modify Database Data    
+    \item Create a New Database, number of new databases  
+    \item Server Configuration Changes Required   
+    \item New Servers Required   
+    \item Number of Team Members Involved  
+    \item Number of (sub)Systems Involved  
+    \item Estimation Date
+    \item Number of Days Allowed
+    \item List of Other Attributes
+    \item Number of Screens Involved 
+    \item Actual Value (hours, days, dollars) 
+    \end{itemize}
+    
+    
+    \begin{description}
+        \item[Estimated Dev Hours] - 
+            The number of development hours estimated for a 
+            project, this is just developer hours
+        \item[Estimated Doc Hours] - 
+            The number of documentation hours estimated for a project
+        \item[Estimated Test Hours] - 
+            The number of testing hours estimated for a project
+        \item[Estimated Deployment Hours] - 
+            The number of estimated hours required to 
+            deploy the project
+    \end{description}
+    
+    \subsection{REQUIREMENTS}
+    List of: 
+    \begin{description}
+      \item[Title] 
+      \item[Descrition]
+      \item[author]
+      \item[projectID]
+      \item[date]
+      \item[Comments] list of \\
+      \begin{description}
+        \item[date]
+        \item[comment Text]
+        \item[author]
+      \end{description}
+    \end{description}
+    
+    \subsection{MAINTENANCE (DEFECTS)}
+    List of:
+    \begin{description}
+      \item[Project] 
+      \item[Release]
+      \item[description]
+      \item[date Entered]
+      \item[Date fixed]
+      \item[Comments] list of \\
+      \begin{description}
+        \item[date]
+        \item[comment Text]
+        \item[author]
+      \end{description}
+    \end{description}
+    
+    
+    
+    \subsection{TESTING}
+    
+    List of:
+    \begin{description}
+      \item[Project] 
+      \item[Release]
+      \item[title]
+      \item[description]
+      \item[author]
+      \item[Date Started]
+      \item[Date Executed]
+      \item[Status (Pending, pass, fail)]
+      \item[Comments] list of \\
+      \begin{description}
+        \item[date]
+        \item[comment Text]
+        \item[author]
+      \end{description}
+    \end{description}
+    
+    \subsection{DEVELOPMENT}
+    
+    List of Coding Tasks:
+    \begin{description}
+      \item[Project] 
+      \item[Release]
+      \item[List of Files]
+      \item[author]
+      \item[Date Started]
+      \item[Completion Date]
+      \item[Number of Unit Tests]
+      \item[Lines of Code]
+      \item[Others] See \cite{Jones2009, Jones2012, Rubin2007, Snipes2013}
+    \end{description}
+    
+    \subsection{IMPLEMENTATION}
+    
+    List of:
+    \begin{description}
+      \item[Project] 
+      \item[Release]
+      \item[date Entered]
+      \item[Date Scheduled]
+      \item[Date Executed]
+      \item[Ordering/Prerequisites]
+      \item[Comments] list of \\
+      \begin{description}
+        \item[date]
+        \item[comment Text]
+        \item[author]
+      \end{description}
+    \end{description}
 
 \end{document}

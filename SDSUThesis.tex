@@ -92,6 +92,11 @@
 %% CTAN Link: http://tug.ctan.org/tex-archive/macros/latex/contrib/listings/
 \usepackage{listings}
 
+%% for online website citations
+\usepackage[backend=bibtex8,sorting=nyt,style=ieee,sortcase=false]{biblatex}
+\addbibresource{references.bib} %Imports bibliography file
+\renewbibmacro*{bbx:savehash}{}
+
 %% Add for indenting description lists
 \usepackage{enumitem}
 \setlist[description]{leftmargin=1cm,labelindent=1cm}
