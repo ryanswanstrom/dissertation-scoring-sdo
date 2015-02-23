@@ -67,11 +67,47 @@
             Poor quality means time, money, and resources are spent 
             fixing the problems. As a result, new features are not being
             created. One of the key indicators of software quality 
-            is defects.  Thus, it is important
+            is defects.  It is important
             to measure the number of defects associated with a software 
-            release.  The following is the necessary data to collect
-            and an algorithm to calculate
-            the quality score of software being released. 
+            release because industry-wide the current defect removal rate is only 
+            about 85\% and this value should be increased to 
+            about 95\% for high quality software \cite{Jones2009}. 
+            Organizations are leaving too many defects unfixed.  If organizations
+            could lower the number of defects, then not as many defects would
+            need to be fixed, which in turn would raise the defect removal rate.
+            
+            Another aspect of defects is severity levels.  A severity level indicates
+            the importance of a defect that has been discovered.  Although an
+            organization can choose whatever severity levels they choose, it is
+            common practice to use 5 severity levels \cite{Raynus1999}.  The most 
+            severe level for a defect is 1.  All other levels drop in severity 
+            from that point. Table \ref{tab:severity} describes the 5 levels
+            for defect severity.  
+
+            \begin{longtable}{@{}l l}
+                \toprule%
+                 \centering%
+                 {\bfseries Level}
+                 & {\bfseries Description}\\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                \cmidrule[0.4pt](lr{0.125em}){2-2}%
+                % \midrule
+                \endhead
+                
+                1 & Software is unavailable and no workaround   \\
+                \myrowcolour%
+                2 & Software performance degraded with no workaround \\
+                3 & Software performance degraded but workaround exists \\
+                \myrowcolour%
+                4 & Software functions but a loss of non-critical functionality \\
+                5 & Others: minor cosmetic issue, missing documentation \\
+                
+                \bottomrule
+                
+                \caption{SOFTWARE DEFECT SEVERITY LEVELS}
+                \label{tab:severity}
+            \end{longtable}
             
             \paragraph{QUALITY DATA}
                 In order to properly score the quality of an SDO,
@@ -153,6 +189,46 @@
                         software system.  The number of such test cases could
                         be used as a level of testing effort.
                 \end{description}
+                
+                Notice the data does not include a severity level.  The severity
+                level should be handled before being stored.  A good technique is
+                to count the defects based upon the weighting scheme
+                in Table \ref{tab:severityweight} \cite{Raynus1999}. For
+                example, finding 1 defect of severity level 5 will result
+                in total count of 1.  However, finding 1 defect of severity
+                level 2 will result in a total count of 15. This strategy helps
+                to standardize the number of defects found.  An organization
+                can alter the values of Table \ref{tab:severityweight} based 
+                upon priorities or use a different technique if desired.  It
+                is just important to get a standard, meaningful number for SIT defects,
+                UAT defects, and PROD defects which manages severity appropriately.
+                
+                \begin{longtable}{@{}l rr rr}
+                    % pairs: absolute number (percentage)
+                    
+                    \toprule%
+                     \centering%
+                     {\bfseries Severity Level}
+                     & {\bfseries Weight} \\
+                    
+                    \cmidrule[0.4pt](r{0.125em}){1-1}%
+                    \cmidrule[0.4pt](lr{0.125em}){2-2}%
+                    % \midrule
+                    \endhead
+                    
+                    1 & 30 \\
+                    \myrowcolour%
+                    2 &  15 \\
+                    3 &  5 \\
+                    \myrowcolour%
+                    4 &  2 \\ 
+                    5 &  1 \\ 
+                    
+                    \bottomrule
+                    
+                    \caption{DEFECT SEVERITY LEVEL WEIGHTING}
+                    \label{tab:severityweight}
+                \end{longtable}
             
             \paragraph{QUALITY FORMULA}
                 The first step in creating a score for the quality

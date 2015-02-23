@@ -1,127 +1,166 @@
 \documentclass[SDSUThesis.tex]{subfiles} 
 \begin{document}
 
-\section{MEASURING AN SDO}
+\section{EVALUATING AN SDO}
 
-Anything can be measured \cite{Hubbard2010}.  An SDO
-how numerous metrics.
+    Anything can be measured \cite{Hubbard2010}.  Thus, an SDO can be 
+    measured.  Proper measurement is crucial for improvement because
+    without a starting point it is impossible to determine progress.
+    Also, consistent reporting is essential for 
+    tracking historical performance.  Many methods are used
+    to measure and evaluate SDOs.  Some of the common ones
+    will be explained in this section.
 
-A metric can be defined as the science of indirect measurement.
-    The following are some examples of metrics that can be collected 
-    about source code:
-    \begin{itemize}
-        \item SLOC - The number of Source Lines of Code 
-        \item NOM - The Number of Methods per class
-        \item Complexity - A numerical measure of the code complexity,
-            some common examples are McCabe \cite{McCabe1976} and 
-            Halstead \cite{Halstead1977}
-        \item Design - The amount of coupling and cohesion present 
-        in the software code
-        \item Source Code Analysis - Tools that determine whether 
-        code adheres to specified set of rules. Common 
-        examples are PMD\footnote{PMD is a source code analysis product.  It is not an acronym.} and FindBugs$^{TM}$ \cite{PMD, Findbugs}.
-    \end{itemize}
+
+    \subsection{METRICS}
+        A \textit{metric} can be defined as the science of indirect measurement. Metrics
+        are very common in the measurement of SDOs.  
+        The following are some examples of metrics that can be collected 
+        for an SDO. 
+        \begin{itemize}
+            \item SLOC - The number of Source Lines of Code 
+            \item NOM - The Number of Methods per class
+            \item Complexity - A numerical measure of the code complexity,
+                some common examples are McCabe \cite{McCabe1976} and 
+                Halstead \cite{Halstead1977}
+            \item Design - The amount of coupling and cohesion present 
+                in the software code
+            \item Source Code Analysis - Tools that determine whether 
+                code adheres to specified set of rules. Common 
+                examples are PMD\footnote{PMD is a source code analysis product.  
+                It is not an acronym.} and FindBugs$^{TM}$ \cite{PMD, Findbugs}.
+        \end{itemize}
+        All these metrics are beneficial, but none of them tell the story of the entire
+        SDO.  Most of the metrics, as seen in the list above, around an SDO focus on 
+        the source code and development phase. 
+        Since metrics are indirect, it can be very difficult match SDO performance with
+        a metric or series of metrics.  Metrics are great for tracking, but decision making
+        based upon metrics is difficult.  
+
+    \subsection{INDICATORS}
+        Indicators can be crucial measurements
+        within any business setting, and an SDO is no exception. Determining
+        the correct indicators for an organization can
+        be difficult.  Software development organizations
+        are no exception. 
+        The differences between the indicators will be explored and
+        possible measures for each indicator in an SDO will be
+        presented.  Indicators are sometimes refered to as 
+        performance measures \cite{parmenter2010}.  The four
+        types of indicators important to an SDO are shown
+        in Table \ref{tab:indicators}.
+        
+        \begin{longtable}{@{}l l}
+                \toprule%
+                 \centering%
+                 {\bfseries Performance Measure}
+                 & {\bfseries Description}\\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                \cmidrule[0.4pt](lr{0.125em}){2-2}%
+                % \midrule
+                \endhead
+                
+                RI (Result Indicator) & What has been done?   \\
+                \myrowcolour%
+                KRI (Key Result Indicator) & How you have done? \\
+                PI (Performance Indicator) & What to do? \\
+                \myrowcolour%
+                KPI (Key Performance Indicator) & How to dramatically increase performance? \\
+                
+                \bottomrule
+                
+                \caption{SOFTWARE DEFECT SEVERITY LEVELS}
+                \label{tab:indicators}
+            \end{longtable}
+        
+        More information on the indicators can be found
+        in chapter 1 of 
+        as well as \cite{florac1999,kaplan1992}.
+        
+        \subsubsection{RESULT INDICATORS FOR SDO}
+            This section will cover the potential result indicators for an SDO.
+            
+        \subsubsection{KEY RESULT INDICATORS FOR SDO}
+        
+        \subsubsection{PERFORMANCE INDICATORS FOR SDO}
+            This section will cover the potential performance indicators for an SDO.
+            
+        \subsubsection{KEY PERFORMANCE INDICATORS FOR SDO}
+        
+        Antolic in \cite{Antolic2008} demostrates some ways to measure KPIs for the  software development process.
+    
+    \subsection{BALANCED SCORECARD}
+    
+        A common technique for organizations to measure themselves is a balanced scorecard.
+        A \textit{balanced scorecard} must contain the following six
+        characteristics.
+        \begin{enumerate}
+          \item Financial 
+          \item Customer Focus
+          \item Environment/Community
+          \item Internal Process
+          \item Employee Satisfaction
+          \item Learning and Growth
+        \end{enumerate}
+        
+        Balanced scorecards are great for displaying the important information about
+        an organization.  However, a balanced scorecard does not specify what
+        exactly needs to be tracked.  It is also not specific to an SDO and 
+        it does not produce a single number.
+        
+        This info comes from \cite{parmenter2010}.
+
+    \subsection{PROJECT MANAGEMENT MEASUREMENT}
+    According to Putnam and Myers in \cite{Putnam2013}, the 5 core measurements for managing software
+    projects are:
+    
+    \begin{enumerate}
+        \item \textbf{Quantity of function} usually measured in terms of size (such as source lines of code or function points), that ultimately execute on the computer
+        \item \textbf{Productivity} as expressed in terms of the functionality produced for the time and effort expended
+        \item \textbf{Time} the duration of the project in calendar months
+        \item \textbf{Effort} the amount of work expended in person-months
+        \item \textbf{Reliability} as expressed in terms of defect rate (or its reciprocal, mean time to defect)
+    \end{enumerate}
+    However, these measurements don't focus on the entire SDO. They say nothing about the availablity of the software infrastructure or the satisfaction of the users.
+    
+    \begin{description}
+      \item[Time] This measurement can be hours, days, weeks, or months.  the time increment does not matter as long as it is consistent.
+      \item[Effort] This measurement is person-months, person-weeks, or person-days.
+      \item[Quality] This measurement is the defect rate (defects per time period).
+      \item[Amount of Work] This measurement has the same units as Effort above. 
+      \item[Process Productivity] look into this a bit further
+      \item[Function Points] find a definition and a comparison with story points
+      \item[Story Points] Look in some agile book
+    \end{description}
+    
+    Chapter 7 of \cite{Putnam2013} contains some equations to calculate and relate
+    these measures. Those equations will be studied and evaluated.
+
+
+    \subsection{MEASURING OTHER ASPECTS OF AN SDO}
+    
+        It is important to note that software departments do not just
+        develop software.  The department has many other duties
+        including: deploying software, installing server hardware/software,
+        writing documentation, surveying users, research, innovation,
+        education and other common business duties.
+    
+    \subsection{COMBINING THE MEASURES}
+    
+        How can the PIs, RIs, KRIs, and KPIs be combined to form a single
+        value called an MPI (Master Performance Indicator)?  The field
+        of sports analytics also has numerous techniques for combining
+        multiple indicators to produce a single number \cite{Cervone2014}.
+
+
+
+
+
+
+
+making decisions based upon historical data.  
 
 Data Driven Software Engineering not Data Driven Software Development
-
-Also in here is the 4 severity levels.  
-
-        Also, current defect removal is only about 85\% and this value should be increased to about 95\% \cite{Jones2009}. 
-
-
-\subsection{INDICATORS}
-Indicators can be crucial measurements
-within any business setting, and an SDO is no exception. Determining
-the correct indicators for an organization can
-be difficult.  Software development organizations
-The differences between the indicators will be explored and
-possible measures for each indicator in an SDO will be
-presented.  The 4 different types of indicators are:
-\begin{description}
-  \item[RI (Result Indicator)] - what has been done
-  \item[KRI (Key Result Indicator)] - how you have done
-  \item[PI (Performance Indicator)] - what to do
-  \item[KPI (Key Performance Indicator)] - what to do to dramatically increase performance
-\end{description}
-
-More information on the indicators can be found
-in chapter 1 of \cite{parmenter2010}
-as well as \cite{florac1999,kaplan1992}.
-
-\subsubsection{RESULT INDICATORS FOR SDO}
-    This section will cover the potential result indicators for an SDO.
-    
-\subsubsection{KEY RESULT INDICATORS FOR SDO}
-
-
-\subsubsection{PERFORMANCE INDICATORS FOR SDO}
-    This section will cover the potential performance indicators for an SDO.
-    
-    
-\subsubsection{KEY PERFORMANCE INDICATORS FOR SDO}
-    
-
-\subsection{BALANCED SCORECARD}
-
-A common technique for organizations to measure themselves is a balanced scorecard.
-A \textit{balanced scorecard} must contain the following six
-characteristics.
-\begin{enumerate}
-  \item Financial 
-  \item Customer Focus
-  \item Environment/Community
-  \item Internal Process
-  \item Employee Satisfaction
-  \item Learning and Growth
-\end{enumerate}
-
-Balanced scorecards are great for displaying the important information about
-an organization.  However, a balanced scorecard does not specify what
-exactly needs to be tracked.  It is also not specific to an SDO and 
-it does not produce a single number.
-
-This info comes from \cite{parmenter2010}.
-
-\subsection{PROJECT MANAGEMENT MEASUREMENT}
-According to Putnam and Myers in \cite{Putnam2013}, the 5 core measurements for managing software
-projects are:
-
-\begin{enumerate}
-    \item \textbf{Quantity of function} usually measured in terms of size (such as source lines of code or function points), that ultimately execute on the computer
-    \item \textbf{Productivity} as expressed in terms of the functionality produced for the time and effort expended
-    \item \textbf{Time} the duration of the project in calendar months
-    \item \textbf{Effort} the amount of work expended in person-months
-    \item \textbf{Reliability} as expressed in terms of defect rate (or its reciprocal, mean time to defect)
-\end{enumerate}
-However, these measurements don't focus on the entire SDO. They say nothing about the availablity of the software infrastructure or the satisfaction of the users.
-
-\begin{description}
-  \item[Time] This measurement can be hours, days, weeks, or months.  the time increment does not matter as long as it is consistent.
-  \item[Effort] This measurement is person-months, person-weeks, or person-days.
-  \item[Quality] This measurement is the defect rate (defects per time period).
-  \item[Amount of Work] This measurement has the same units as Effort above. 
-  \item[Process Productivity] look into this a bit further
-  \item[Function Points] find a definition and a comparison with story points
-  \item[Story Points] Look in some agile book
-\end{description}
-
-Chapter 7 of \cite{Putnam2013} contains some equations to calculate and relate
-these measures. Those equations will be studied and evaluated.
-
-Antolic in \cite{Antolic2008} demostrates some ways to measure KPIs for the  software development process.
-
-\subsection{MEASURING OTHER ASPECTS OF AN SDO}
-
-It is important to note that software departments do not just
-develop software.  The department has many other duties
-including: deploying software, installing server hardware/software,
-writing documentation, surveying users, and other things.
-
-\subsection{COMBINING THE MEASURES}
-
-How can the PIs, RIs, KRIs, and KPIs be combined to form a single
-value called an MPI (Master Performance Indicator)?  The field
-of sports analytics also has numerous techniques for combining
-multiple indicators to produce a single number \cite{Cervone2014}.
 
 \end{document}
