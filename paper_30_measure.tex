@@ -1,19 +1,39 @@
 \documentclass[SDSUThesis.tex]{subfiles} 
 \begin{document}
 
-\section{EVALUATING AN SDO}
+\section{MEASURING AN SDO}
 
     Anything can be measured \cite{Hubbard2010}.  Thus, an SDO can be 
     measured.  Proper measurement is crucial for improvement because
     without a starting point it is impossible to determine progress.
     Also, consistent reporting is essential for 
-    tracking historical performance.  Many methods are used
-    to measure and evaluate SDOs.  Some of the common ones
-    will be explained in this section.
+    tracking historical performance.  
+    
+    The SDLC, like any process, needs to be properly measured.  In
+    order to accomplish proper measurement, three activities need
+    to occur \cite{florac1999}.  
+    
+    \begin{itemize}
+        \item Identify Process Issues
+        \item Select And Define Measures
+        \item Integrate with Software Process
+    \end{itemize}
+    
+    This work will focus on steps 1 and 2.  The process issue is the overall
+    effectiveness of the SDO.  Section \ref{sec:MPI} will cover step 2 as
+    it relates to an SDO.  Step
+    3 will be different for each SDO, but Section \ref{sec:SDLC-AE} provides
+    a bit of guidance for storing the correct information.  It is up to the
+    specific SDO to determine how and when the information is being stored.
 
+    Many methods have been  used in the past 
+    to measure and evaluate SDOs.  Some of the common methods
+    will be explained in the following sections. 
 
     \subsection{METRICS}
-        A \textit{metric} can be defined as the science of indirect measurement. Metrics
+        A \textit{metric} can be defined as a means of telling a complete story
+        for the purpose of improving something \cite{Klubeck2011}.  Metrics are
+        frequently indirect measurements. Metrics
         are very common in the measurement of SDOs.  
         The following are some examples of metrics that can be collected 
         for an SDO. 
@@ -31,22 +51,27 @@
                 It is not an acronym.} and FindBugs$^{TM}$ \cite{PMD, Findbugs}.
         \end{itemize}
         All these metrics are beneficial, but none of them tell the story of the entire
-        SDO.  Most of the metrics, as seen in the list above, around an SDO focus on 
+        SDO.  Most of the metrics, as seen in the list above, for an SDO focus on 
         the source code and development phase. 
         Since metrics are indirect, it can be very difficult match SDO performance with
         a metric or series of metrics.  Metrics are great for tracking, but decision making
-        based upon metrics is difficult.  
+        based upon metrics alone is difficult.  That is why many of the other techniques
+        build upon metrics to provide a more complete overall picture of an SDO. 
 
     \subsection{INDICATORS}
+        Another common measurement technique is indicators. An
+        \textit{indicator} is simply a performance measure. 
+        Typically, a number of indicators will be placed
+        together and displayed in some report or on some
+        dashboard. 
         Indicators can be crucial measurements
         within any business setting, and an SDO is no exception. Determining
         the correct indicators for an organization can
-        be difficult.  Software development organizations
-        are no exception. 
+        be difficult, and many organizations incorrectly classify
+        the indicators \cite{parmenter2010}.  
         The differences between the indicators will be explored and
         possible measures for each indicator in an SDO will be
-        presented.  Indicators are sometimes refered to as 
-        performance measures \cite{parmenter2010}.  The four
+        presented.   The four
         types of indicators important to an SDO are shown
         in Table \ref{tab:indicators}.
         
@@ -74,25 +99,23 @@
                 \label{tab:indicators}
             \end{longtable}
         
-        More information on the indicators can be found
-        in chapter 1 of 
-        as well as \cite{florac1999,kaplan1992}.
-        
         \subsubsection{RESULT INDICATORS FOR SDO}
-            This section will cover the potential result indicators for an SDO.
+            More to come.
             
         \subsubsection{KEY RESULT INDICATORS FOR SDO}
+            More to come.
         
         \subsubsection{PERFORMANCE INDICATORS FOR SDO}
-            This section will cover the potential performance indicators for an SDO.
+            More to come.
             
         \subsubsection{KEY PERFORMANCE INDICATORS FOR SDO}
+            More to come.
         
-        Antolic in \cite{Antolic2008} demostrates some ways to measure KPIs for the  software development process.
+        Antolic in \cite{Antolic2008} demonstrates some ways to measure KPIs for the  software development process.
     
     \subsection{BALANCED SCORECARD}
     
-        A common technique for organizations to measure themselves is a balanced scorecard.
+        A common technique for organizations to measure themselves is a balanced scorecard. \cite{kaplan1992}
         A \textit{balanced scorecard} must contain the following six
         characteristics.
         \begin{enumerate}
