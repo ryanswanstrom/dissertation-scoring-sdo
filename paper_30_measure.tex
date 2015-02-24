@@ -13,11 +13,11 @@
     order to accomplish proper measurement, three activities need
     to occur \cite{florac1999}.  
     
-    \begin{itemize}
+    \begin{enumerate}
         \item Identify Process Issues
         \item Select And Define Measures
         \item Integrate with Software Process
-    \end{itemize}
+    \end{enumerate}
     
     This work will focus on steps 1 and 2.  The process issue is the overall
     effectiveness of the SDO.  Section \ref{sec:MPI} will cover step 2 as
@@ -33,7 +33,7 @@
     \subsection{METRICS}
         A \textit{metric} can be defined as a means of telling a complete story
         for the purpose of improving something \cite{Klubeck2011}.  Metrics are
-        frequently indirect measurements. Metrics
+        frequently indirect measurements and
         are very common in the measurement of SDOs.  
         The following are some examples of metrics that can be collected 
         for an SDO. 
@@ -56,9 +56,11 @@
         Since metrics are indirect, it can be very difficult match SDO performance with
         a metric or series of metrics.  Metrics are great for tracking, but decision making
         based upon metrics alone is difficult.  That is why many of the other techniques
-        build upon metrics to provide a more complete overall picture of an SDO. 
+        build upon metrics to provide a more complete overall picture of an SDO. Metrics are great starting point, but more is needed to properly 
+        evaluate performance. 
 
     \subsection{INDICATORS}
+    \label{sec:indicators}
         Another common measurement technique is indicators. An
         \textit{indicator} is simply a performance measure. 
         Typically, a number of indicators will be placed
@@ -76,55 +78,234 @@
         in Table \ref{tab:indicators}.
         
         \begin{longtable}{@{}l l}
+            \toprule%
+             \centering%
+             {\bfseries Performance Measure}
+             & {\bfseries Description}\\
+            
+            \cmidrule[0.4pt](r{0.125em}){1-1}%
+            \cmidrule[0.4pt](lr{0.125em}){2-2}%
+            % \midrule
+            \endhead
+            
+            RI (Result Indicator) & What has been done?   \\
+            \myrowcolour%
+            KRI (Key Result Indicator) & How you have done? \\
+            PI (Performance Indicator) & What to do? \\
+            \myrowcolour%
+            KPI (Key Performance Indicator) & How to dramatically increase performance? \\
+            
+            \bottomrule
+            
+            \caption{INDICATORS}
+            \label{tab:indicators}
+        \end{longtable}
+            
+        Indicators can be used in just about every organizational
+        setting from businesses to non-profit organizations. They
+        are not unique to SDOs, and the exact indicators to track
+        is very specific to the organization.  The indicators chosen
+        by one organization might not be the same as the indicators
+        chosen by another organization.  The following sections
+        will explain the type of indicators in more detail and provide
+        some examples for an SDO.
+        
+        \subsubsection{RESULT INDICATORS (RI) FOR SDO}
+            \textit{Result Indicators} are performance 
+            measures that summarize activity.  All financial performance
+            measures are result indicators.  Result indicators
+            are measured on a timely basis (daily, weekly, monthly)
+            and are the result of more than one activity.  They do not
+            tell staff what needs to be done to improve the RI. For
+            an SDO, some possible RIs are seen in Table \ref{tab:RI}.
+            
+            \begin{longtable}{@{}l l}
                 \toprule%
                  \centering%
-                 {\bfseries Performance Measure}
-                 & {\bfseries Description}\\
+                 {\bfseries Result Indicators} &
+                 \\
                 
                 \cmidrule[0.4pt](r{0.125em}){1-1}%
-                \cmidrule[0.4pt](lr{0.125em}){2-2}%
                 % \midrule
                 \endhead
                 
-                RI (Result Indicator) & What has been done?   \\
+                Requirements Implemented Per Month  \\
                 \myrowcolour%
-                KRI (Key Result Indicator) & How you have done? \\
-                PI (Performance Indicator) & What to do? \\
+                Monthly SLOC \\
+                New Weekly Users \\
                 \myrowcolour%
-                KPI (Key Performance Indicator) & How to dramatically increase performance? \\
+                Monthly Development Hours \\
+                Webpage Views Yesterday \\
+                \myrowcolour%
+                Monthly Development Hours \\
+                Monthly Server Uptime \\
+                \myrowcolour%
+                Quartely Software Sales \\
                 
                 \bottomrule
                 
-                \caption{SOFTWARE DEFECT SEVERITY LEVELS}
-                \label{tab:indicators}
+                \caption{RESULT INDICATORS FOR AN SDO}
+                \label{tab:RI}
             \end{longtable}
-        
-        \subsubsection{RESULT INDICATORS FOR SDO}
-            More to come.
             
-        \subsubsection{KEY RESULT INDICATORS FOR SDO}
-            More to come.
-        
-        \subsubsection{PERFORMANCE INDICATORS FOR SDO}
-            More to come.
+        \subsubsection{KEY RESULT INDICATOR (KRI) FOR SDO}
+            \textit{Key Result Indicators} are measures of multiple
+            activities that give a clear picture of whether the
+            organization is traveling in the right direction.  Unfortunately,
+            KRIs are commonly mistaken for KPIs \cite{parmenter2010}.  KRIs
+            do not tell an organization what is needed to improve the 
+            results.  KRIs are highly benefical for high-level management
+            and not necessarily beneficial for staff working directly on 
+            the software.  For
+            an SDO, some possible KRIs are seen in Table \ref{tab:KRI}.
             
-        \subsubsection{KEY PERFORMANCE INDICATORS FOR SDO}
-            More to come.
+            \begin{longtable}{@{}l l}
+                \toprule%
+                 \centering%
+                 {\bfseries Key Result Indicators} &
+                 \\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                % \midrule
+                \endhead
+                
+                Customer Satisfaction  \\
+                \myrowcolour%
+                Net Profit \\
+                Money Spent on Fixing Software \\
+                \myrowcolour%
+                \% of New Features vs. Fixes \\
+                Time on Website \\
+                \myrowcolour%
+                \% Servers Meeting the Expected Availability \\
+                
+                \bottomrule
+                
+                \caption{KEY RESULT INDICATORS FOR AN SDO}
+                \label{tab:KRI}
+            \end{longtable}
+            
         
-        Antolic in \cite{Antolic2008} demonstrates some ways to measure KPIs for the  software development process.
+        \subsubsection{PERFORMANCE INDICATOR (PI) FOR SDO}
+            \textit{Performance Indicators} are nonfinancial performance measures
+            that help a team align themselves with the organizations 
+            strategy.  These are important to the organizations success, but
+            they are not the key measures that will lead to drastic improvement.  They are specifically tied to a team and all staff understand
+            what actions need to be taken to improve the PI.
+            For an SDO, some possible PIs are seen in Table \ref{tab:PI}.
+                
+            \begin{longtable}{@{}l l}
+                \toprule%
+                 \centering%
+                 {\bfseries Performance Indicators} &
+                 \\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                % \midrule
+                \endhead
+                
+                \% Test Coverage\footnote{Test Coverage is simply the percentage 
+                    of the code that is being tested. Ideally, this 
+                    number would be 100\%, but higher is better.}   \\
+                \myrowcolour%
+                \# of Project Defects from Key Customers  \\
+                Requirements Scheduled for Next Release  \\
+                \myrowcolour%
+                \# of Missed Requirements \\
+                \% of Late Projects \\
+                
+                \bottomrule
+                
+                \caption{PERFORMANCE INDICATORS FOR AN SDO}
+                \label{tab:PI}
+            \end{longtable}
+            
+        \subsubsection{KEY PERFORMANCE INDICATOR (KPI) FOR SDO}
+            \textit{Key Performance Indicators} are performance measures
+            focusing on critical aspects for current and future organizational
+            success.  Notice, KPIs are not focused on historical performance,
+            and they clearly indicate how to drastically increase performance.
+            KPIs allow a team to monitor current performance and 
+            quickly take action to correct future performance.
+            KPIs cover a shorter time frame than KRIs.
+            KPIs consist of the following 7 characteristics \cite{parmenter2010}.
+            \begin{enumerate}
+                \item Not financial
+                \item Measured frequently (hourly, daily, weekly)
+                \item Acted on by CEO\footnote{Chief Executive Officer} 
+                    and/or senior management
+                \item Clearly indicate the action required
+                \item Tie responsibility to a particular team
+                \item Have a significant impact
+                \item Encourage appropriate action
+            \end{enumerate}
+            
+            Antolic in \cite{Antolic2008} made one of the earliest attempts
+            to identify and measure the KPIs for an SDO. Antolic's strategy
+            focused around 7 KPIs.
+            \begin{enumerate}
+                \item Schedule Adherence
+                \item Assigned Content Adherence
+                \item Cost Adherence
+                \item Fault slip through
+                \item Trouble report closure rate
+                \item Cost per defect
+            \end{enumerate}
+            However, according to the definition of KPI just presented,
+            they are not really KPIs but instead KRIs.  That is because
+            none of the 7 clearly indicate the action required to 
+            improve the measure.  Also, it is unclear if improving any of
+            the measures will drastically improve performance.
+            
+            For an SDO, Table \ref{tab:KPI} identifies some more appropriate
+            KPIs.  
+            
+            \begin{longtable}{@{}l l}
+                \toprule%
+                 \centering%
+                 {\bfseries Key Performance Indicators} &
+                 \\
+                
+                \cmidrule[0.4pt](r{0.125em}){1-1}%
+                % \midrule
+                \endhead
+                
+                Projects more than 20\% behind schedule \\
+                \myrowcolour%
+                Servers currently unavailable \\
+                Automated tests failing for more than 24 hours \\
+                \myrowcolour%
+                Projects with test coverage less than 60\% \\
+                Projects with more than 10 SIT defects \\
+                \myrowcolour%
+                Unfixed, high priority PROD defects older than 1 week  \\
+                
+                \bottomrule
+                
+                \caption{KEY PERFORMANCE INDICATORS FOR AN SDO}
+                \label{tab:KPI}
+            \end{longtable}
     
     \subsection{BALANCED SCORECARD}
     
-        A common technique for organizations to measure themselves is a balanced scorecard. \cite{kaplan1992}
-        A \textit{balanced scorecard} must contain the following six
-        characteristics.
+        A common technique for organizations to measure themselves is a 
+        balanced scorecard, first presented by Kaplan and 
+        Norton \cite{kaplan1992}.  
+        
+        Kaplan and Norton originally identified 4 characteristics
+        for the balanced scorecard, but 
+        A \textit{balanced scorecard} should contain the following six
+        characteristics with the final 2 being optional 
+        as they were presented later by Parmenter \cite{parmenter2010}
+        and are not considered as part of the original balanced
+        scorecard outlined by Kaplan and Norton \cite{kaplan1992,Kaplan2007}.
         \begin{enumerate}
           \item Financial 
           \item Customer Focus
-          \item Environment/Community
           \item Internal Process
-          \item Employee Satisfaction
           \item Learning and Growth
+          \item Employee Satisfaction
+          \item Environment/Community
         \end{enumerate}
         
         Balanced scorecards are great for displaying the important information about
@@ -132,33 +313,33 @@
         exactly needs to be tracked.  It is also not specific to an SDO and 
         it does not produce a single number.
         
-        This info comes from \cite{parmenter2010}.
+        This info comes from .
 
     \subsection{PROJECT MANAGEMENT MEASUREMENT}
-    According to Putnam and Myers in \cite{Putnam2013}, the 5 core measurements for managing software
-    projects are:
-    
-    \begin{enumerate}
-        \item \textbf{Quantity of function} usually measured in terms of size (such as source lines of code or function points), that ultimately execute on the computer
-        \item \textbf{Productivity} as expressed in terms of the functionality produced for the time and effort expended
-        \item \textbf{Time} the duration of the project in calendar months
-        \item \textbf{Effort} the amount of work expended in person-months
-        \item \textbf{Reliability} as expressed in terms of defect rate (or its reciprocal, mean time to defect)
-    \end{enumerate}
-    However, these measurements don't focus on the entire SDO. They say nothing about the availablity of the software infrastructure or the satisfaction of the users.
-    
-    \begin{description}
-      \item[Time] This measurement can be hours, days, weeks, or months.  the time increment does not matter as long as it is consistent.
-      \item[Effort] This measurement is person-months, person-weeks, or person-days.
-      \item[Quality] This measurement is the defect rate (defects per time period).
-      \item[Amount of Work] This measurement has the same units as Effort above. 
-      \item[Process Productivity] look into this a bit further
-      \item[Function Points] find a definition and a comparison with story points
-      \item[Story Points] Look in some agile book
-    \end{description}
-    
-    Chapter 7 of \cite{Putnam2013} contains some equations to calculate and relate
-    these measures. Those equations will be studied and evaluated.
+        According to Putnam and Myers in \cite{Putnam2013}, the 5 core measurements for managing software
+        projects are:
+        
+        \begin{enumerate}
+            \item \textbf{Quantity of function} usually measured in terms of size (such as source lines of code or function points), that ultimately execute on the computer
+            \item \textbf{Productivity} as expressed in terms of the functionality produced for the time and effort expended
+            \item \textbf{Time} the duration of the project in calendar months
+            \item \textbf{Effort} the amount of work expended in person-months
+            \item \textbf{Reliability} as expressed in terms of defect rate (or its reciprocal, mean time to defect)
+        \end{enumerate}
+        However, these measurements don't focus on the entire SDO. They say nothing about the availablity of the software infrastructure or the satisfaction of the users.
+        
+        \begin{description}
+          \item[Time] This measurement can be hours, days, weeks, or months.  the time increment does not matter as long as it is consistent.
+          \item[Effort] This measurement is person-months, person-weeks, or person-days.
+          \item[Quality] This measurement is the defect rate (defects per time period).
+          \item[Amount of Work] This measurement has the same units as Effort above. 
+          \item[Process Productivity] look into this a bit further
+          \item[Function Points] find a definition and a comparison with story points
+          \item[Story Points] Look in some agile book
+        \end{description}
+        
+        Chapter 7 of \cite{Putnam2013} contains some equations to calculate and relate
+        these measures. Those equations will be studied and evaluated.
 
 
     \subsection{MEASURING OTHER ASPECTS OF AN SDO}
