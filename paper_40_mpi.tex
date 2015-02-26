@@ -9,10 +9,19 @@
     number score to measure the performance of a software development organization. 
     It works by statistically analyzing the past performance of the 
     organization and using that information to score an organization 
-    on current performance.  MPI focuses on the following 
-    elements of a software development organization: \textit{quality}, 
-    \textit{availability}, \textit{satisfaction}, \textit{schedule},
-    and \textit{requirements}. A separate MPI
+    on current performance.  MPI is a collection of the following 5 
+    elements, which are actually KRIs,
+    for a software development organization.
+    \textbf{
+    \begin{enumerate}
+        \item Quality
+        \item Availability
+        \item Satisfaction
+        \item Schedule
+        \item Requirements
+    \end{enumerate}
+    }
+    A separate MPI
     score is calculated for each element and 
     then aggregated together to form an overall 
     MPI score.  A new MPI score will be calculated based
@@ -233,11 +242,13 @@
             
             \paragraph{QUALITY FORMULA}
                 The first step in creating a score for the quality
-                element is analysis of the historical data.  The historical
+                element is analysis of the historical data to create
+                a baseline function.  The historical
                 data is all quality data collected before  a given point
                 in time.  Some common historical cutoffs are the current date
                 or the end of the previous fiscal year.  Then a mathematical
-                model to predict PROD Defects will be produced.  In statistical
+                model, called the \textit{baseline quality function},
+                to predict PROD Defects will be produced.  In statistical
                 terms, the response is \textit{PROD Defects} and the predictors
                 are: \textit{UAT Defects}, \textit{SIT Defects}, 
                 \textit{Testing Effort}, and \textit{Development Effort}.  
