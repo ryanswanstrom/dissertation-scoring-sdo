@@ -50,25 +50,17 @@
         \item All individual elements must have the same scoring range
     \end{itemize}
             
-    As long as those 5 features are met, the range can be anything.  
+    As long as those 5 features are met, the range of scores can be anything.  
     The range of $[-1,1]$ was chosen because it is easy to scale 
     to a different range such as $[-10,10]$ or $[-100,100]$.  
-    It maybe makes sense to use variables for the range.  
-    The formulas are designed to fall in the range $[-100,100]$.  
     Thus scaling can be applied to obtain values in any appropriate range. 
-    The scaling is denoted with the variable $k$.  The scale will be the same
+    The scaling factor is denoted with the variable $k$.  
+    The scale must be the same
     for all 5 elements.
     
     \subsection{ELEMENTS OF CRI}
-        The CRI score consists of data collected from five
-        different elements of an SDO.  
-        \begin{enumerate}
-            \item Quality
-            \item Availability
-            \item Satisfaction
-            \item Schedule
-            \item Requirements
-        \end{enumerate}
+        Each of the 5 elements of CRI has its own set of data that needs to
+        be collected and a formula for calculating a score. 
         These five elements will be outline in the next sections.
         
         \subsubsection{QUALITY}
@@ -334,11 +326,11 @@
                 is the important value for the CRI schedule score.  Here are the two common
                 approaches for calculating percent uptime:
                 
-                The preferred method
+                The preferred method:
                 \[
                     \text{Percent Uptime} = \frac{\text{Uptime}}{\text{Uptime + Scheduled Downtime + Unscheduled Downtime}}
                 \]
-                and the alternative method
+                and the alternative method:
                 \[
                     \text{Percent Uptime} = \frac{\text{Uptime}}{\text{Uptime + Unscheduled Downtime}}
                 \]
