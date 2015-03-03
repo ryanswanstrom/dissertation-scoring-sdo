@@ -4,31 +4,81 @@
 % new section
 \section{CASE STUDY: SCORING AN SDO OF A LARGE FINANCIAL INSTITUTION}
 
-Data has been collected from the software development processes of
-an SDO within a large financial institution\footnote{All the raw data files are available at \cite{Swanstrom2015}}.
-The data collection was from 2007 to January 2015. As would be expected
-in any organization, not all 5 elements have data for the entire duration.
-CRI can still work because the calculations will only include
-the available elements.  This section will provide the analysis performed and the CRI scores of that data.  An example of the initial analysis is included in \cref{app:case}.
+    Data has been collected from the software development processes of
+    an SDO within a large financial institution\footnote{All the raw data 
+    files are available at \cite{Swanstrom2015}}.
+    The data collection was from 2007 to January 2015. Only 4 elements had available
+    data, and not all elements had data available for the entire time period.  The
+    elements to be used are: quality, availability, schedule, and requirements.
+    CRI is still effective when not all data is available.
+    The overall CRI score will then be a 
+    weighted average of the available elements. 
+    This section will serve as a guide to preparing the CRI score
+    based upon the available data.  
 
-\subsection{WITH HISTORICAL DATA}
-    This first case will demonstrate how to calculate the CRI for an
-    organization when historical data is present.  
-    \subsubsection{QUALITY}
-        Luckily, the data for quality goes from October 2007 to January 2015
-        and contains 985 observations.
-        This is important because historical data can be used to create the
-        baseline quality function.  All quality for the years 2007 through 2013
-        will be used as historical data for the purposes of creating
-        the baseline quality function.  
-    \subsubsection{AVAILABILITY}
-    \subsubsection{SATISFACTION}
-    \subsubsection{SCHEDULE}
-    \subsubsection{REQUIREMENTS}
-    \subsubsection{OVERALL}
-        All of the months do not include the same elements.  
-
-An CRI calculation analyzing historical performance.
+    \subsection{WITH HISTORICAL DATA}
+        After the data has been collected, the raw data can be stored in the SDLC
+        if desired.  Then scores for each of the 4 elements can be calculated.
+        \subsubsection{QUALITY}
+            The first step to dealing with the quality data is a quick
+            analysis of the data.  Table \ref{tab:quality_desc} provides
+            some descriptive statistics for the quality data.
+            
+            
+            \begin{longtable}{@{}l rr rrr}
+                \toprule%
+                 \centering%
+                 {\bfseries Column}
+                 & {\bfseries Min}
+                 & {\bfseries Max}
+                 & {\bfseries Median}
+                 & {\bfseries Mean}
+                 & {\bfseries Variance} \\
+                
+                \cmidrule[0.2pt](r{0.125em}){1-1}%
+                \cmidrule[0.2pt](lr{0.125em}){2-2}%
+                \cmidrule[0.2pt](l{0.125em}){3-3}%
+                \cmidrule[0.2pt](l{0.125em}){4-4}%
+                \cmidrule[0.2pt](l{0.125em}){5-5}%
+                % \midrule
+                \endhead
+                
+                Development Effort & 0 & 26937 & 300 & 1637 & 18383464 \\
+                \myrowcolour%
+                Testing Effort & NA & NA & NA & NA  & NA\\
+                SIT Defects & 0 & 1106 & 1 & 45.86 & 24528 \\
+                \myrowcolour%
+                UAT Defects & 0 & 277 & 0 & 10.28 & 1306 \\
+                PROD Defects & 0 & 1216 & 5 & 51.5 & 20311 \\
+                
+                \bottomrule
+                
+                \multicolumn{6}{c}{985 obs. from 23 Application IDs from 2007 to 2015} \\
+                
+                
+                \caption{QUALITY DATA DESCRIPTIVE STATISTICS}
+                \label{tab:quality_desc}
+            \end{longtable}
+            
+            Notice, the data for quality goes from October 2007 to January 2015
+            and contains 985 observations.
+            This is important because historical data can be used to create the
+            baseline quality function.  All quality for the years 2007 through 2013
+            will be used as historical data for the purposes of creating
+            the baseline quality function.  Once the historical data is separated,
+            it results in 799 observations to be used for creating the baseline
+            quality function.  
+            
+            
+            
+            
+        \subsubsection{AVAILABILITY}
+        \subsubsection{SCHEDULE}
+        \subsubsection{REQUIREMENTS}
+        \subsubsection{OVERALL}
+            All of the months do not include the same elements.  
+    
+    An CRI calculation analyzing historical performance.
 
 %%\subsection{WITHOUT HISTORICAL DATA}
 
