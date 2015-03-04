@@ -52,8 +52,7 @@ APPENDIX\\
         & Start Again
     \end{easylist}
 
-\section{CASE STUDY SOURCE CODE} 
-\label{app:case}
+\section{SDLC-AE SOURCE CODE}
 
 %% set appendix to single space for the source code
 \linespread{1.0}
@@ -87,8 +86,45 @@ APPENDIX\\
 \subsection{SQL CODE - FINAL SCORE TABLES}
     \lstinputlisting[language=SQL, label=src:overallscoreSQL]{source/overall_score_tables.sql}
     
-\subsection{R CODE - QUALITY} 
 
+\section{CASE STUDY SOURCE CODE} 
+\label{app:case}
+
+
+    \subsection{QUALITY HISTORICAL SOURCE CODE AND ANALYSIS}
+    \label{app:quality-history}
+        \lstinputlisting[language=R]{source/quality.R}
+        The source code for the selected baseline quality function
+        can be seen above. The output for the linear model can be seen below.
+        \lstinputlisting{source/quality_output.txt}
+        
+        Some diagnostic plots for the baseline quality function
+        can be seen in Figure \ref{fig:quality-diag}.  The normal probability plot,
+        a.k.a. QQ Plot, shows the errors are not exactly normally distributed, but
+        the baseline quality function had good predictive power as shown by the
+        high $R^2$. The fitted versus
+        residuals plot indicates a lack of heteroscedasticity.  
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[scale=.3]{images/quality_diag.png}
+            \caption{QUALITY DIAGNOSTIC PLOTS}
+            \label{fig:quality-diag}
+        \end{figure}
+        
+        Figure \ref{fig:quality-pairs} shows the presence of some
+        possible multicolinearity.  As a result, ridge regression
+        was used to create a model, but the results were very similar
+        to the original baseline quality function. Therefore,
+        ridge regression was not chosen. 
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[scale=.3]{images/quality_pairs.png}
+            \caption{QUALITY PAIRS PLOT OF INDEPENDENT VARIABLES}
+            \label{fig:quality-pairs}
+        \end{figure}
+        
+        
+    
 
 
 \section{ADDITIONAL SDLC DATA NEEDS}
