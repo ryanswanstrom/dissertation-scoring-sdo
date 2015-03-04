@@ -21,7 +21,8 @@
         if desired.  Then scores for each of the 4 elements can be calculated.
         For this example, the value of $k$ will be 100 and the time
         frequency will be monthly.  Thus, scores will fall
-        in the range $[-100,100]$.
+        in the range $[-100,100]$.  Also, equal weighting is applied to 
+        all elements and all Project IDs, Application IDs, and System IDs.
         \subsubsection{QUALITY}
             The first step to dealing with the quality data is a quick
             analysis of the data.  Table \ref{tab:quality_desc} provides
@@ -106,7 +107,7 @@
             perform the calculations.  Figure \ref{fig:quality-scores} shows
             the quality scores for 2014 and beyond.  As can be seen, the
             scores are greatly above expectations.  That is an indication
-            of good quality.
+            of improved quality over historical performance.
             
             \begin{figure}[ht]
                 \centering
@@ -119,6 +120,69 @@
             
             
         \subsubsection{AVAILABILITY}
+            For the availability data,
+            some descriptive statistics can be seen in 
+            Table \ref{tab:availability_desc}.  The percent uptime
+            was precalculated for this data so uptime, scheduled downtime,
+            and unscheduled downtime are not needed.  Availability
+            does not rely upon analysis of historical data since
+            a known upper and lower bound exist, 1 and 0 respectively.
+            
+            \begin{longtable}{@{}l rr rrr}
+                \toprule%
+                 \centering%
+                 {\bfseries Column}
+                 & {\bfseries Min}
+                 & {\bfseries Max}
+                 & {\bfseries Median}
+                 & {\bfseries Mean}
+                 & {\bfseries Variance} \\
+                
+                \cmidrule[0.2pt](r{0.125em}){1-1}%
+                \cmidrule[0.2pt](lr{0.125em}){2-2}%
+                \cmidrule[0.2pt](l{0.125em}){3-3}%
+                \cmidrule[0.2pt](l{0.125em}){4-4}%
+                \cmidrule[0.2pt](l{0.125em}){5-5}%
+                % \midrule
+                \endhead
+                
+                Percent Uptime & 0 & 1.0 & 1.0 & 0.9745 & 0.023 \\
+                \myrowcolour%
+                Expected Percent Uptime & 0.93 & 1.0 & 0.98 & 0.9769  & 0.977\\
+                
+                \bottomrule
+                
+                \multicolumn{6}{c}{7522 obs. from 83 Application IDs from 2008 to 2015} \\
+                
+                \caption{AVAILABILITY DATA DESCRIPTIVE STATISTICS}
+                \label{tab:availability_desc}
+            \end{longtable}
+            
+            Since percent uptime has already been calculated and no historical
+            analysis needs to be performed, the calculation of the scores
+            can be performed. 
+            R code to compute the CRI availability scores can be found in Appendix
+            \ref{src:availability}. Figure \ref{fig:availability-scores} displays
+            the CRI availability scores.  As can be seen the scores are all above
+            70.  That is good from a performance standpoint, but it might be an
+            indication that the expected uptimes could be raised.  If expected
+            uptimes are consistently being exceeded, some consideration should
+            be given to increase the expected uptimes.  This shows that
+            organizations, or at least this particular organization, are getting
+            very good at keeping computer systems available.  Therefore,
+            SLAs need to be adjusted to properly reflect the better performance.
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.3]{images/availability_scores.png}
+                \caption{CRI AVAILABILITY SCORES}
+                \label{fig:availability-scores}
+            \end{figure}
+            
+            
+            
+            
+            
         \subsubsection{SCHEDULE}
         \subsubsection{REQUIREMENTS}
         \subsubsection{OVERALL}

@@ -106,7 +106,7 @@ APPENDIX\\
         residuals plot indicates a lack of heteroscedasticity.  
         \begin{figure}[ht]
             \centering
-            \includegraphics[scale=.3]{images/quality_diag.png}
+            \includegraphics[scale=.25]{images/quality_diag.png}
             \caption{QUALITY DIAGNOSTIC PLOTS}
             \label{fig:quality-diag}
         \end{figure}
@@ -123,8 +123,16 @@ APPENDIX\\
             \label{fig:quality-pairs}
         \end{figure}
         
+    \subsection{BAR CHART - R CODE}
+        This is a code for generating a bar chart.  It is used for reporting
+        the scores of all the elements.
+        \lstinputlisting[language=R, label=src:barchart]{source/barchart.R}
+        
     \subsection{QUALITY SCORES - R CODE}
         \lstinputlisting[language=R, label=src:quality]{source/quality.R}
+        
+    \subsection{AVAILABILITY SCORES - R CODE}
+        \lstinputlisting[language=R, label=src:availability]{source/availability.R}
         
         
     
