@@ -185,6 +185,39 @@
             
         \subsubsection{SCHEDULE}
         \subsubsection{REQUIREMENTS}
+            There were 15 rows of data that contained 0 for both
+            scheduled and actual
+            \begin{longtable}{@{}l rr rrr}
+                \toprule%
+                 \centering%
+                 {\bfseries Column}
+                 & {\bfseries Min}
+                 & {\bfseries Max}
+                 & {\bfseries Median}
+                 & {\bfseries Mean}
+                 & {\bfseries Variance} \\
+                
+                \cmidrule[0.2pt](r{0.125em}){1-1}%
+                \cmidrule[0.2pt](lr{0.125em}){2-2}%
+                \cmidrule[0.2pt](l{0.125em}){3-3}%
+                \cmidrule[0.2pt](l{0.125em}){4-4}%
+                \cmidrule[0.2pt](l{0.125em}){5-5}%
+                % \midrule
+                \endhead
+                
+                Scheduled & 0 & 1.0 & 1.0 & 0.9745 & 0.023 \\
+                \myrowcolour%
+                Expected Percent Uptime & 0.93 & 1.0 & 0.98 & 0.9769  & 0.977\\
+                Expected Percent Uptime & 0.93 & 1.0 & 0.98 & 0.9769  & 0.977\\
+                
+                \bottomrule
+                
+                \multicolumn{6}{c}{476 obs. from 402 Project IDs from 2010 to 2015} \\
+                
+                \caption{REQUIREMENTS DATA DESCRIPTIVE STATISTICS}
+                \label{tab:requirements_desc}
+            \end{longtable}
+            
         \subsubsection{OVERALL}
             All of the months do not include the same elements.  
     

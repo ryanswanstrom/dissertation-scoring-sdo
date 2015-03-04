@@ -795,9 +795,9 @@
                     Project ID & String  & Required \\
                     \myrowcolour%
                     Frequency Date & Date & Required \\
-                    Requirements Scheduled & Integer & Required \\
+                    Scheduled Requirements & Integer & Required \\
                     \myrowcolour%
-                    Actual Requirements Released & Integer  & Required \\
+                    Actual Requirements & Integer  & Required \\
                     
                     \bottomrule
                     
@@ -850,10 +850,25 @@
         
     \subsection{SENSITIVITY OF CRI}
     \label{sub:sensitivity}
+        The sensitivity of the formulas should be tested as the scores should not
+        flucate drastically for similar values.  There are 2 possible techniques
+        for testing the sensitivity of the formulas. 
+        \begin{description}
+            \item[First] Given the historical data that has been collected,
+                alter the values by some small random amount.  Then recalculate
+                the CRI element score and compare with the original score.  This
+                technique can be repeated many times in order to verify
+                small changes do not largely affect the score.  Thus, a 
+                formula which is not overly sensitive. 
+            \item[Second] Another technique is to use Monte Carlo methods to 
+                randomly generate input values for the element functions.  
+                This can be done by finding the distributions of the historical
+                data, and randomly selecting from that distribution.  If historical
+                data is not available, then For more on sensitivity analysis 
+                in statistical modeling, see \cite{Saltelli2000}.
+        \end{description}
         
-        Some simulations will be run with data from each given distribution.  Then the CRI scores
-        will be analyzed.
-        For more on sensitivity analysis in statistical modeling, see \cite{Saltelli2000}.
+        .
 
     \subsection{CRI COMPARED}
         CRI is one way to evaluate an SDO, and it is also a technique of
