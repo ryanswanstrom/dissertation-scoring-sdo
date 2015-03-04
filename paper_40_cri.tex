@@ -296,7 +296,8 @@
                     a weighted average
                 \end{itemize}
                 
-                Then $S_1$ represents the quality score for that given time period.
+                Then $S_1$ represents the CRI quality score for that given time 
+                frequency.
         
 
 
@@ -389,6 +390,7 @@
                 where
                 
                 \begin{itemize}
+                    \item $S_{2_i}$ is the availability score for System ID $i$
                     \item $A_{a_i}$ actual availability for System ID $i$
                     \item $A_{e_i}$ expected availability for System ID $i$
                 \end{itemize}
@@ -398,6 +400,7 @@
                 \[
                     S_{2} = \sum\limits^n_{i=1} w'_i S_{2_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
                 \]
+                where $S_2$ is the CRI availability score for the time frequency.
                 
         \subsubsection{SATISFACTION}
             The satisfaction of users, customers, and/or business partners is 
@@ -589,6 +592,7 @@
                 \]
                 
                 \begin{itemize}
+                    \item $S_{3_i}$ is the satisfaction score for Question ID $i$
                     \item $a_{ij}$ answer to question $i$ for respondent $j$
                     \item $n$ number of questions
                     \item $m$ number of respondents
@@ -602,6 +606,7 @@
                 \[
                     S_{3} = \sum\limits^n_{i=1} w'_i S_{3_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
                 \]
+                where $S_3$ is the CRI satisfaction score for the time frequency.
 
         \subsubsection{SCHEDULE}  
             Delivery of software in a timely manner is an essential part of being a 
@@ -700,12 +705,17 @@
                 \[
                     S_{4_i} = 2k \cdot (C.D.F.(\Delta_i) - \frac{1}{2})
                 \]
+                where
+                \begin{itemize}
+                    \item $S_{4_i}$ is the schedule score for Project ID $i$
+                \end{itemize}
                 
                 Then the overall schedule score is calculated as below.
                 
                 \[
                     S_{4} = \sum\limits^n_{i=1} w'_i S_{4_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
                 \]
+                where $S_4$ is the CRI schedule score for the time frequency.
     
             \paragraph{ALTERNATE APPROACH}
                 An alternative approach for scoring schedule goes as follows.
@@ -765,19 +775,58 @@
                     \item $\bar{\Delta}$ is the average percent schedules are missed
                     \item $S_{4_i}$ is the schedule score for project $i$
                 \end{itemize}
-                Again, this was just an alternate approach to scoring schedule.  It will not be used
-                in the case studies.
+                Again, this was just an alternate approach to scoring schedule.  
+                It will not be used in the case studies.
 
         \subsubsection{REQUIREMENTS}
-            The requirements of a software development organization are important.
-            
-            
+            The requirements of an SDO are important. Requirements are desired 
+            new features or enhancements to a software product.  It is important
+            to know how many requirements
+            were scheduled to be completed versus how many actually got completed. 
+            They provide a measurement
+            of the amount of work being completed. However, not all requirements
+            are created equal.  Some requirements can be quickly and easily
+            implemented while other requirements will take much longer.  It
+            is often difficult to know the challenges ahead of time.  Due to
+            this uncertainty, estimating
+            the number of requirements a team can complete in a given time frame can
+            be difficult. Thus, number of requirements is one way to measure 
+            amount of work
+            but there are others.  Here are 3 possible choices in descending
+            order of preference.
             \begin{description}
-              \item[Function Points] find a definition and a comparison with story points
-              \item[Story Points] Look in some agile book
+                \item[Function Points] Function points measure the size of the
+                    software functionality, not the size or time required
+                    to implement the functionality \cite{Jensen2014}.  
+                    If done properly,
+                    function points will provide the most concise measurement
+                    for amount of work being completed. 
+                \item[Story Points] Story points, sometimes just referred to 
+                    as stories, are broken down requirements that can be
+                    completed in an Agile Sprint of 2 to 4 weeks.  A 
+                    story is usually smaller, simpler, and more concise
+                    that a plain requirement. 
+                    Unfortunately, these only apply to an
+                    SDO using the Agile methodology, specifically 
+                    Scrum \cite{Ashmore2014}.
+                \item[Requirements] These are just the requirements as
+                    written by the users or business partners.  Each requirement
+                    can vary greatly from another requirement.  Estimating
+                    number of requirements can be a difficult if not impossible
+                    task.  
             \end{description}
             
+            To summarize, this element is not completely a measurement of requirements
+            but rather a measurment of the work being completed. 
+            
             \paragraph{REQUIREMENTS DATA}
+                Table \ref{tab:req} specifies the data required to compute
+                a score for the requirements element of CRI.  Again,
+                scheduled requirements and actual requirements can also 
+                be a count of story points or function points.  All of 
+                the columns are required. The data collected is the
+                frequency date and then the number of requirements scheduled
+                to be completed and the actual number of requirements completed.
             
                 \begin{longtable}{@{}l rr rr}
                     \toprule%
@@ -806,16 +855,50 @@
                 \end{longtable}
             
             \paragraph{REQUIREMENTS FORMULA}
-                Requirements are desired new features or enhancements 
-                to a software product.  It is important to know how many requirements
-                were scheduled to be completed versus how many actually got completed.  
-                \[
-                    S_5 = \frac{\sum^n_{i=1}\left( R_{a_i} - R_{e_i} \right)}{n}
-                \]
+                The requirements formula is the percentage above or below the
+                scheduled number of requirements. Requirements have a nice
+                lower bound of 0 since negative requirements cannot be 
+                completed\footnote{Theoritically, a negative requirement would
+                be considered a defect.}.  Unforntunately, an upper bound
+                does not exist.  The variablity of requirements is not
+                as large as the variability of the number of defects, so
+                a simpler strategy can be used.  For requirements, a 
+                multiplier $b$ will be used to find the upper bound. The
+                number of scheduled requirements should be multiplied by
+                $b$ to obtain the upper bound.  The value of $b$ should
+                be determined by looking at the historical data to make sure
+                no number of completed requirements will exceed $b$ times
+                the number of scheduled requirements. An example will be shown
+                in Section \ref{sec:case-req}. Common choices for $b$ will be 1
+                and 2. Also, the formula will be
+                created to deal with a value going above the upper bound.
+                
+                \begin{displaymath}
+                   S_{5_i} = \left\{
+                     \begin{array}{lr}
+                       \text{where } R_{a_i} > b \times R_{s_i} & :  1 \times k \\
+                       \text{where } R_{a_i} \leq R_{s_i} & : \left[ \frac{R_{a_i} - R_{s_i}}{R_{s_i}}\times k \right] \\
+                       \text{where } R_{a_i} > R_{s_i}  & : \left[ \frac{R_{a_i} - R_{s_i} }{b \cdot R_{s_i}}\times k \right]
+                     \end{array}
+                   \right. \text{   , calculate requirements score for each project $i$}
+                \end{displaymath}
+                where
                 \begin{itemize}
-                    \item $R_a$ actual requirements completed for application $i$
-                    \item $R_e$ expected requirements completed for application $i$
+                    \item $S_{5_i}$ is the requirements score for Project ID $i$
+                    \item $R_{a_i}$ actual requirements completed for Project ID $i$
+                    \item $R_{s_i}$ expected requirements completed for Project ID $i$
+                    \item $b$ multiplier to determine the upper bound
                 \end{itemize}
+                Then the requirements score is calculated as below.  
+                Use a weighted average to combine the requirements scores
+                from the Project IDs.
+                
+                \[
+                    S_{5} = \sum\limits^n_{i=1} w'_i S_{5_i} \text{ where }
+                        \sum\limits^n_{i=1} w'_i = 1
+                \]
+                
+                where $S_5$ is the CRI requirements score for the time frequency.
             
 
         \subsubsection{OVERALL CRI SCORE}
@@ -825,8 +908,19 @@
             priority of the SDO.  Thus, the overall CRI score is calculated as below.
             
             \[
-                CRI =\sum\limits^n_{i=1} w_i S_i \text{ where } \sum\limits^n_{i=1} w_i = 1
+                CRI =\sum\limits^n_{i=1} w_i S_i 
+                    \text{ where } \sum\limits^n_{i=1} w_i = 1
             \]
+            where
+            \begin{itemize}
+                \item $CRI$ is the overall CRI score for the time frequency
+            \end{itemize}
+            
+            This weighted average allows for a score to be computed even when not
+            all 5 elements are present. Just perform the weighted average with
+            as many elements as present.  This technique allows CRI to implemented
+            before data for all the elements has been collected.  Just begin
+            to average elements as they become accessible.
 
 
     \subsection{CORRELATIONS IN CRI}

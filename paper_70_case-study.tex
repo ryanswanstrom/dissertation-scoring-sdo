@@ -185,6 +185,7 @@
             
         \subsubsection{SCHEDULE}
         \subsubsection{REQUIREMENTS}
+        \label{sec:case-req}
             There were 15 rows of data that contained 0 for both
             scheduled and actual
             \begin{longtable}{@{}l rr rrr}
@@ -217,6 +218,12 @@
                 \caption{REQUIREMENTS DATA DESCRIPTIVE STATISTICS}
                 \label{tab:requirements_desc}
             \end{longtable}
+            
+            The multiplier $b$ is set to 1 because none of the historical performance
+            ever exceeded 25\% more requirements than scheduled. Thus the upper
+            bound is the number of schedule requirements plus $b=1$ times
+            the number of scheduled requirements, for an upper bound of twice
+            the scheduled requirements.
             
         \subsubsection{OVERALL}
             All of the months do not include the same elements.  
