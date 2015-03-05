@@ -135,6 +135,30 @@ APPENDIX\\
         \lstinputlisting[language=R, label=src:availability]{source/availability.R}
         
         
+    \subsection{REQUIREMENTS SCORES - R CODE}
+        \subsubsection{REQUIREMENTS HISTOGRAM}
+        \label{app:requirements-hist}
+            Figure \ref{fig:req-hist} shows a histogram of the data
+            for requirements.  The histogram is based upon the
+            fraction $\frac{Scheduled Requirements}{Actual Requirements}$. The
+            values where the fraction equals 1 have been left out of the histogram.
+            So, the histogram show only the data that did not deliver exactly
+            on the number of requirements. Rarely are more requirements actually 
+            delivered than what was scheduled.  On the opposite side, the histogram
+            bars shrink as they approach zero indicating that it is more common
+            to miss a few requirements than all the requirements.
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.3]{images/req_hist.png}
+                \caption{REQUIREMENTS DATA HISTOGRAM (ACTUAL/SCHEDULED)}
+                \label{fig:req-hist}
+            \end{figure}
+        
+        \subsubsection{REQUIREMENTS R CODE}
+        \lstinputlisting[language=R, label=src:requirements]{source/requirements.R}
+        
+        
     
 
 

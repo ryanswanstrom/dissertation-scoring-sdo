@@ -179,15 +179,107 @@
                 \label{fig:availability-scores}
             \end{figure}
             
-            
-            
-            
-            
         \subsubsection{SCHEDULE}
+            Figure \ref{tab:schedule_desc} displays some descritive statistics
+            for the schedule data.  Since the data is mostly dates, the 
+            descriptive statistics are limited, so extra values were
+            added to the table after removing 4 outliers.  The new values
+            in the table are: Schedule Duration (Scheduled Finish - Scheduled Start),
+            Difference (Actual Finish - Schedule Finish), and 
+            $\Delta$ ($frac{\Delta}{\text{Schedule Duration}}$ ).
+        
+            \begin{longtable}{@{}l rr rrr}
+                \toprule%
+                 \centering%
+                 {\bfseries Column}
+                 & {\bfseries Min}
+                 & {\bfseries Max}
+                 & {\bfseries Median}
+                 & {\bfseries Mean} \\
+                
+                \cmidrule[0.2pt](r{0.125em}){1-1}%
+                \cmidrule[0.2pt](lr{0.125em}){2-2}%
+                \cmidrule[0.2pt](l{0.125em}){3-3}%
+                \cmidrule[0.2pt](l{0.125em}){4-4}%
+                \cmidrule[0.2pt](l{0.125em}){5-5}%
+                % \midrule
+                \endhead
+                
+                Scheduled Start & 2013-06-23 & 2015-01-24 & 2014-03-17 & 2014-04-01 \\
+                \myrowcolour%
+                Scheduled Finish & 2014-01-31 & 2015-01-25 & 2014-08-08 & 2014-08-02 \\
+                Actual Start & 2013-01-07 & 2014-10-17 & 2014-01-15  & 2014-02-10 \\
+                \myrowcolour%
+                Actual Finish & 2014-02-20 & 2014-12-31 & 2014-08-31 & 2014-08-11 \\
+                Schedule Duration & 8 & 480 & 92 & 137.7 \\
+                \myrowcolour%
+                Difference & -283 & 149 & 0.0 & -8.919 \\
+                $\Delta$ & -4.75 & 0.6564 & 0.0 & -0.2641 \\
+                
+                \bottomrule
+                
+                \multicolumn{5}{c}{41 obs. from 40 Project IDs from mid 2013 to 2015} \\
+                
+                \caption{SCHEDULE DATA DESCRIPTIVE STATISTICS}
+                \label{tab:schedule_desc}
+            \end{longtable}
+            
+            The first task with the schedule data is fitting the data to 
+            a distribution.  Figure \ref{fig:schedule-hist} shows
+            a plot of the histogram of the $\Delta$s and a
+            Cauchy curve with location = 0.0 and scale = 0.057.  The Cauchy
+            distribution appears to be a good fit.  
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.25]{images/schedule_hist.png}
+                \caption{SCHEDULE DATA HISTOGRAM WITH CAUCHY}
+                \label{fig:schedule-hist}
+            \end{figure}
+            
+            Now that the distribution has been identified, the next step
+            is determining the Cumulative Distribution Function (C.D.F.)
+            for the distribution.  For Cauchy, the general C.D.F. is 
+            given as follows.
+            \[
+                C.D.F. = \frac{1}{\pi}\arctan{\frac{x-x_0}{\gamma}} + \frac{1}{2}
+            \]
+            where 
+            \begin{itemize}
+                \item $x_0$ is the location
+                \item $\gamma$ is the scale
+            \end{itemize}
+            
+            Referencing Equation \ref{eq:CDF}, the schedule formula
+            for individual project IDs becomes.
+            \[
+               S_{4_i} = \frac{200}{\pi}\arctan{\left(\frac{\Delta_i}{0.057} \right)} 
+            \]
+            
+            The CRI schedule scores can be seen in Figure \ref{fig:schedule-scores}.
+            These scores appear more eratic than the other elements.
+            This difference is due to the small number of releases every month.
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.3]{images/schedule_scores.png}
+                \caption{CRI SCHEDULE SCORES}
+                \label{fig:schedule-scores}
+            \end{figure}
+            
+            
         \subsubsection{REQUIREMENTS}
         \label{sec:case-req}
-            There were 15 rows of data that contained 0 for both
-            scheduled and actual
+            The data for requirements is actually counts of story points
+            instead of requirements.  That is because story points
+            are a better choice for counting, since they are more
+            uniform in size than raw requirements.  Also, the data
+            contained 15 rows of data with a 0 for the number of
+            scheduled requirements.  Those 15 rows were removed.
+            Table \ref{tab:requirements_desc} shows some descriptive
+            statistics for the remaining rows. A histogram for the
+            data can be seen in Appendix \ref{app:requirements-hist}.
+            
             \begin{longtable}{@{}l rr rrr}
                 \toprule%
                  \centering%
@@ -206,14 +298,14 @@
                 % \midrule
                 \endhead
                 
-                Scheduled & 0 & 1.0 & 1.0 & 0.9745 & 0.023 \\
+                Scheduled Requirements & 0.5 & 1248 & 75.5 & 136.9 & 31243.89 \\
                 \myrowcolour%
-                Expected Percent Uptime & 0.93 & 1.0 & 0.98 & 0.9769  & 0.977\\
-                Expected Percent Uptime & 0.93 & 1.0 & 0.98 & 0.9769  & 0.977\\
+                Actual Requirements & 0 & 1247 & 58 & 123.8 & 30844.75 \\
+                $\frac{Actual Requirements}{Scheduled Requirements}$ & 0 & 1.2364 & 1.0 & 0.8515 & 0.05 \\
                 
                 \bottomrule
                 
-                \multicolumn{6}{c}{476 obs. from 402 Project IDs from 2010 to 2015} \\
+                \multicolumn{6}{c}{461 obs. from 402 Project IDs from 2010 to 2015} \\
                 
                 \caption{REQUIREMENTS DATA DESCRIPTIVE STATISTICS}
                 \label{tab:requirements_desc}
@@ -224,6 +316,19 @@
             bound is the number of schedule requirements plus $b=1$ times
             the number of scheduled requirements, for an upper bound of twice
             the scheduled requirements.
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.3]{images/requirements_scores.png}
+                \caption{CRI REQUIREMENTS SCORES}
+                \label{fig:requirements-scores}
+            \end{figure}
+            
+            Figure \ref{fig:requirements-scores} displays the CRI requirements
+            scores. The scores are as expected considering the histogram. Many
+            of the projects meet the requirements exactly, and when the requirements
+            are not met, it is usually by a small number.
+            Thus the scores are all 0 or slightly below.
             
         \subsubsection{OVERALL}
             All of the months do not include the same elements.  
