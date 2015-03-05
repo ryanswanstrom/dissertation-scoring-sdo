@@ -331,9 +331,27 @@
             Thus the scores are all 0 or slightly below.
             
         \subsubsection{OVERALL}
-            All of the months do not include the same elements.  
-    
-    An CRI calculation analyzing historical performance.
+            Now it is time to combine the scores for the overall CRI.  Notice
+            the schedule does not have scores for January 2014 or January 2015.
+            Presumably, that is because the SDO within the large financial institution
+            does not schedule projects to be completed in January. Much of the work
+            would need to be completed over Christmas and New Year's Day, but many
+            workers take personal time off of work during that time.  Thus some
+            organizations will schedule appropriately.  CRI is well suited to
+            handle this problem.  Just perform a weighted average over the
+            applicable elements.  In this case study, the weights are all equal,
+            so CRI is just a straight average.  Figure \ref{fig:cri-scores}
+            displays the CRI scores as computed with the source code
+            from Appendix \ref{src:overall}.  The scores are all above 0, so this
+            financial institution is consistently performing better
+            than expected.  
+            
+            \begin{figure}[ht]
+                \centering
+                \includegraphics[scale=.3]{images/cri_scores.png}
+                \caption{CRI SCORES}
+                \label{fig:cri-scores}
+            \end{figure}
 
 %%\subsection{WITHOUT HISTORICAL DATA}
 

@@ -3,7 +3,7 @@ install.packages('zoo')
 library('zoo')
 library('scales')
 
-barchart <- function(data, main='CRI Scores', xlab='Month', ylab='MPI Score') {
+barchart <- function(data, main='CRI Scores', xlab='Month/Year', ylab='CRI Score') {
     
     ggplot(data, aes(x=as.Date(MONTH_DT), y=SCORE, fill=SCORE)) + 
       geom_bar(stat = "identity" ) +
