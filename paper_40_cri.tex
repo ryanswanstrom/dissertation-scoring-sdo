@@ -270,7 +270,7 @@
                    S_{1_i} = \left\{
                      \begin{array}{lr}
                        \text{where } f_i \geq d_i & :  \frac{f_i - d_i}{f_i} \times k  \\
-                       \text{where } d_i > f_i  & : \frac{f_i-d_i }{6\sigma_i} \times k
+                       \text{where } d_i > f_i  & : \frac{f_i-d_i }{\sigma_i^2} \times k
                      \end{array}
                    \right] \text{   , calculate quality score for each app $i$}
                 \end{displaymath} 
@@ -278,11 +278,11 @@
                 \begin{itemize}
                     \item $S_{1_i}$ is the quality score for Application ID $i$
                     \item $n$ is the number of Application IDs
-                    \item $d_i$ is the actual PROD defects
+                    \item $d_i$ is the actual PROD defects for Application ID $i$
                     \item $f_i$ is the function to predict PROD defects for Application $i$ based upon 
                         \textit{UAT Defects}, \textit{SIT Defects}, \textit{Testing Effort}, 
                         and \textit{Development Effort}
-                    \item $\sigma^2$ is the estimated variance
+                    \item $\sigma_i^2$ is the estimated variance for Application $i$
                 \end{itemize}
                 
                 Then the overall quality score is calculated as below.

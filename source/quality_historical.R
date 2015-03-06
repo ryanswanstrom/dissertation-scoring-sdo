@@ -1,8 +1,3 @@
-### Load the necessary libraries
-library('sense')
-library('ggplot2')
-source('barchart.R')
-
 ### Load Raw Quality Data
 setAs("character","myDate", 
       function(from) {as.Date(from, format="%m/%d/%Y")} )
@@ -38,6 +33,7 @@ plot(history_quality_raw$SIT_DFTS,
 plot(history_quality_raw$DEV_EFF, 
     history_quality_raw$PROD_DFTS, 
      xlab='UAT_DFTS', ylab='PROD_DFTS', col='steelblue')
+
 
 ##### Remove the outlier data point with 1216 PROD_DFTS
 history_quality_clean = history_quality_raw[history_quality_raw$PROD_DFTS < 1000,]
