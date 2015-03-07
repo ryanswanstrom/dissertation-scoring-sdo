@@ -16,6 +16,13 @@
     \cite{Rost2011}. This storage system will be named the SDLC Analytic 
     Engine (SDLC-AE). 
     
+    \begin{figure}[hbt]
+        \includegraphics[scale=.75]{images/sdlcae.png}
+        \caption{SDLC ANALYTIC ENGINE}
+        \label{fig:sdlc-ae}
+    \end{figure}
+    
+    
     Once all the SDLC data is collected into a single place, there are 
     many possible applications.  Software analytics
     will be much easier to create and gamification will be much more easily attainable.  
@@ -23,12 +30,6 @@
     provides an overview of 
     the data that could potentially be stored in the SDLC-AE as it relates to CRI. The
     SDLC-AE does not specify how the data is entered, just how the data is stored.
-    
-    \begin{figure}[ht]
-        \includegraphics[scale=.75]{images/sdlcae.png}
-        \caption{SDLC ANALYTIC ENGINE}
-        \label{fig:sdlc-ae}
-    \end{figure}
     
     \subsection{DATABASE STRUCTURE}
         All the data necessary to compute CRI needs to be stored in a database.  This section will 
@@ -44,11 +45,11 @@
         
             The first set of tables that need to be created are tables
             to store the raw data that is collected.  These tables
-            will line up with the necessary data for each of the 5 elements
+            will match up with the necessary data for each of the 5 elements
             of CRI.  Figure \ref{fig:raw} provides a visual description
             of the tables that are needed.  The tables have no relationship
             with each other since they are raw data.  The primary goal of
-            these tables is to store the raw data in a single database. The
+            these tables is to store the raw data in a single location. The
             5 table names are:
             \begin{enumerate}
                 \item QUALITY\_RAW
@@ -59,9 +60,9 @@
             \end{enumerate}
             Notice these table names match with the 5 elements of CRI.
         
-           \begin{figure}[ht]
+           \begin{figure}[htb]
                 \centering
-                \includegraphics[scale=.55]{images/raw_tables.png}
+                \includegraphics[scale=.52]{images/raw_tables.png}
                 \caption{TABLES FOR RAW CRI DATA}
                 \label{fig:raw}
             \end{figure}
@@ -88,9 +89,9 @@
             \end{enumerate}
             Again, these table names match very closely with the 5 elements of CRI.
         
-           \begin{figure}[ht]
+           \begin{figure}[htb]
                 \centering
-                \includegraphics[scale=.55]{images/score_tables.png}
+                \includegraphics[scale=.52]{images/score_tables.png}
                 \caption{TABLES FOR INTERMEDIATE CRI SCORES}
                 \label{fig:score_tables}
             \end{figure}%
@@ -113,28 +114,18 @@
             \ref{fig:final_score_tables} provides a visual representation of the 
             relationship between the 2 tables. 
             
-           \begin{figure}[ht]
+           \begin{figure}[hbt]
                 \centering
-                \includegraphics[scale=.55]{images/final_score_tables.png}
+                \includegraphics[scale=.52]{images/final_score_tables.png}
                 \caption{TABLES FOR FINAL CRI SCORES}
                 \label{fig:final_score_tables}
             \end{figure}
+            
             
             Appendix \ref{src:overallscoreSQL} provides the necessary SQL 
             statements to create the 
             database tables for storing the final scores for each element and the final 
             overall CRI scores for each time frequency.
-    
-%    \subsection{QUERIES}
-%        The section will provide the necessary SQL queries to obtain the correct data
-%        needed to compute the individual elements of CRI.
-%        
-%    \subsection{COMPUTATIONS}
-%        This section will provide R scripts to calculate each individual score and the overall 
-%        CRI score. The scripts will need to be run every time the data is updated and the CRI
-%        score needs to be recalculated.
-
-
 
 \end{document}
 

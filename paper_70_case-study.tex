@@ -78,7 +78,7 @@
         and UAT\_DFTS.  It can be seen that some correlations exist between
         the variables.
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/quality_plots1.png}
             \caption{QUALITY DATA PLOTS: DEPENDENT VS. INDEPENDENT VARIABLES}
@@ -109,7 +109,7 @@
         scores are greatly above expectations.  That is an indication
         of improved quality over historical performance.
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/quality_scores.png}
             \caption{CRI QUALITY SCORES}
@@ -163,8 +163,18 @@
         can be performed. 
         R code to compute the CRI availability scores can be found in Appendix
         \ref{src:availability}. Figure \ref{fig:availability-scores} displays
-        the CRI availability scores.  As can be seen the scores are all above
-        70.  That is good from a performance standpoint, but it might be an
+        the CRI availability scores.  
+        
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[scale=.3]{images/availability_scores.png}
+            \caption{CRI AVAILABILITY SCORES}
+            \label{fig:availability-scores}
+        \end{figure}
+        
+        As can be seen in Figure  \ref{fig:availability-scores}
+        the scores are all above 70 which
+        is good from a performance standpoint, but it might be an
         indication that the expected uptimes could be raised.  If expected
         uptimes are consistently being exceeded, some consideration should
         be given to increase the expected uptimes.  This shows that
@@ -172,12 +182,6 @@
         very good at keeping computer systems available.  Therefore,
         SLAs need to be adjusted to properly reflect the better performance.
         
-        \begin{figure}[ht]
-            \centering
-            \includegraphics[scale=.3]{images/availability_scores.png}
-            \caption{CRI AVAILABILITY SCORES}
-            \label{fig:availability-scores}
-        \end{figure}
         
     \subsection{SCHEDULE}
         Figure \ref{tab:schedule_desc} displays some descritive statistics
@@ -230,7 +234,7 @@
         Cauchy curve with location = 0.0 and scale = 0.057.  The Cauchy
         distribution appears to be a good fit.  
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.25]{images/schedule_hist.png}
             \caption{SCHEDULE DATA HISTOGRAM WITH CAUCHY}
@@ -260,7 +264,7 @@
         These scores appear more eratic than the other elements.
         This difference is due to the small number of releases every month.
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/schedule_scores.png}
             \caption{CRI SCHEDULE SCORES}
@@ -317,7 +321,7 @@
         the number of scheduled requirements, for an upper bound of twice
         the scheduled requirements.
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/requirements_scores.png}
             \caption{CRI REQUIREMENTS SCORES}
@@ -331,8 +335,8 @@
         Thus the scores are all 0 or slightly below.
         
     \subsection{OVERALL}
-        Now it is time to combine the scores for the overall CRI.  Notice
-        the schedule does not have scores for January 2014 or January 2015.
+        Now it is time to combine the scores for the overall CRI.
+        Schedule does not have scores for January 2014 or January 2015.
         Presumably, that is because the SDO within the large financial institution
         does not schedule projects to be completed in January. Much of the work
         would need to be completed over Christmas and New Year's Day, but many
@@ -340,28 +344,25 @@
         organizations will schedule appropriately.  CRI is well suited to
         handle this problem.  Just perform a weighted average over the
         applicable elements.  In this case study, the weights are all equal,
-        so CRI is just a straight average.  Figure \ref{fig:cri-scores}
-        displays the CRI scores as computed with the source code
-        from Appendix \ref{src:overall}.  The scores are all above 0, so this
-        financial institution is consistently performing better
-        than expected.  
+        so CRI is just a straight average.  
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/cri_scores.png}
             \caption{CRI SCORES}
             \label{fig:cri-scores}
         \end{figure}
         
-    \subsection{CORRELATION AND SENSITIVITY}
-        Based upon the graphs for the elements scores, there does not
-        appear to be any correlation.  None of the graphs
-        rise and fall during the same intervals.  The missing element,
-        satisfaction, is the most likely element to exhibit correlation,
-        so the 4 elements analyzed here remain independent.
+        Figure \ref{fig:cri-scores}
+        displays the CRI scores as computed with the source code
+        from Appendix \ref{src:overall}.  The scores are all above 0, so this
+        financial institution has performed consistently better
+        than expected.  
+        
+    \subsection{SENSITIVITY AND CORRELATION}
         
         To check the sensitivity of the CRI formula, the first method
-        from Section \ref{sub:sensitivity} is used.  Small random
+        from Section \ref{sec:sensitivity} is used.  Small random
         values were added to the input values of the formulas. 
         Then the new values were used to calculated the element scores 
         at the respective Application ID or Project ID level.  Finally
@@ -374,7 +375,7 @@
         histograms all indicate most of the score changes are small,
         as seen by the high peak of the histograms.  
         
-        \begin{figure}[ht]
+        \begin{figure}[htb]
             \centering
             \includegraphics[scale=.3]{images/sensitivity.png}
             \caption{CRI SENSITIVITY ANALYSIS}
@@ -388,16 +389,16 @@
         is due to the wide variation of standard deviations between
         Application IDs for Quality and Project IDs for Requirements. 
         Table \ref{tab:sensitivity} shows the columns that were
-        altered for each element.
+        altered for each element.  
         
-        \begin{longtable}{@{}l rr rrr}
+        \begin{longtable}{@{}l r}
             \toprule%
              \centering%
              {\bfseries CRI Element}
              & {\bfseries Columns Altered } \\
             
             \cmidrule[0.2pt](r{0.125em}){1-1}%
-            \cmidrule[0.2pt](lr{0.125em}){2-2}%
+            \cmidrule[0.2pt](r{0.125em}){2-2}%
             % \midrule
             \endhead
             
@@ -411,10 +412,25 @@
             
             \bottomrule
             
-            \multicolumn{6}{c}{461 obs. from 402 Project IDs from 2010 to 2015} \\
-            
             \caption{CRI SENSITIVITY ANALYSIS}
             \label{tab:sensitivity}
         \end{longtable}
+        
+        The columns were altered by adding
+        random noise from a normal distribution with mean 0 and standard
+        deviation as explained above.  The only exception to the normal
+        distribution was for the schedule element.  The schedule element
+        drew its noise from a Cauchy distribution with location and scale
+        as defined when determining the distribution of the schedule data.
+        That Cauchy distribution can be seen with the histogram in 
+        Figure \ref{fig:schedule-hist}. 
+        
+        
+        Based upon the graphs for the elements scores, there does not
+        appear to be any correlation.  None of the graphs
+        rise and fall during the same intervals.  The missing element,
+        satisfaction, is the most likely element to exhibit correlation,
+        so the 4 elements analyzed here remain independent.
+        
 
 \end{document}
