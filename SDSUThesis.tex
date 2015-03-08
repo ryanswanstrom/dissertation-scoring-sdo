@@ -119,6 +119,12 @@
 \usepackage{cleveref}
 \usepackage[ampersand]{easylist}
 
+%For the abbreviations page
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{ABREVIATIONS}%
+
+
 % to center column headings
 \usepackage[up,tiny,center,uppercase]{titlesec}
 % set the section numbering depth
@@ -211,6 +217,10 @@
 %% Table of contents
 \newpage
 \tableofcontents
+
+%% Abbreviations
+\newpage
+\printnomenclature
 
 %% List of figures
 \newpage
