@@ -27,7 +27,7 @@
         The first step to dealing with the quality data is a quick
         analysis of the data.  Table \ref{tab:quality_desc} provides
         some descriptive statistics for the quality data.  Testing hours
-        were not capture but they are optional, so the analysis can 
+        were not captured, but they are optional, so the analysis can 
         continue.
         
         
@@ -46,6 +46,7 @@
             \cmidrule[0.2pt](l{0.125em}){3-3}%
             \cmidrule[0.2pt](l{0.125em}){4-4}%
             \cmidrule[0.2pt](l{0.125em}){5-5}%
+            \cmidrule[0.2pt](l{0.125em}){6-6}%
             % \midrule
             \endhead
             
@@ -80,7 +81,7 @@
         
         \begin{figure}[htb]
             \centering
-            \includegraphics[scale=.3]{images/quality_plots1.png}
+            \includegraphics[scale=.25]{images/quality_plots1.png}
             \caption{QUALITY DATA PLOTS: DEPENDENT VS. INDEPENDENT VARIABLES}
             \label{fig:quality-plots1}
         \end{figure}
@@ -116,17 +117,22 @@
             \label{fig:quality-scores}
         \end{figure}
         
-        
-        
-        
     \subsection{AVAILABILITY}
         For the availability data,
         some descriptive statistics can be seen in 
         Table \ref{tab:availability_desc}.  The percent uptime
-        was precalculated for this data so uptime, scheduled downtime,
+        was previously calculated for this data so uptime, scheduled downtime,
         and unscheduled downtime are not needed.  Availability
         does not rely upon analysis of historical data since
         a known upper and lower bound exist, 1 and 0 respectively.
+        
+        The numbers in Table \ref{tab:availability_desc} indicate
+        the values are very near 1.  This is expected as SDOs
+        set SLA uptime values near 1, and even strive to meet
+        an uptime of 1.  An uptime of 1 means the system was
+        available the entire time period.  Thus numbers for uptime
+        near 1 are highly desirable for an SDO expecting
+        to score well for availability.
         
         \begin{longtable}{@{}l rr rrr}
             \toprule%
@@ -143,6 +149,7 @@
             \cmidrule[0.2pt](l{0.125em}){3-3}%
             \cmidrule[0.2pt](l{0.125em}){4-4}%
             \cmidrule[0.2pt](l{0.125em}){5-5}%
+            \cmidrule[0.2pt](l{0.125em}){6-6}%
             % \midrule
             \endhead
             
@@ -165,7 +172,7 @@
         \ref{src:availability}. Figure \ref{fig:availability-scores} displays
         the CRI availability scores.  
         
-        \begin{figure}[htb]
+        \begin{figure}[hb]
             \centering
             \includegraphics[scale=.3]{images/availability_scores.png}
             \caption{CRI AVAILABILITY SCORES}
@@ -184,13 +191,13 @@
         
         
     \subsection{SCHEDULE}
-        Figure \ref{tab:schedule_desc} displays some descritive statistics
+        Figure \ref{tab:schedule_desc} displays some descriptive statistics
         for the schedule data.  Since the data is mostly dates, the 
         descriptive statistics are limited, so extra values were
         added to the table after removing 4 outliers.  The new values
         in the table are: Schedule Duration (Scheduled Finish - Scheduled Start),
         Difference (Actual Finish - Schedule Finish), and 
-        $\Delta$ ($frac{\Delta}{\text{Schedule Duration}}$ ).
+        $\Delta$ ($\frac{\text{Difference}}{\text{Schedule Duration}}$ ).
     
         \begin{longtable}{@{}l rr rrr}
             \toprule%
@@ -261,7 +268,7 @@
         \]
         
         The CRI schedule scores can be seen in Figure \ref{fig:schedule-scores}.
-        These scores appear more eratic than the other elements.
+        These scores appear more erratic than the other elements.
         This difference is due to the small number of releases every month.
         
         \begin{figure}[htb]
@@ -299,6 +306,7 @@
             \cmidrule[0.2pt](l{0.125em}){3-3}%
             \cmidrule[0.2pt](l{0.125em}){4-4}%
             \cmidrule[0.2pt](l{0.125em}){5-5}%
+            \cmidrule[0.2pt](l{0.125em}){6-6}%
             % \midrule
             \endhead
             
@@ -425,12 +433,19 @@
         That Cauchy distribution can be seen with the histogram in 
         Figure \ref{fig:schedule-hist}. 
         
-        
-        Based upon the graphs for the elements scores, there does not
-        appear to be any correlation.  None of the graphs
-        rise and fall during the same intervals.  The missing element,
+        Figure \ref{fig:correlation_cri} shows a scatterplot matrix
+        for the individual element scores.  No correlation appears
+        to exist between any of the elements. The missing element,
         satisfaction, is the most likely element to exhibit correlation,
         so the 4 elements analyzed here remain independent.
+        
+        
+        \begin{figure}[htb]
+            \centering
+            \includegraphics[scale=.3]{images/correlation.png}
+            \caption{SCATTERPLOT MATRIX OF CRI ELEMENT SCORES}
+            \label{fig:correlation_cri}
+        \end{figure}
         
 
 \end{document}
