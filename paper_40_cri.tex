@@ -34,8 +34,8 @@
     The scores for CRI will range from -1, indicating the worst 
     performance, all the way to +1, indicating perfection.
     A score of 0 is an indication of meeting the basic expectations. 
-    A negative score indicates under-performance and a 
-    positive score indicates over-performance.   Here are some 
+    A negative score indicates worse-than-expected performance and a 
+    positive score indicates better-than-expected performance.   Here are some 
     examples. An CRI score of 0.35 means the organization is 
     performing 35\% better than expected.  Conversely, a score 
     of -0.15 means an organization is performing 15\% worse than expected.  
@@ -45,7 +45,7 @@
         \item The range of scores must have equal values above and below 0
         \item The minimum score must equate to the worst possible 
             performance, however that is defined
-        \item Similarily, the maximum score must equate to the best possible performance.  
+        \item Similarly, the maximum score must equate to the best possible performance.  
         \item A score of 0 must be average (or expected) performance
         \item All individual elements must have the same scoring range
     \end{itemize}
@@ -60,8 +60,8 @@
     
     \subsection{ELEMENTS OF CRI}
         Each of the 5 elements of CRI has its own set of data that needs to
-        be collected and a formula for calculating a score. 
-        These five elements will be outline in the next sections.
+        be collected and formula for calculating a score. 
+        These five elements will be outlined in the next sections.
         
         \subsubsection{QUALITY}
             Measuring quality is a crucial part of accessing 
@@ -118,7 +118,7 @@
                 the columns of data that will be used to create
                 a score for the quality element of CRI.  
                 Each column is classified as \textit{required} or
-                \textit{optional}.  That is to allow some flexibility
+                \textit{optional}.  This is to allow some flexibility
                 in the model for organizations that collect
                 varying amounts of data.
                 
@@ -168,7 +168,7 @@
                         can be measured in any unit of time: hours, days, weeks,
                         etc.  Estimated time can be applied to development or testing
                         effort.  It is common for the estimated and actual times
-                        to be diffent.
+                        to be different.
                     \item[SLOC]  This number is the count of 
                         the total number of lines of source code for a project. 
                         Obviously, 
@@ -244,8 +244,8 @@
                 terms, the response is \textit{PROD Defects} and the predictors
                 are: \textit{UAT Defects}, \textit{SIT Defects}, 
                 \textit{Testing Effort}, and \textit{Development Effort}.  
-                Some of the following strategies will be employed to find 
-                a reasonable model.
+                Some of the following strategies to find  
+                a reasonable model include:
                 \begin{itemize}
                     \item Removal of outliers and/or influential points
                     \item Linear Regression
@@ -277,6 +277,7 @@
                 where
                 \begin{itemize}
                     \item $S_{1_i}$ is the quality score for Application ID $i$
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
                     \item $n$ is the number of Application IDs
                     \item $d_i$ is the actual PROD defects for Application ID $i$
                     \item $f_i$ is the function to predict PROD defects for Application $i$ based upon 
@@ -288,12 +289,14 @@
                 Then the overall quality score is calculated as below.
                 
                 \[
-                    S_{1} = \sum\limits^n_{i=1} w'_i S_{1_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                    S_{1} = \sum\limits^n_{i=1} w_i S_{1_i}
                 \]
                 where
                 \begin{itemize}
                     \item $S_1$ is the combined quality score for all Application IDs, 
                     a weighted average
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
                 \end{itemize}
                 
                 Then $S_1$ represents the CRI quality score for that given time 
@@ -303,17 +306,17 @@
 
         \subsubsection{AVAILABILITY}
             All the new requirements and great quality do not matter if the software is not available.
-            All the new features and great quality do not matter if the software is not available.  Thus it
+            Thus it
             is essential to set an expected Service Level Agreement (SLA)\footnote{For an SDO, the SLA is a 
             contract specifying the amount of time software will be available during a
             given time period. } and measure 
-            performance against that SLA.  The following section will outline to data needed to properly
-            calculate an SLA and the data needed to calculate the CRI score for availability.
+            performance against that SLA.  The following section will outline the data needed to properly
+            calculate an SLA and to calculate the CRI score for availability.
             
             Special Note: The Service ID for availability does not have to be the same
             as the Application ID for quality or any of the other elements.  Some 
             organizations have a one-to-one mapping between Applications being developed
-            and services being deployed.  Others have more complex sceranios that require
+            and services being deployed.  Others have more complex scenarios that require
             multiple applications to be combined to form a service.  Then the availability
             of the system is tracked.
             
@@ -322,7 +325,7 @@
                 the CRI element score for availability.  Notice the three optional 
                 fields: \textit{Uptime}, \textit{Scheduled Downtime}, and 
                 \textit{Unscheduled Downtime}; they are optional because they can be
-                used to calculated the \textit{Percent Uptime}.  The \textit{Percent Uptime}
+                used to calculate the \textit{Percent Uptime}.  The \textit{Percent Uptime}
                 is the important value for the CRI schedule score.  Here are the two common
                 approaches for calculating percent uptime:
                 
@@ -391,6 +394,7 @@
                 
                 \begin{itemize}
                     \item $S_{2_i}$ is the availability score for System ID $i$
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
                     \item $A_{a_i}$ actual availability for System ID $i$
                     \item $A_{e_i}$ expected availability for System ID $i$
                 \end{itemize}
@@ -398,9 +402,18 @@
                 Then the overall availability score is calculated as below.
                 
                 \[
-                    S_{2} = \sum\limits^n_{i=1} w'_i S_{2_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                    S_{2} = \sum\limits^n_{i=1} w_i S_{2_i} 
                 \]
-                where $S_2$ is the CRI availability score for the time frequency.
+                where
+                \begin{itemize}
+                    \item $S_2$ is the combined availability score for all Service IDs, 
+                    a weighted average
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
+                \end{itemize}
+                
+                Then $S_2$ represents the CRI availability score for that given time 
+                frequency.
                 
         \subsubsection{SATISFACTION}
             The satisfaction of users, customers, and/or business partners is 
@@ -472,7 +485,7 @@
                 
                 \begin{description}
                 \item[Text] \hfill \\
-                    The specific text used in the questions or statments
+                    The specific text used in the questions or statements
                     is very important.  The text cannot be too vague.  Also, the text
                     must be clear enough to eliminate misinterpretation. Survey
                     questions must be complete and not include gaps.  For example, if
@@ -492,7 +505,7 @@
                     addressed. 
                 \item[Sampling] \hfill \\
                     Next is the issue of sampling.  Not every customer can be surveyed, so 
-                    sample sets os customers need to be presented with a survery.  
+                    sample sets of customers need to be presented with a survey.  
                     In the case of CRI, there are 2 possible scenarios for sampling.  
                     \begin{description}
                     \item[First]
@@ -535,12 +548,12 @@
                 
            
             For more on creating appropriate surveys, see \cite{Snijkers2013} by Snijkers,
-            Haraldsen, Jones, and Willimack. In the book, Snijkers et al. present a framework
+            Haraldsen, Jones, and Willimack. They present a framework
             named generic statistical business process model (GSBPM) for conducting surveys
             in a business or organizational setting.  GSBPM covers the issues above as well
             as a few more issues such as response storage and risks.  Also, Cowles and Nelson
             provide another good resource for preparing and conducting surveys 
-            \cite{Cowles2015}.  They even include an entire chapters on both writing 
+            \cite{Cowles2015}.  They even include entire chapters on both writing 
             survey questions and survey errors. 
             
             \paragraph{SATISFACTION DATA}
@@ -593,6 +606,7 @@
                 
                 \begin{itemize}
                     \item $S_{3_i}$ is the satisfaction score for Question ID $i$
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
                     \item $a_{ij}$ answer to question $i$ for respondent $j$
                     \item $n$ number of questions
                     \item $m$ number of respondents
@@ -604,9 +618,18 @@
                 to combine the question scores.
                 
                 \[
-                    S_{3} = \sum\limits^n_{i=1} w'_i S_{3_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                    S_{3} = \sum\limits^n_{i=1} w_i S_{3_i}
                 \]
-                where $S_3$ is the CRI satisfaction score for the time frequency.
+                where
+                \begin{itemize}
+                    \item $S_3$ is the combined satisfaction score for all Questions IDs, 
+                    a weighted average
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
+                \end{itemize}
+                
+                Then $S_3$ represents the CRI satisfaction score for that given time 
+                frequency.
 
         \subsubsection{SCHEDULE}  
             Delivery of software in a timely manner is an essential part of being a 
@@ -686,7 +709,7 @@
                     \item $F_{a_i}$ the actual finish date of project $i$
                     \item $F_{s_i}$ the scheduled finish date of project $i$
                     \item $B_{s_i}$ the scheduled beginning date of project $i$
-                    \item $\Delta_i$ the percent the schedule was missed for project $i$
+                    \item $\Delta_i$ the proportion the schedule was missed for project $i$
                 \end{itemize}
                 
                 Once all the $\Delta_i$'s have been determined, a distribution must
@@ -694,29 +717,41 @@
                 of a distribution: histograms, chi-square, Kolmogorov-Smirnov, Shapiro-Wilk,
                 or Anderson-Darling \cite{Damodaran2015,Kutner2003}.
                 The distribution is needed for the Cumulative
-                Distribution Function (C.D.F.). The C.D.F. maps the values
+                Distribution Function (CDF) 
+                \nomenclature{CDF}{Cumulative Distribution Function}. 
+                The CDF maps the values
                 to a percentile rank within the distribution \cite{Downey2011}.
-                The C.D.F. will be transformed to create
-                the schedule score for CRI. Since all C.D.F. functions fall within the
+                The CDF will be transformed to create
+                the schedule score for CRI. Since all CDF functions fall within the
                 range $[0,1]$, the function needs to be shifted to center around 0, and then
                 doubled to fill the desired range of $[-1,1]$. Thus the CRI schedule score
                 for each project becomes the following.
                 
                 \begin{equation}
                 \label{eq:CDF}
-                    S_{4_i} = 2k \cdot (C.D.F.(\Delta_i) - \frac{1}{2})
+                    S_{4_i} = 2k \cdot (CDF(\Delta_i) - \frac{1}{2})
                 \end{equation}
                 where
                 \begin{itemize}
                     \item $S_{4_i}$ is the schedule score for Project ID $i$
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
                 \end{itemize}
                 
                 Then the overall schedule score is calculated as below.
                 
                 \[
-                    S_{4} = \sum\limits^n_{i=1} w'_i S_{4_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1
+                    S_{4} = \sum\limits^n_{i=1} w_i S_{4_i}
                 \]
-                where $S_4$ is the CRI schedule score for the time frequency.
+                where
+                \begin{itemize}
+                    \item $S_4$ is the combined schedule score for all Project IDs, 
+                    a weighted average
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
+                \end{itemize}
+                
+                Then $S_4$ represents the CRI schedule score for that given time 
+                frequency.
     
             \paragraph{ALTERNATE APPROACH}
                 An alternative approach for scoring schedule goes as follows.
@@ -741,7 +776,7 @@
                     \Delta_i = \left| \frac{F_{a_i} - F_{s_i}}{ F_{s_i} - B_{s_i} + 1} \right|
                 \end{displaymath}
                 
-                Find the average of the $\Delta_i$'s.  This is the average percent of a missed
+                Find the average of the $\Delta_i$'s.  This is the average proportion of a missed
                 schedule.  
                 \begin{displaymath}
                    \bar{\Delta}  = \frac{\sum^n_{i=1}\Delta_i}{n}
@@ -750,7 +785,7 @@
                 \textit{The formula for schedule is then a percentage above or below the $\Delta$.  
                 The number is calculated for each project, and then averaged to form the schedule score.}
                 
-                After the $\bar{\Delta}$ is calculated, the following formulas are used to create the schedule scores
+                After $\bar{\Delta}$ is calculated, the following formulas are used to create the schedule scores
                 for each project and then the averaged schedule score.
             
                 \begin{displaymath}
@@ -764,10 +799,15 @@
                 \end{displaymath} 
         
                 \[
-                    S_{4} = \sum\limits^n_{i=1} w'_i S_{4_i} \text{ where } \sum\limits^n_{i=1} w'_i = 1 \text{   , average the schedule scores}
+                    S_{4} = \sum\limits^n_{i=1} w_i S_{4_i} 
                 \]
                 where
                 \begin{itemize}
+                    \item $S_4$ is the combined schedule score for all Project IDs, 
+                    a weighted average
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
                     \item $n$ is the number of projects
                     \item $F_{a_i}$ the actual finish date of project $i$
                     \item $F_{s_i}$ the scheduled finish date of project $i$
@@ -776,6 +816,8 @@
                     \item $\bar{\Delta}$ is the average percent schedules are missed
                     \item $S_{4_i}$ is the schedule score for project $i$
                 \end{itemize}
+                Then $S_4$ represents the CRI schedule score for that given time 
+                frequency.
                 Again, this was just an alternate approach to scoring schedule.  
                 It will not be used in the case studies.
 
@@ -818,7 +860,7 @@
             \end{description}
             
             To summarize, this element is not completely a measurement of requirements
-            but rather a measurment of the work being completed. 
+            but rather a measurement of the work being completed. 
             
             \paragraph{REQUIREMENTS DATA}
                 Table \ref{tab:req} specifies the data required to compute
@@ -860,8 +902,8 @@
                 scheduled number of requirements. Requirements have a nice
                 lower bound of 0 since negative requirements cannot be 
                 completed\footnote{Theoritically, a negative requirement would
-                be considered a defect.}.  Unforntunately, an upper bound
-                does not exist.  The variablity of requirements is not
+                be considered a defect.}.  Unfortunately, an upper bound
+                does not exist.  The variability of requirements is not
                 as large as the variability of the number of defects, so
                 a simpler strategy can be used.  For requirements, a 
                 multiplier $b$ will be used to find the upper bound. The
@@ -886,6 +928,7 @@
                 where
                 \begin{itemize}
                     \item $S_{5_i}$ is the requirements score for Project ID $i$
+                    \item $k$ scaling factor to produce results in the range $[-k,k]$
                     \item $R_{a_i}$ actual requirements completed for Project ID $i$
                     \item $R_{s_i}$ expected requirements completed for Project ID $i$
                     \item $b$ multiplier to determine the upper bound
@@ -895,13 +938,19 @@
                 from the Project IDs.
                 
                 \[
-                    S_{5} = \sum\limits^n_{i=1} w'_i S_{5_i} \text{ where }
-                        \sum\limits^n_{i=1} w'_i = 1
+                    S_{5} = \sum\limits^n_{i=1} w_i S_{5_i} 
                 \]
+                where
+                \begin{itemize}
+                    \item $S_5$ is the combined requirements score for all Project IDs, 
+                    a weighted average
+                    \item $w_i > 0$ for all $i$
+                    \item $\sum\limits^n_{i=1} w_i = 1$
+                \end{itemize}
                 
-                where $S_5$ is the CRI requirements score for the time frequency.
-            
-
+                Then $S_5$ represents the CRI requirements score for that given time 
+                frequency.
+                
         \subsubsection{OVERALL CRI SCORE}
             In order to accomplish the single number score that CRI requires,
             the 5 element scores must be combined. The combination of the scores
@@ -939,14 +988,16 @@
         
         It is impossible to know which or if correlations will always exist.  Thus it is necessary to
         check for correlations after determining element and overall CRI scores.  
-        If correlation is determined, the element should not be dropped but rather be weighted less than
-        the other elements.  This technique keeps the most data available but lessens the importance of
+        If an element is determined to be correlated with another element, neither element should be dropped,
+        but rather one of the elements should be weighted less than
+        the other correlated element.  
+        This technique keeps the most data available but lessens the importance of
         the correlated element. 
         
     \subsection{SENSITIVITY OF CRI}
     \label{sec:sensitivity}
         The sensitivity of the formulas should be tested as the scores should not
-        flucate drastically for similar values.  There are 2 possible techniques
+        fluctuate drastically for similar values.  There are 2 possible techniques
         for testing the sensitivity of the formulas. 
         \begin{description}
             \item[First] Given the historical data that has been collected,
@@ -959,8 +1010,9 @@
                 randomly generate input values for the element functions.  
                 This can be done by finding the distributions of the historical
                 data, and randomly selecting from that distribution.  If historical
-                data is not available, then For more on sensitivity analysis 
-                in statistical modeling, see \cite{Saltelli2000}.
+                data is not available, then the normal distribution can be used.
+                See \cite{Saltelli2000} for more information on sensitivity analysis 
+                in statistical modeling.
         \end{description}
         
         .
@@ -1010,7 +1062,7 @@
             \end{longtable}
         
         
-        \subsubsection{CRI VS. FOCUS AREAS OF SOFTWARE ANALYTICS}
+        \subsubsection{CRI VS. IMPORTANT QUESTIONS OF SOFTWARE ANALYTICS}
             Also, section \ref{subsub:softwareanalytics} mentions 3 important questions that
             software analytics must address.  Table \ref{tab:questions} presents the 3 questions
             and a description of how CRI addresses that specific question.  It is clear
@@ -1038,7 +1090,7 @@
                 and simple.  This is a significant advantage for software 
                 development organizations. \\
                 How sensitive are the results to small changes in one or more of the inputs? & 
-                The question was extensively addressed in section \ref{sec:sensitivity}.  It appears CRI is
+                The question was extensively addressed in section \ref{sec:sensitivity}. CRI is
                 not overly sensitive to small changes in the inputs.\\
                 
                 \bottomrule
