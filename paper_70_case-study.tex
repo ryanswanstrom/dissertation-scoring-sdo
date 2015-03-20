@@ -112,7 +112,7 @@
         
         \begin{figure}[htb]
             \centering
-            \includegraphics[scale=.3]{images/quality_scores.png}
+            \includegraphics[scale=.28]{images/quality_scores.png}
             \caption{CRI QUALITY SCORES}
             \label{fig:quality-scores}
         \end{figure}
@@ -172,9 +172,9 @@
         \ref{src:availability}. Figure \ref{fig:availability-scores} displays
         the CRI availability scores.  
         
-        \begin{figure}[hb]
+        \begin{figure}[htb]
             \centering
-            \includegraphics[scale=.3]{images/availability_scores.png}
+            \includegraphics[scale=.28]{images/availability_scores.png}
             \caption{CRI AVAILABILITY SCORES}
             \label{fig:availability-scores}
         \end{figure}
@@ -273,7 +273,7 @@
         
         \begin{figure}[htb]
             \centering
-            \includegraphics[scale=.3]{images/schedule_scores.png}
+            \includegraphics[scale=.28]{images/schedule_scores.png}
             \caption{CRI SCHEDULE SCORES}
             \label{fig:schedule-scores}
         \end{figure}
@@ -329,9 +329,9 @@
         the number of scheduled requirements, for an upper bound of twice
         the scheduled requirements.
         
-        \begin{figure}[htb]
+        \begin{figure}[hbt]
             \centering
-            \includegraphics[scale=.3]{images/requirements_scores.png}
+            \includegraphics[scale=.28]{images/requirements_scores.png}
             \caption{CRI REQUIREMENTS SCORES}
             \label{fig:requirements-scores}
         \end{figure}
@@ -352,11 +352,11 @@
         organizations will schedule appropriately.  CRI is well suited to
         handle this problem.  Just perform a weighted average over the
         applicable elements.  In this case study, the weights are all equal,
-        so CRI is just a straight average.  
+        so CRI is a straight average.  
         
-        \begin{figure}[htb]
+        \begin{figure}[hbt]
             \centering
-            \includegraphics[scale=.3]{images/cri_scores.png}
+            \includegraphics[scale=.28]{images/cri_scores.png}
             \caption{CRI SCORES}
             \label{fig:cri-scores}
         \end{figure}
@@ -383,9 +383,9 @@
         histograms all indicate most of the score changes are small,
         as seen by the high peak of the histograms.  
         
-        \begin{figure}[htb]
+        \begin{figure}[hbt]
             \centering
-            \includegraphics[scale=.3]{images/sensitivity.png}
+            \includegraphics[scale=.25]{images/sensitivity.png}
             \caption{CRI SENSITIVITY ANALYSIS}
             \label{fig:sensitivity}
         \end{figure}
@@ -434,18 +434,21 @@
         Figure \ref{fig:schedule-hist}. 
         
         Figure \ref{fig:correlation_cri} shows a scatterplot matrix
-        for the individual element scores.  No correlation appears
+        for the individual element scores.  There
+        is no clear upper or downward trend in any of the graphs.
+        Therefore, no correlation appears
         to exist between any of the elements. The missing element,
-        satisfaction, is the most likely element to exhibit correlation,
-        so the four elements analyzed here remain independent.
-        
+        satisfaction, is the most likely element to exhibit correlation. 
+        That is because lower scores on the other four elements
+        will likely result in 
+        decreased survey scores, which will result in lower satisfaction
+        scores.  Anyhow, the four elements analyzed here remain independent.
         
         \begin{figure}[htb]
             \centering
-            \includegraphics[scale=.3]{images/correlation.png}
+            \includegraphics[scale=.25]{images/correlation.png}
             \caption{SCATTERPLOT MATRIX OF CRI ELEMENT SCORES}
             \label{fig:correlation_cri}
         \end{figure}
         
-
 \end{document}
