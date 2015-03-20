@@ -33,7 +33,7 @@
     
     \subsection{DATABASE STRUCTURE}
         All the data necessary to compute CRI needs to be stored in a database.  This section will 
-        lay out the structure of tables and relationships necessary to the store all the data
+        lay out the structure of tables and relationships necessary to store all the data
         within a relational database.  The SQL\footnote{Structured Query Language (SQL) is 
         a programming language designed for managing data in relational database 
         management system.\nomenclature{SQL}{Structured Query Language}} 
@@ -45,12 +45,12 @@
         
             The first set of tables that need to be created are tables
             to store the raw data that is collected.  These tables
-            will match up with the necessary data for each of the 5 elements
+            will match up with the necessary data for each of the five elements
             of CRI.  Figure \ref{fig:raw} provides a visual description
             of the tables that are needed.  The tables have no relationship
             with each other since they are raw data.  The primary goal of
             these tables is to store the raw data in a single location. The
-            5 table names are:
+            five table names are:
             \begin{enumerate}
                 \item QUALITY\_RAW
                 \item AVAILABILITY\_RAW
@@ -58,7 +58,7 @@
                 \item SCHEDULE\_RAW
                 \item REQUIREMENTS\_RAW
             \end{enumerate}
-            Notice these table names match with the 5 elements of CRI.
+            Notice these table names match with the five elements of CRI.
         
            \begin{figure}[htb]
                 \centering
@@ -87,7 +87,7 @@
                 \item SCHEDULE\_SCORE
                 \item REQUIREMENTS\_SCORE
             \end{enumerate}
-            Again, these table names match very closely with the 5 elements of CRI.
+            Again, these table names match very closely with the five elements of CRI.
         
            \begin{figure}[htb]
                 \centering
@@ -107,12 +107,12 @@
             \end{enumerate}
             The first
             table is the ELEMENT table.  It simply stores the CRI element 
-            (Quality, Availability,Satisfaction,Schedule,Requirements,Overall) and 
-            optional description. The second table is the CRI\_SCORE table.  
+            (Quality, Availability, Satisfaction, Schedule, Requirements, Overall) and 
+            an optional description. The second table is the CRI\_SCORE table.  
             It stores all the final element scores and the final overall CRI
             score.  It is related to the ELEMENT table.  Figure 
             \ref{fig:final_score_tables} provides a visual representation of the 
-            relationship between the 2 tables. 
+            relationship between the two tables. 
             
            \begin{figure}[hbt]
                 \centering

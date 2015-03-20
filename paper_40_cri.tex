@@ -9,7 +9,7 @@
     number score to measure the performance of an SDO. 
     It works by statistically analyzing the past performance of the 
     organization and using that information to score an organization 
-    on current performance.  CRI is a collection of the following 5 
+    on current performance.  CRI is a collection of the following five 
     elements, which are actually KRIs,
     for an SDO.
     \textbf{
@@ -56,10 +56,10 @@
     Thus scaling can be applied to obtain values in any appropriate range. 
     The scaling factor is denoted with the variable $k$.  
     The scale must be the same
-    for all 5 elements.
+    for all five elements.
     
     \subsection{ELEMENTS OF CRI}
-        Each of the 5 elements of CRI has its own set of data that needs to
+        Each of the five elements of CRI has its own set of data that needs to
         be collected and formula for calculating a score. 
         These five elements will be outlined in the next sections.
         
@@ -81,9 +81,9 @@
             Another aspect of defects is severity levels.  A severity level indicates
             the importance of a defect that has been discovered.  Although an
             organization can choose whatever severity levels they choose, it is
-            common practice to use 5 severity levels \cite{Raynus1999}.  The most 
+            common practice to use five severity levels \cite{Raynus1999}.  The most 
             severe level for a defect is 1.  All other levels drop in severity 
-            from that point. Table \ref{tab:severity} describes the 5 levels
+            from that point. Table \ref{tab:severity} describes the five levels
             for defect severity.  
 
             \begin{longtable}{@{}l l}
@@ -196,13 +196,13 @@
                 level should be handled before being stored.  A good technique is
                 to count the defects based upon the weighting scheme
                 in Table \ref{tab:severityweight} \cite{Raynus1999}. For
-                example, finding 1 defect of severity level 5 will result
-                in total count of 1.  However, finding 1 defect of severity
+                example, finding one defect of severity level 5 will result
+                in a total count of one.  However, finding one defect of severity
                 level 2 will result in a total count of 15. This strategy helps
                 to standardize the number of defects found.  An organization
                 can alter the values of Table \ref{tab:severityweight} based 
                 upon priorities or use a different technique if desired.  It
-                is just important to get a standard, meaningful number for SIT defects,
+                is important to establish a standard, meaningful number for SIT defects,
                 UAT defects, and PROD defects which manages severity appropriately.
                 
                 \begin{longtable}{@{}l rr rr}
@@ -507,22 +507,21 @@
                 \item[Sampling] \hfill \\
                     Next is the issue of sampling.  Not every customer can be surveyed, so 
                     sample sets of customers need to be presented with a survey.  
-                    In the case of CRI, there are 2 possible scenarios for sampling.  
-                    \begin{description}
-                    \item[First]
-                    When an SDO is part of a larger organization, there typically is
-                    a small number of business partners that help to guide and 
-                    direct the work performed by the SDO.  In this case, the business 
-                    partners might be the the ones offering survey responses and they 
-                    should all be willing to respond.  Thus, those business partners 
-                    represent the entire population, and the surveys should result in 
-                    a 100\% response rate which is technically a census.  
-                    The only bias that will be present here is the bias of the business 
-                    partners and sampling cannot control for that.
-           
-                    \item[Second] End-users will be surveyed for satisfaction. Obviously, the 
-                    entire population cannot be surveyed, so a probability sample should 
-                    be randomly created. Even then, bias will be present.  
+                    In the case of CRI, there are two possible scenarios for sampling.  
+                    \begin{enumerate}
+                        \item When an SDO is part of a larger organization, there typically is
+                        a small number of business partners that help to guide and 
+                        direct the work performed by the SDO.  In this case, the business 
+                        partners might be the the ones offering survey responses and they 
+                        should all be willing to respond.  Thus, those business partners 
+                        represent the entire population, and the surveys should result in 
+                        a 100\% response rate which is technically a census.  
+                        The only bias that will be present here is the bias of the business 
+                        partners and sampling cannot control for that.
+               
+                        \item End-users will be surveyed for satisfaction. Obviously, the 
+                        entire population cannot be surveyed, so a probability sample should 
+                        be randomly created. Even then, bias will be present.  
                         \begin{itemize}
                             \item Not all users will respond.  This is because survey 
                                 respondents tend to sit at the extremes of either 
@@ -531,8 +530,8 @@
                             \item  Even with probability sampling it is possible to miss 
                                 entire groups of population members. For example consider a 
                                 banking application such as a savings account, a survey would 
-                                most likely be presented online and it would have a coverage 
-                                bias due the exclusion of savings account holders that 
+                                most likely be presented online, and it would have a coverage 
+                                bias due to the exclusion of savings account holders that 
                                 do not bank online.
                             \item A selection bias can occur when some members of the 
                                 population have a higher probability of inclusion in 
@@ -541,8 +540,8 @@
                                 bias is typically easy to avoid if the bias is 
                                 identified.  Weighting is a common solution for selection bias. 
                         \end{itemize}
-                       
-                    \end{description}
+                   
+                    \end{enumerate}
                 
                 \end{description}
                 
@@ -593,7 +592,7 @@
             
             \paragraph{SATISFACTION FORMULA}
                 After collecting the necessary survey data from Table \ref{tab:satisfactiondata},
-                calculating the score is rather straight forward.
+                calculating the score is rather straightforward.
                 The scores for each question are averaged and then those
                 values are averaged together.  If some survey questions
                 are more important than others, the formula could be
@@ -834,31 +833,31 @@
             is often difficult to know the challenges ahead of time.  Due to
             this uncertainty, estimating
             the number of requirements a team can complete in a given time frame can
-            be difficult. Thus, number of requirements is one way to measure 
+            be difficult. Thus, the number of requirements is one way to measure 
             amount of work
-            but there are others.  Here are 3 possible choices in descending
+            but there are others.  Here are three possible choices in descending
             order of preference.
-            \begin{description}
-                \item[Function Points] Function points measure the size of the
+            \begin{enumerate}
+                \item \textbf{Function Points} - Function points measure the size of the
                     software functionality, not the size or time required
                     to implement the functionality \cite{Jensen2014}.  
                     If done properly,
                     function points will provide the most concise measurement
                     for amount of work being completed. 
-                \item[Story Points] Story points, sometimes just referred to 
+                \item \textbf{Story Points} - Story points, sometimes just referred to 
                     as stories, are broken down requirements that can be
-                    completed in an Agile Sprint of 2 to 4 weeks.  A 
+                    completed in an Agile Sprint of two to four weeks.  A 
                     story is usually smaller, simpler, and more concise
                     that a plain requirement. 
                     Unfortunately, these only apply to an
                     SDO using the Agile methodology, specifically 
                     Scrum \cite{Ashmore2014}.
-                \item[Requirements] These are just the requirements as
+                \item \textbf{Requirements} - These are just the requirements as
                     written by the users or business partners.  Each requirement
                     can vary greatly from another requirement.  Estimating
                     number of requirements can be a difficult if not impossible
                     task.  
-            \end{description}
+            \end{enumerate}
             
             To summarize, this element is not completely a measurement of requirements
             but rather a measurement of the work being completed. 
@@ -902,7 +901,7 @@
                 The requirements formula is the percentage above or below the
                 scheduled number of requirements. Requirements have a nice
                 lower bound of 0 since negative requirements cannot be 
-                completed\footnote{Theoritically, a negative requirement would
+                completed\footnote{Theoretically, a negative requirement would
                 be considered a defect.}.  Unfortunately, an upper bound
                 does not exist.  The variability of requirements is not
                 as large as the variability of the number of defects, so
@@ -954,7 +953,7 @@
                 
         \subsubsection{OVERALL CRI SCORE}
             In order to accomplish the single number score that CRI requires,
-            the 5 element scores must be combined. The combination of the scores
+            the five element scores must be combined. The combination of the scores
             is a weighted average.  The weights can be set based upon the 
             priority of the SDO.  Thus, the overall CRI score is calculated as below.
             
@@ -968,14 +967,14 @@
             \end{itemize}
             
             This weighted average allows for a score to be computed even when not
-            all 5 elements are present. Just perform the weighted average with
+            all five elements are present. Just perform the weighted average with
             as many elements as present.  This technique allows CRI to implemented
             before data for all the elements has been collected.  Just begin
             to average elements as they become accessible.
 
 
     \subsection{CORRELATIONS IN CRI}
-        It is possible that 2 or more of the 5 elements of CRI will be correlated.  This means that
+        It is possible that two or more of the five elements of CRI will be correlated.  This means that
         one of the elements can be predicted based upon the values of the other elements.  Although
         it is possible for correlation to occur between any of the elements, the satisfaction element
         is an obvious element which deserves attention due to the human involvement of the surveys. 
@@ -998,23 +997,23 @@
     \subsection{SENSITIVITY OF CRI}
     \label{sec:sensitivity}
         The sensitivity of the formulas should be tested as the scores should not
-        fluctuate drastically for similar values.  There are 2 possible techniques
+        fluctuate drastically for similar values.  There are two possible techniques
         for testing the sensitivity of the formulas. 
-        \begin{description}
-            \item[First] Given the historical data that has been collected,
+        \begin{enumerate}
+            \item Given the historical data that has been collected,
                 alter the values by some small random amount.  Then recalculate
                 the CRI element score and compare with the original score.  This
                 technique can be repeated many times in order to verify
                 small changes do not largely affect the score.  Thus, a 
                 formula which is not overly sensitive. 
-            \item[Second] Another technique is to use Monte Carlo methods to 
+            \item Another technique is to use Monte Carlo methods to 
                 randomly generate input values for the element functions.  
                 This can be done by finding the distributions of the historical
                 data, and randomly selecting from that distribution.  If historical
                 data is not available, then the normal distribution can be used.
                 See \cite{Saltelli2000} for more information on sensitivity analysis 
                 in statistical modeling.
-        \end{description}
+        \end{enumerate}
         
         .
 
@@ -1030,7 +1029,7 @@
             areas  for software
             analytics were presented.  Table \ref{tab:focusareas} provides a explanation of how CRI addresses
             each focus area.  
-            As can be seen, CRI clearly addresses the 3 main focus areas of software analytics.  CRI does not provide
+            As can be seen, CRI clearly addresses the three main focus areas of software analytics.  CRI does not provide
             any mechanisms for improving the focus areas, but it provides a consistent mechanism to measure
             the focus areas. 
             
@@ -1045,10 +1044,10 @@
                 % \midrule
                 \endhead
                 
-                User Experience & One of the 5 elements of CRI is satisfaction.  While not all of the questions focus solely on the user experience, the entire purpose of the survey is to determine if the user is satisfied
+                User Experience & One of the five elements of CRI is satisfaction.  While not all of the questions focus solely on the user experience, the entire purpose of the survey is to determine if the user is satisfied
                 with the software product. Does it have the correct features? Are new features added in a timely manner? Of course, specific survey questions can be created to focus solely on a certain user experience. \\
                 \myrowcolour%
-                Quality & Again, one of the 5 elements specifically focuses on quality.  CRI provides a single number
+                Quality & Again, one of the five elements specifically focuses on quality.  CRI provides a single number
                 to measure quality.  Therefore, it is easy to track changes in quality over time.  CRI does not address
                 how to improve the quality, but without a consistent measurement, it would be impossible to determine the change in quality. \\
                 Development Productivity & The combination of CRI elements, schedule and requirements, provide an 
@@ -1064,8 +1063,8 @@
         
         
         \subsubsection{CRI VS. IMPORTANT QUESTIONS OF SOFTWARE ANALYTICS}
-            Also, section \ref{subsub:softwareanalytics} mentions 3 important questions that
-            software analytics must address.  Table \ref{tab:questions} presents the 3 questions
+            Also, section \ref{subsub:softwareanalytics} mentions three important questions that
+            software analytics must address.  Table \ref{tab:questions} presents the three questions
             and a description of how CRI addresses that specific question.  It is clear
             that CRI addresses the questions.  CRI is a beneficial technique of software
             analytics when applied to SDOs.
@@ -1106,9 +1105,9 @@
             balanced scorecard.  Table \ref{tab:bsc} presents a
             comparison of the characteristics of a balanced scorecard
             versus CRI.
-            As the newer 2 characteristics of a balanced scorecard
+            As the newer two characteristics of a balanced scorecard
             have only existed since 2010 and the adoption is limited,
-            the comparison will only be against the original 4 balanced
+            the comparison will only be against the original four balanced
             scorecard characteristics.
             
              \begin{longtable}{p{3cm}p{1cm}p{10cm}}
@@ -1154,7 +1153,7 @@
             nothing about the availability of the software infrastructure
             or the satisfaction of the users.  It is not near as comprehensive
             as either the balanced scorecard or CRI. Actually, CRI incorporates
-            the 5 core measurements from project management.
+            the five core measurements from project management.
             Plus, the process productivity
             number is less suitable for upper management and more
             suitable for project teams.  Although it does provide a single
