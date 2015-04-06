@@ -35,19 +35,19 @@
     performance, all the way to +1, indicating perfection.
     A score of 0 is an indication of meeting the basic expectations. 
     A negative score indicates worse-than-expected performance and a 
-    positive score indicates better-than-expected performance.   Here are some 
-    examples. An CRI score of 0.35 means the organization is 
+    positive score indicates better-than-expected performance.   For
+    example, a CRI score of 0.35 means the organization is 
     performing 35\% better than expected.  Conversely, a score 
-    of -0.15 means an organization is performing 15\% worse than expected.  
+    of $-0.15$ means an organization is performing 15\% worse than expected.  
 
     Below are the attributes of the CRI scoring.
     \begin{itemize}
-        \item The range of scores must have equal values above and below 0
+        \item The range of scores must have equal values above and below 0.
         \item The minimum score must equate to the worst possible 
-            performance, however that is defined
+            performance, however that is defined.
         \item Similarly, the maximum score must equate to the best possible performance.  
-        \item A score of 0 must be average (or expected) performance
-        \item All individual elements must have the same scoring range
+        \item A score of 0 must be average (or expected) performance.
+        \item All individual elements must have the same scoring range.
     \end{itemize}
             
     As long as those 5 features are met, the range of scores can be anything.  
@@ -269,15 +269,15 @@
                 \begin{displaymath}
                    S_{1_i} = \left\{
                      \begin{array}{lr}
-                       \text{where } f_i \geq d_i & :  \frac{f_i - d_i}{f_i} \times k  \\
-                       \text{where } d_i > f_i  & : \frac{f_i-d_i }{\sigma_i^2} \times k
-                     \end{array}
-                   \right] \text{   , calculate quality score for each app $i$}
+                       \text{where } f_i \geq d_i & :  \frac{f_i - d_i}{f_i} \cdot k  \\
+                       \text{where } d_i > f_i  & : \frac{f_i-d_i }{\sigma_i^2} \cdot k
+                     \end{array} \right.
+                   \text{   , calculate quality score for each app $i$}
                 \end{displaymath} 
                 where
                 \begin{itemize}
                     \item $S_{1_i}$ is the quality score for Application ID $i$
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
                     \item $n$ is the number of Application IDs
                     \item $d_i$ is the actual PROD defects for Application ID $i$
                     \item $f_i$ is the function to predict PROD defects for Application $i$ based upon 
@@ -385,19 +385,19 @@
                 \begin{displaymath}
                    S_{2_i} = \left\{
                      \begin{array}{lr}
-                       \text{where } A_{a_i} \leq A_{e_i} & : \left[ \frac{A_{a_i} - A_{e_i}}{A_{e_i}}\times k \right] \\
-                       \text{where } A_{a_i} > A_{e_i}  & : \left[ \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}}\times k \right]
+                       \text{where } A_{a_i} \leq A_{e_i} & : \frac{A_{a_i} - A_{e_i}}{A_{e_i}}\cdot k  \\
+                       \text{where } A_{a_i} > A_{e_i}  & : \frac{A_{a_i} - A_{e_i} }{1-A_{e_i}}\cdot k
                      \end{array}
-                   \right. \text{   , calculate availability score for each app $i$}
+                   \right. \text{   , calculate availability score for each sys $i$}
                 \end{displaymath}
                 
                 where
                 
                 \begin{itemize}
                     \item $S_{2_i}$ is the availability score for System ID $i$
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
-                    \item $A_{a_i}$ actual availability for System ID $i$
-                    \item $A_{e_i}$ expected availability for System ID $i$
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
+                    \item $A_{a_i}$ is the actual availability for System ID $i$
+                    \item $A_{e_i}$ is the expected availability for System ID $i$
                 \end{itemize}
                 
                 Then the overall availability score is calculated as below.
@@ -601,21 +601,21 @@
                 First the score for each question needs to be calculated.
                 
                 \[
-                    S_{3_i} = \sum^n_{i=1}\left( k \times \frac{ \sum^m_{j=1}a_{ij}-\frac{min + max}{2}}{m} \right)
+                    S_{3_i} = k \cdot \frac{ \sum^m_{j=1}(\frac{2a_{ij}-min-max}{max-min})}{m}
                 \]
                 
                 \begin{itemize}
                     \item $S_{3_i}$ is the satisfaction score for Question ID $i$
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
-                    \item $a_{ij}$ answer to question $i$ for respondent $j$
-                    \item $n$ number of questions
-                    \item $m$ number of respondents
-                    \item $min$ minimum score for a question
-                    \item $max$ maximum score for a question
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
+                    \item $a_{ij}$ is the answer to question $i$ for respondent $j$
+                    \item $n$ is the number of questions
+                    \item $m$ is the number of respondents
+                    \item $min$ is the minimum score for a question
+                    \item $max$ is the maximum score for a question
                 \end{itemize}
                 
                 Then the satisfaction score is calculated as below.  Use a weighted average
-                to combine the question scores.
+                to combine the question scores:
                 
                 \[
                     S_{3} = \sum\limits^n_{i=1} w_i S_{3_i}
@@ -625,7 +625,7 @@
                     \item $S_3$ is the combined satisfaction score for all Questions IDs, 
                     a weighted average
                     \item $w_i > 0$ for all $i$
-                    \item $\sum\limits^n_{i=1} w_i = 1$
+                    \item $\sum\limits^n_{i=1} w_i = 1$.
                 \end{itemize}
                 
                 Then $S_3$ represents the CRI satisfaction score for that given time 
@@ -706,10 +706,10 @@
                 \end{displaymath}
                 where
                 \begin{itemize}
-                    \item $F_{a_i}$ the actual finish date of project $i$
-                    \item $F_{s_i}$ the scheduled finish date of project $i$
-                    \item $B_{s_i}$ the scheduled beginning date of project $i$
-                    \item $\Delta_i$ the proportion the schedule was missed for project $i$
+                    \item $F_{a_i}$ is the actual finish date of project $i$
+                    \item $F_{s_i}$ is the scheduled finish date of project $i$
+                    \item $B_{s_i}$ is the scheduled beginning date of project $i$
+                    \item $\Delta_i$ is the proportion the schedule was missed for project $i$
                 \end{itemize}
                 
                 Once all the $\Delta_i$'s have been determined, a distribution must
@@ -727,14 +727,14 @@
                 doubled to fill the desired range of $[-1,1]$. Thus the CRI schedule score
                 for each project becomes the following.
                 
-                \begin{equation}
+                \[
                 \label{eq:CDF}
-                    S_{4_i} = 2k \cdot (CDF(\Delta_i) - \frac{1}{2})
-                \end{equation}
+                    S_{4_i} = 2k \cdot \left(CDF(\Delta_i) - \frac{1}{2} \right)
+                \]
                 where
                 \begin{itemize}
                     \item $S_{4_i}$ is the schedule score for Project ID $i$
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
                 \end{itemize}
                 
                 Then the overall schedule score is calculated as below.
@@ -791,11 +791,11 @@
                 \begin{displaymath}
                    S_{4_i} = \left\{
                      \begin{array}{lr}
-                        \text{where } \Delta_i \geq 1 & : -1 \times k \\
-                       \text{where }  \Delta_i \leq \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{\bar{\Delta}}   \times k  \\
-                       \text{where } \Delta_i > \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{1 - \bar{\Delta}} \times k
+                        \text{where } \Delta_i \geq 1 & : -1 \cdot k \\
+                       \text{where }  \Delta_i \leq \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{\bar{\Delta}}   \cdot k  \\
+                       \text{where } \Delta_i > \bar{\Delta} & : \frac{\bar{\Delta} - \Delta_i}{1 - \bar{\Delta}} \cdot k
                      \end{array}
-                   \right] \text{   , calculate schedule score for each project $i$}
+                   \right. \text{   , calculate schedule score for each project $i$}
                 \end{displaymath} 
         
                 \[
@@ -805,14 +805,14 @@
                 \begin{itemize}
                     \item $S_4$ is the combined schedule score for all Project IDs, 
                     a weighted average
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
                     \item $w_i > 0$ for all $i$
                     \item $\sum\limits^n_{i=1} w_i = 1$
                     \item $n$ is the number of projects
-                    \item $F_{a_i}$ the actual finish date of project $i$
-                    \item $F_{s_i}$ the scheduled finish date of project $i$
-                    \item $B_{s_i}$ the scheduled beginning date of project $i$
-                    \item $\Delta_i$ the percent the schedule was missed
+                    \item $F_{a_i}$ is the actual finish date of project $i$
+                    \item $F_{s_i}$ is the scheduled finish date of project $i$
+                    \item $B_{s_i}$ is the scheduled beginning date of project $i$
+                    \item $\Delta_i$ is the percent the schedule was missed
                     \item $\bar{\Delta}$ is the average percent schedules are missed
                     \item $S_{4_i}$ is the schedule score for project $i$
                 \end{itemize}
@@ -919,19 +919,19 @@
                 \begin{displaymath}
                    S_{5_i} = \left\{
                      \begin{array}{lr}
-                       \text{where } R_{a_i} > b \times R_{s_i} & :  1 \times k \\
-                       \text{where } R_{a_i} \leq R_{s_i} & : \left[ \frac{R_{a_i} - R_{s_i}}{R_{s_i}}\times k \right] \\
-                       \text{where } R_{a_i} > R_{s_i}  & : \left[ \frac{R_{a_i} - R_{s_i} }{b \cdot R_{s_i}}\times k \right]
+                       \text{where } R_{a_i} > b \cdot R_{s_i} & :  1 \cdot k \\
+                       \text{where } R_{a_i} \leq R_{s_i} & : \frac{R_{a_i} - R_{s_i}}{R_{s_i}}\cdot k \\
+                       \text{where } R_{a_i} > R_{s_i}  & : \frac{R_{a_i} - R_{s_i} }{b \cdot R_{s_i}}\cdot k
                      \end{array}
                    \right. \text{   , calculate requirements score for each project $i$}
                 \end{displaymath}
                 where
                 \begin{itemize}
                     \item $S_{5_i}$ is the requirements score for Project ID $i$
-                    \item $k$ scaling factor to produce results in the range $[-k,k]$
-                    \item $R_{a_i}$ actual requirements completed for Project ID $i$
-                    \item $R_{s_i}$ expected requirements completed for Project ID $i$
-                    \item $b$ multiplier to determine the upper bound
+                    \item $k$ is the scaling factor to produce results in the range $[-k,k]$
+                    \item $R_{a_i}$ is the actual requirements completed for Project ID $i$
+                    \item $R_{s_i}$ is the expected requirements completed for Project ID $i$
+                    \item $b$ is the multiplier to determine the upper bound
                 \end{itemize}
                 Then the requirements score is calculated as below.  
                 Use a weighted average to combine the requirements scores
@@ -968,7 +968,7 @@
             
             This weighted average allows for a score to be computed even when not
             all five elements are present. Just perform the weighted average with
-            as many elements as present.  This technique allows CRI to implemented
+            as many elements as present.  This technique allows CRI to be implemented
             before data for all the elements has been collected.  Just begin
             to average elements as they become accessible.
 
