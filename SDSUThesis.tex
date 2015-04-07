@@ -122,8 +122,13 @@
 %For the abbreviations page
 \usepackage{nomencl}
 \makenomenclature
-\renewcommand{\nomname}{ABREVIATIONS}%
+\renewcommand{\nomname}{ABBREVIATIONS}%
 
+%% Used for Positioning on the title page
+\usepackage[absolute]{textpos}
+    \setlength{\TPHorizModule}{1in} % sets our horizontal unit of measuring
+    \setlength{\TPVertModule}{1in} % sets our vertical unit of measuring
+    \textblockorigin{0in}{0in} % and we start measuring in the top left corner
 
 % to center column headings
 \usepackage[up,tiny,center,uppercase]{titlesec}
@@ -188,13 +193,15 @@
 \def\yourtitle{SCORING A SOFTWARE DEVELOPMENT ORGANIZATION \\WITH A SINGLE NUMBER}
 \def\yourname{RYAN M. SWANSTROM}
 \def\yourmajor{Computational Science and Statistics}
-\def\youradvisor{Dr. Gary Hatfield}
-\def\departmenthead{Dr. Kurt Cogswell}
+\def\youradvisor{Gary Hatfield, Ph.D.}
+\def\departmenthead{Kurt Cogswell, Ph.D.}
 %% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 %% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \begin{document}
 \raggedright
+
+\doublespacing
 
 %% Title page
 \subfile{titlepage}
@@ -213,7 +220,6 @@
 %% Quotes (optional)
 \subfile{quotes}
 
-\doublespacing
 %% Table of contents
 \newpage
 \tableofcontents
@@ -241,7 +247,7 @@
 \subfile{paper_30_measure}
 \subfile{paper_40_cri}
 \subfile{paper_50_sdlc-ae}
-%\subfile{paper_60_tooling}
+%%%%\subfile{paper_60_tooling}
 \subfile{paper_70_case-study}
 \subfile{paper_80_conclusion}
 
